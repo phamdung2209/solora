@@ -1,41 +1,65 @@
 # Solora — company & legal site
 
-One shared static site for **all Solora apps**: a company landing page plus a
-**per-app** Privacy Policy and Terms. Reuse the same site for every future app — just add
-a folder and a hub link.
+The marketing + legal site for **Solora** and its Shopify apps (starting with
+**Tierly**). Built with **Next.js 16 (App Router)**, **React 19**, **TypeScript**, and
+**Tailwind CSS v4**, and **statically exported** so it can be hosted for free on GitHub
+Pages at the custom domain **[solora.dungpv.id.vn](https://solora.dungpv.id.vn)**.
 
-## Structure
-```
-index.html            landing (brand + "Our apps")
-privacy.html          privacy hub (lists every app)
-terms.html            terms hub
-tierly/privacy.html   Tierly privacy policy   ← give this URL to Shopify
-tierly/terms.html     Tierly terms
-styles.css            shared styles (elegant black)
-.github/workflows/pages.yml   auto-deploy to GitHub Pages
+## Stack
+
+- Next.js 16 App Router with `output: 'export'` (fully static — no server runtime)
+- React 19 + TypeScript
+- Tailwind CSS v4 (CSS-first `@theme` tokens, light/dark aware)
+- A few hand-written shadcn-style UI primitives (`Button`, `Card`) using
+  `class-variance-authority` + `clsx` + `tailwind-merge` and a `cn()` helper
+
+## Routes (clean URLs via `trailingSlash`)
+
+| Path              | Page                          |
+| ----------------- | ----------------------------- |
+| `/`               | Landing page                  |
+| `/privacy`        | Company privacy hub           |
+| `/terms`          | Company terms hub             |
+| `/tierly/privacy` | Tierly app privacy policy     |
+| `/tierly/terms`   | Tierly app terms of service   |
+
+## Develop
+
+```bash
+npm install
+npm run dev        # http://localhost:3000
 ```
 
-## ➕ Add a new app later
-1. Create a folder `‹app›/` with `privacy.html` + `terms.html` (copy Tierly's, edit content, keep `../` paths).
-2. Add a card in `index.html` (#apps) and a line in `privacy.html` / `terms.html` hubs.
+## Build (static export)
+
+```bash
+npm run build      # runs `next build` → produces ./out
+```
+
+`out/` is a fully static site containing `index.html`, `privacy/index.html`,
+`terms/index.html`, `tierly/privacy/index.html`, `tierly/terms/index.html`, plus
+`CNAME` and `.nojekyll`.
+
+Other checks:
+
+```bash
+npm run typecheck  # tsc --noEmit
+npm run lint       # eslint .
+```
+
+## Deploy
+
+Pushes to `main` trigger `.github/workflows/deploy.yml`, which builds and publishes
+`out/` to GitHub Pages.
+
+**One-time setup:** in the repo, go to **Settings → Pages → Source = "GitHub Actions"**.
+The custom domain is configured via `public/CNAME` (`solora.dungpv.id.vn`); DNS already
+points to GitHub Pages.
+
+## Add a new app later
+
+1. Create routes under `src/app/‹app›/privacy/page.tsx` and `.../terms/page.tsx`
+   (copy Tierly's pages, edit the content).
+2. Add a `<HubItem>` to `src/app/privacy/page.tsx` and `src/app/terms/page.tsx`, and a
+   card to the `apps` array in `src/app/page.tsx`.
 3. Push → the Action redeploys.
-
-## ✏️ Before publishing — fill these in
-1. **`July 5, 2026`** in each app's `privacy.html` + `terms.html`.
-2. **`hank@dungpv.id.vn`** → your real support email (find/replace across all files).
-
-## 🚀 Publish (free, auto-deploy)
-1. Create a **PUBLIC** repo (e.g. `solora-site`) and push these files.
-   > ⚠️ Free GitHub Pages needs a **public** repo. (Private-repo Pages needs GitHub Pro.)
-2. Repo → **Settings → Pages → Source = "GitHub Actions"** (one time).
-3. Push → the included Action deploys it.
-
-**Privacy URL to give Shopify** (Partner Dashboard → App listing → Privacy policy URL):
-```
-https://<user>.github.io/solora-site/tierly/privacy.html
-```
-Point a custom domain (e.g. `solora.dungpv.id.vn`) at the repo for a branded URL if you like.
-
-### Prefer Netlify (works with private repos, free)
-Drag this folder into app.netlify.com, or connect the repo → framework **None**. URL:
-`https://<name>.netlify.app/tierly/privacy.html`.
