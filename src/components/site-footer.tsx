@@ -27,7 +27,7 @@ export const SiteFooter = () => {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="border-t border-border bg-background-subtle">
+    <footer className="border-t bg-muted/40">
       <div className="mx-auto max-w-6xl px-6 py-14">
         <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-4">
           <div className="md:col-span-2">
@@ -38,7 +38,7 @@ export const SiteFooter = () => {
             </p>
             <a
               href={`mailto:${siteConfig.email}`}
-              className="mt-4 inline-block text-sm font-medium text-accent hover:underline"
+              className="mt-4 inline-block text-sm font-medium text-foreground underline-offset-4 hover:underline"
             >
               {siteConfig.email}
             </a>
@@ -63,7 +63,7 @@ export const SiteFooter = () => {
           ))}
         </div>
 
-        <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-border pt-6 text-sm text-muted-foreground sm:flex-row sm:items-center">
+        <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t pt-6 text-sm text-muted-foreground sm:flex-row sm:items-center">
           <p>
             © {year} {siteConfig.name}. Not affiliated with Shopify Inc.
           </p>

@@ -27,7 +27,7 @@ const TierlyPrivacyPage = () => {
         protect it. By installing Tierly you agree to this policy.
       </p>
 
-      <div className="my-6 rounded-2xl border border-border bg-background-subtle px-5 py-4 not-italic">
+      <div className="my-6 rounded-xl border bg-muted px-5 py-4 not-italic">
         <strong>In short:</strong> Tierly stores your store&rsquo;s configuration and{' '}
         <em>aggregated</em> order statistics to power volume pricing and analytics. We do{' '}
         <strong>not</strong> store your customers&rsquo; personal information (names, emails,

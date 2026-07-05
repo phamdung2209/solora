@@ -11,22 +11,22 @@ interface BrandProps {
 }
 
 /**
- * Solora wordmark with a gradient "S" mark.
+ * Solora wordmark with a neutral "S" mark.
  */
-export const Brand = ({ className, size = 32, href = '/' }: BrandProps) => {
+export const Brand = ({ className, size = 30, href = '/' }: BrandProps) => {
   return (
     <Link
       href={href}
       aria-label={`${siteConfig.name} home`}
       className={cn(
-        'group inline-flex items-center gap-2.5 font-bold tracking-tight text-foreground',
+        'group inline-flex items-center gap-2.5 font-semibold tracking-tight text-foreground',
         className,
       )}
     >
       <span
         aria-hidden
-        style={{ width: size, height: size, fontSize: size * 0.5 }}
-        className="grid place-items-center rounded-[0.6rem] bg-gradient-to-br from-brand-500 to-brand-700 font-black text-white shadow-sm transition-transform group-hover:scale-105"
+        style={{ width: size, height: size, fontSize: size * 0.52 }}
+        className="grid place-items-center rounded-md bg-primary font-bold text-primary-foreground shadow-sm"
       >
         S
       </span>

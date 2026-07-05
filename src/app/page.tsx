@@ -83,26 +83,15 @@ const HomePage = () => {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(60%_60%_at_50%_-10%,color-mix(in_oklab,var(--color-brand-500)_22%,transparent),transparent)]"
-        />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-px bg-gradient-to-r from-transparent via-brand-400/40 to-transparent"
-        />
+      <section className="border-b">
         <div className="mx-auto max-w-6xl px-6 pb-20 pt-20 md:pt-28">
           <div className="mx-auto max-w-3xl text-center">
-            <span className="inline-flex items-center gap-2 rounded-full border border-border bg-background-subtle px-3.5 py-1.5 text-xs font-semibold text-muted-foreground">
-              <span className="h-1.5 w-1.5 rounded-full bg-brand-500" />
+            <span className="inline-flex items-center gap-2 rounded-full border bg-background px-3.5 py-1.5 text-xs font-medium text-muted-foreground shadow-sm">
+              <span className="size-1.5 rounded-full bg-primary" />
               Shopify apps studio
             </span>
-            <h1 className="mt-6 text-balance text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
-              Sell more with{' '}
-              <span className="bg-gradient-to-r from-brand-600 to-brand-400 bg-clip-text text-transparent">
-                automatic volume pricing
-              </span>
+            <h1 className="mt-6 text-balance text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
+              Sell more with automatic volume pricing
             </h1>
             <p className="mx-auto mt-6 max-w-xl text-pretty text-lg leading-relaxed text-muted-foreground">
               Solora builds focused, reliable apps for Shopify merchants. Tierly applies
@@ -110,9 +99,12 @@ const HomePage = () => {
               and privacy-first.
             </p>
             <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
-              <Link href="#apps" className={cn(buttonVariants({ variant: 'gradient', size: 'lg' }))}>
+              <Link
+                href="#apps"
+                className={cn(buttonVariants({ variant: 'default', size: 'lg' }))}
+              >
                 Explore our apps
-                <ArrowRightIcon className="size-4" />
+                <ArrowRightIcon />
               </Link>
               <Link
                 href="/tierly/privacy"
@@ -125,11 +117,11 @@ const HomePage = () => {
 
           {/* Pricing-tier hero visual */}
           <div className="mx-auto mt-16 max-w-2xl">
-            <Card className="overflow-hidden p-1.5 shadow-xl shadow-brand-950/5">
-              <div className="rounded-[calc(1rem-2px)] bg-background-subtle p-6 sm:p-8">
+            <Card className="overflow-hidden p-1.5">
+              <div className="rounded-lg bg-muted/60 p-6 sm:p-8">
                 <div className="flex items-center justify-between">
                   <p className="text-sm font-semibold text-foreground">Volume pricing</p>
-                  <span className="rounded-full bg-brand-500/10 px-2.5 py-1 text-xs font-medium text-brand-600 dark:text-brand-300">
+                  <span className="rounded-full border bg-background px-2.5 py-1 text-xs font-medium text-muted-foreground">
                     Applied at checkout
                   </span>
                 </div>
@@ -142,17 +134,15 @@ const HomePage = () => {
                     <li
                       key={tier.qty}
                       className={cn(
-                        'flex items-center justify-between rounded-xl border border-border bg-card px-4 py-3 text-sm',
-                        index === 2 && 'ring-1 ring-brand-500/40',
+                        'flex items-center justify-between rounded-lg border bg-background px-4 py-3 text-sm shadow-sm',
+                        index === 2 && 'ring-1 ring-ring',
                       )}
                     >
                       <span className="flex items-center gap-2.5 font-medium text-foreground">
-                        <CheckIcon className="size-4 text-brand-500" />
+                        <CheckIcon className="size-4 text-muted-foreground" />
                         {tier.qty}
                       </span>
-                      <span className="font-semibold text-brand-600 dark:text-brand-300">
-                        {tier.save}
-                      </span>
+                      <span className="font-semibold text-foreground">{tier.save}</span>
                     </li>
                   ))}
                 </ul>
@@ -163,7 +153,7 @@ const HomePage = () => {
       </section>
 
       {/* Features */}
-      <section id="features" className="scroll-mt-20 border-t border-border">
+      <section id="features" className="scroll-mt-14 border-b">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
@@ -174,10 +164,10 @@ const HomePage = () => {
               for your data.
             </p>
           </div>
-          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((feature) => (
-              <Card key={feature.title} className="p-6 transition-shadow hover:shadow-md">
-                <span className="inline-grid size-11 place-items-center rounded-xl bg-gradient-to-br from-brand-500/15 to-brand-500/5 text-brand-600 dark:text-brand-300">
+              <Card key={feature.title} className="p-6 transition-colors hover:bg-accent/40">
+                <span className="inline-grid size-10 place-items-center rounded-lg border bg-muted text-foreground">
                   <feature.icon className="size-5" />
                 </span>
                 <h3 className="mt-4 text-base font-semibold">{feature.title}</h3>
@@ -191,7 +181,7 @@ const HomePage = () => {
       </section>
 
       {/* Apps */}
-      <section id="apps" className="scroll-mt-20 border-t border-border bg-background-subtle">
+      <section id="apps" className="scroll-mt-14 border-b bg-muted/40">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Our apps</h2>
@@ -199,13 +189,13 @@ const HomePage = () => {
               Focused tools for growing Shopify stores. More on the way.
             </p>
           </div>
-          <div className="mt-14 grid gap-5 md:grid-cols-2">
+          <div className="mt-14 grid gap-4 md:grid-cols-2">
             {apps.map((app) => (
               <Card key={app.name} className="flex flex-col p-7">
                 <div className="flex items-center gap-4">
                   <span
                     aria-hidden
-                    className="grid size-12 place-items-center rounded-2xl bg-gradient-to-br from-brand-500 to-brand-700 text-xl text-white shadow-sm"
+                    className="grid size-12 place-items-center rounded-xl bg-primary text-xl text-primary-foreground"
                   >
                     {app.mark}
                   </span>
@@ -213,7 +203,7 @@ const HomePage = () => {
                     <div className="flex items-center gap-2">
                       <h3 className="text-lg font-semibold">{app.name}</h3>
                       {!app.available && (
-                        <span className="rounded-full border border-border bg-background px-2 py-0.5 text-[0.7rem] font-semibold uppercase tracking-wide text-muted-foreground">
+                        <span className="rounded-full border bg-background px-2 py-0.5 text-[0.7rem] font-semibold uppercase tracking-wide text-muted-foreground">
                           Coming soon
                         </span>
                       )}
@@ -230,7 +220,7 @@ const HomePage = () => {
                       <Link
                         key={link.href}
                         href={link.href}
-                        className="text-accent transition-colors hover:text-brand-500"
+                        className="text-foreground underline-offset-4 transition-colors hover:underline"
                       >
                         {link.label}
                       </Link>
@@ -246,13 +236,9 @@ const HomePage = () => {
       </section>
 
       {/* Closing CTA */}
-      <section className="border-t border-border">
+      <section>
         <div className="mx-auto max-w-6xl px-6 py-20">
-          <Card className="relative overflow-hidden border-brand-500/20 p-10 text-center md:p-14">
-            <div
-              aria-hidden
-              className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(60%_120%_at_50%_0%,color-mix(in_oklab,var(--color-brand-500)_16%,transparent),transparent)]"
-            />
+          <Card className="p-10 text-center md:p-14">
             <h2 className="mx-auto max-w-xl text-balance text-3xl font-bold tracking-tight sm:text-4xl">
               Ready to lift your average order value?
             </h2>
@@ -263,14 +249,14 @@ const HomePage = () => {
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
               <a
                 href={`mailto:${siteConfig.email}`}
-                className={cn(buttonVariants({ variant: 'gradient', size: 'lg' }))}
+                className={cn(buttonVariants({ variant: 'default', size: 'lg' }))}
               >
-                <MailIcon className="size-4" />
+                <MailIcon />
                 Get in touch
               </a>
               <Link
                 href="/privacy"
-                className={cn(buttonVariants({ variant: 'ghost', size: 'lg' }))}
+                className={cn(buttonVariants({ variant: 'outline', size: 'lg' }))}
               >
                 Read our policies
               </Link>

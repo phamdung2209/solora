@@ -55,7 +55,7 @@ interface HubItemProps {
 export const HubItem = ({ href, title, description }: HubItemProps) => (
   <Link
     href={href}
-    className="group flex items-center justify-between gap-4 rounded-2xl border border-border bg-card px-5 py-4 transition-colors hover:bg-background-subtle"
+    className="group flex items-center justify-between gap-4 rounded-xl border bg-card px-5 py-4 shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground"
   >
     <span>
       <span className="block font-semibold text-foreground">{title}</span>
