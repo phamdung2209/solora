@@ -31,9 +31,9 @@ const features = [
   },
   {
     icon: LayersIcon,
-    title: 'Tiered & wholesale pricing',
+    title: 'Tiered & volume pricing',
     description:
-      'Build volume breaks, bulk deals, and wholesale tiers with flexible targeting by product, collection, or customer.',
+      'Build volume breaks and bulk deals with flexible targeting by product or collection — scheduling and checkout labels included.',
   },
   {
     icon: ShieldIcon,
@@ -62,7 +62,7 @@ const apps = [
     mark: '◆',
     available: true,
     description:
-      'Automatic quantity breaks, tiered and wholesale pricing — applied at checkout, no code. Lifts average order value.',
+      'Automatic quantity breaks and tiered pricing — applied at checkout, no code. Lifts average order value.',
     links: [
       { href: '/tierly/privacy', label: 'Privacy' },
       { href: '/tierly/terms', label: 'Terms' },
