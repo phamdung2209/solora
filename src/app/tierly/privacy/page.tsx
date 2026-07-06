@@ -62,6 +62,11 @@ const TierlyPrivacyPage = () => {
         numbers, or shipping addresses. Order events are used only to compute the aggregate
         numbers above and are not retained as individual customer records.
       </p>
+      <p>
+        If wholesale (B2B) features are enabled in the future, Tierly may evaluate customer
+        tags during checkout to determine pricing eligibility. Tags are evaluated in the
+        moment and are not stored by the app.
+      </p>
 
       <h2>3. How we use information</h2>
       <ul>
@@ -76,10 +81,27 @@ const TierlyPrivacyPage = () => {
 
       <h2>4. Sharing &amp; sub-processors</h2>
       <p>
-        We share data only with infrastructure providers strictly necessary to run the
-        service (our cloud hosting provider and Shopify). We do not share your data with any
-        third party for their own purposes.
+        We share data only with providers strictly necessary to run the service, and never
+        for their own purposes:
       </p>
+      <ul>
+        <li>
+          <strong>Shopify</strong> — the platform the app runs on; discounts execute inside
+          Shopify&rsquo;s checkout.
+        </li>
+        <li>
+          <strong>Our cloud hosting provider</strong> — application hosting and encrypted
+          backups.
+        </li>
+        <li>
+          <strong>Crisp</strong> — our in-app support chat; receives your store domain, store
+          name, owner email, and plan so we can support you in context.
+        </li>
+        <li>
+          <strong>Sentry</strong> — error monitoring; reports carry technical context, never
+          customer data.
+        </li>
+      </ul>
 
       <h2>5. Protected customer data &amp; GDPR</h2>
       <p>
