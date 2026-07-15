@@ -101,6 +101,11 @@ const TierlyPrivacyPage = () => {
           <strong>Sentry</strong> — error monitoring; reports carry technical context, never
           customer data.
         </li>
+        <li>
+          <strong>Resend</strong> — our transactional email provider; it delivers service
+          emails (such as plan and offer notices) to your store owner email address, and
+          never receives customer data.
+        </li>
       </ul>
 
       <h2>5. Protected customer data &amp; GDPR</h2>

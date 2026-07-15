@@ -9,7 +9,7 @@ export const siteConfig = {
   email: 'hank@dungpv.id.vn',
   description:
     'Solora builds focused, high-quality apps for Shopify merchants — starting with Tierly, automatic volume and tiered pricing applied at checkout.',
-  lastUpdated: 'July 6, 2026',
+  lastUpdated: 'July 15, 2026',
 } as const
 
 export type SiteConfig = typeof siteConfig
