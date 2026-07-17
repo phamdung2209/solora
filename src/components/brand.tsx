@@ -1,36 +1,36 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
 import { cn } from '@/lib/utils'
 import { siteConfig } from '@/lib/site'
 
 interface BrandProps {
-  className?: string
-  /** Size of the logo mark in pixels. */
-  size?: number
-  href?: string
+    className?: string
+    /** Rendered height of the logo lockup in pixels. */
+    size?: number
+    href?: string
 }
 
 /**
- * Solora wordmark with a neutral "S" mark.
+ * Solora logo lockup (mark + "solora" wordmark). The wordmark is baked into the image,
+ * so no separate text is rendered next to it.
  */
-export const Brand = ({ className, size = 30, href = '/' }: BrandProps) => {
-  return (
-    <Link
-      href={href}
-      aria-label={`${siteConfig.name} home`}
-      className={cn(
-        'group inline-flex items-center gap-2.5 font-semibold tracking-tight text-foreground',
-        className,
-      )}
-    >
-      <span
-        aria-hidden
-        style={{ width: size, height: size, fontSize: size * 0.52 }}
-        className="grid place-items-center rounded-md bg-primary font-bold text-primary-foreground shadow-sm"
-      >
-        S
-      </span>
-      <span className="text-[1.05rem]">Solora</span>
-    </Link>
-  )
+export const Brand = ({ className, size = 40, href = '/' }: BrandProps) => {
+    return (
+        <Link
+            href={href}
+            aria-label={`${siteConfig.name} home`}
+            className={cn('inline-flex items-center', className)}
+        >
+            <Image
+                src="/solora-step-lockup-stacked-bg-removed.png"
+                alt={siteConfig.name}
+                width={741}
+                height={554}
+                priority
+                style={{ height: size, width: 'auto' }}
+                className="object-contain"
+            />
+        </Link>
+    )
 }

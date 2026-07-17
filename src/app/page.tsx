@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
 import { buttonVariants } from '@/components/ui/button'
@@ -60,6 +61,7 @@ const apps = [
     name: 'Tierly',
     tagline: 'Volume & tiered pricing',
     mark: '◆',
+    icon: '/solora-tierly.png',
     available: true,
     description:
       'Automatic quantity breaks and tiered pricing — applied at checkout, no code. Lifts average order value.',
@@ -72,6 +74,7 @@ const apps = [
     name: 'FeedGuard',
     tagline: 'Product feed monitor',
     mark: '🛡',
+    icon: undefined,
     available: false,
     description:
       'Monitors your Google & Meta product feeds and alerts you the moment listings get disapproved — before you lose sales.',
@@ -193,12 +196,22 @@ const HomePage = () => {
             {apps.map((app) => (
               <Card key={app.name} className="flex flex-col p-7">
                 <div className="flex items-center gap-4">
-                  <span
-                    aria-hidden
-                    className="grid size-12 place-items-center rounded-xl bg-primary text-xl text-primary-foreground"
-                  >
-                    {app.mark}
-                  </span>
+                  {app.icon ? (
+                    <Image
+                      src={app.icon}
+                      alt=""
+                      width={48}
+                      height={48}
+                      className="size-12 rounded-xl"
+                    />
+                  ) : (
+                    <span
+                      aria-hidden
+                      className="grid size-12 place-items-center rounded-xl bg-primary text-xl text-primary-foreground"
+                    >
+                      {app.mark}
+                    </span>
+                  )}
                   <div>
                     <div className="flex items-center gap-2">
                       <h3 className="text-lg font-semibold">{app.name}</h3>
