@@ -8,6 +8,7 @@ import { cn } from '@/lib/utils'
 const navLinks = [
   { href: '/#apps', label: 'Apps' },
   { href: '/#features', label: 'Why Solora' },
+  { href: '/tierly/docs', label: 'Tierly docs' },
   { href: '/privacy', label: 'Privacy' },
   { href: '/terms', label: 'Terms' },
 ]

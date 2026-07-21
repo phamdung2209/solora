@@ -9,7 +9,7 @@ const footerSections = [
     links: [
       { href: '/#apps', label: 'Apps' },
       { href: '/#features', label: 'Why Solora' },
-      { href: '/tierly/privacy', label: 'Tierly' },
+      { href: '/tierly/docs', label: 'Tierly docs' },
     ],
   },
   {

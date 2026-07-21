@@ -66,6 +66,7 @@ const apps = [
     description:
       'Automatic quantity breaks and tiered pricing — applied at checkout, no code. Lifts average order value.',
     links: [
+      { href: '/tierly/docs', label: 'Documentation' },
       { href: '/tierly/privacy', label: 'Privacy' },
       { href: '/tierly/terms', label: 'Terms' },
     ],
