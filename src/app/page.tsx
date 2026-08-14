@@ -59,13 +59,14 @@ const features = [
 const apps = [
   {
     name: 'Tierly',
-    tagline: 'Volume & tiered pricing',
+    tagline: 'Buy-more-save-more pricing that lifts average order value.',
     mark: '◆',
     icon: '/solora-tierly.png',
     available: true,
     description:
       'Automatic quantity breaks and tiered pricing — applied at checkout, no code. Lifts average order value.',
     links: [
+      { href: 'https://apps.shopify.com/solora-tierly', label: 'Install on Shopify' },
       { href: '/tierly/docs', label: 'Documentation' },
       { href: '/tierly/privacy', label: 'Privacy' },
       { href: '/tierly/terms', label: 'Terms' },
@@ -110,12 +111,14 @@ const HomePage = () => {
                 Explore our apps
                 <ArrowRightIcon />
               </Link>
-              <Link
-                href="/tierly/privacy"
+              <a
+                href="https://apps.shopify.com/solora-tierly"
+                target="_blank"
+                rel="noopener noreferrer"
                 className={cn(buttonVariants({ variant: 'outline', size: 'lg' }))}
               >
-                Tierly privacy policy
-              </Link>
+                Install Tierly on Shopify
+              </a>
             </div>
           </div>
 
@@ -228,17 +231,34 @@ const HomePage = () => {
                 <p className="mt-4 flex-1 text-sm leading-relaxed text-muted-foreground">
                   {app.description}
                 </p>
-                <div className="mt-5 flex items-center gap-4 text-sm font-medium">
+                {app.available && (
+                  <p className="mt-3 text-xs font-medium text-muted-foreground">
+                    Free: 1 active offer · Pro: $9.99/mo or $99/yr
+                  </p>
+                )}
+                <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm font-medium">
                   {app.available ? (
-                    app.links.map((link) => (
-                      <Link
-                        key={link.href}
-                        href={link.href}
-                        className="text-foreground underline-offset-4 transition-colors hover:underline"
-                      >
-                        {link.label}
-                      </Link>
-                    ))
+                    app.links.map((link) =>
+                      link.href.startsWith('http') ? (
+                        <a
+                          key={link.href}
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-foreground underline-offset-4 transition-colors hover:underline"
+                        >
+                          {link.label}
+                        </a>
+                      ) : (
+                        <Link
+                          key={link.href}
+                          href={link.href}
+                          className="text-foreground underline-offset-4 transition-colors hover:underline"
+                        >
+                          {link.label}
+                        </Link>
+                      ),
+                    )
                   ) : (
                     <span className="text-muted-foreground">Launching soon</span>
                   )}
