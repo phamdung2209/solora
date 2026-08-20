@@ -25,6 +25,7 @@ const TermsHubPage = () => {
       </p>
       <div className="mt-6 grid gap-3">
         <HubItem href="/tierly/terms" title="Tierly" description="Volume & tiered pricing" />
+        <HubItem href="/mixly/terms" title="Mixly" description="Product bundles & BOGO" />
       </div>
     </LegalShell>
   )

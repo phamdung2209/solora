@@ -29,6 +29,11 @@ const PrivacyHubPage = () => {
           title="Tierly"
           description="Volume & tiered pricing"
         />
+        <HubItem
+          href="/mixly/privacy"
+          title="Mixly"
+          description="Product bundles & BOGO"
+        />
       </div>
     </LegalShell>
   )

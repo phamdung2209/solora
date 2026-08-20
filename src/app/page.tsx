@@ -22,19 +22,19 @@ const features = [
     icon: BoltIcon,
     title: 'Applied automatically at checkout',
     description:
-      'Quantity breaks and tiered discounts are calculated and applied for you at checkout — no manual coupons, no missed carts.',
+      'Quantity breaks and bundle discounts are calculated and applied for you at checkout — no coupon codes, no manual work.',
   },
   {
     icon: CodeOffIcon,
     title: 'No theme code required',
     description:
-      'Configure offers from a clean admin. Storefront pricing displays through Shopify blocks — nothing to edit in Liquid.',
+      'Configure offers and bundles from a clean admin. Storefront pricing and bundle blocks display through Shopify blocks — nothing to edit in Liquid.',
   },
   {
     icon: LayersIcon,
-    title: 'Tiered & volume pricing',
+    title: 'Built to work together',
     description:
-      'Build volume breaks and bulk deals with flexible targeting by product or collection — scheduling and checkout labels included.',
+      'Run Tierly and Mixly side by side — volume breaks and bundle discounts stack cleanly at checkout, and each app tells you how to set the other up.',
   },
   {
     icon: ShieldIcon,
@@ -46,7 +46,7 @@ const features = [
     icon: ChartIcon,
     title: 'Clear analytics',
     description:
-      'See how volume pricing lifts average order value with a dashboard built on aggregated order figures.',
+      'See what your offers and bundles actually earned, from aggregated daily order figures — never individual customer records.',
   },
   {
     icon: FeatherIcon,
@@ -62,7 +62,8 @@ const apps = [
     tagline: 'Buy-more-save-more pricing that lifts average order value.',
     mark: '◆',
     icon: '/solora-tierly.png',
-    available: true,
+    status: 'live',
+    pricing: 'Free: 1 active offer · Pro: $9.99/mo or $99/yr',
     description:
       'Automatic quantity breaks and tiered pricing — applied at checkout, no code. Lifts average order value.',
     links: [
@@ -73,11 +74,28 @@ const apps = [
     ],
   },
   {
+    name: 'Mixly',
+    tagline: 'Product bundles that discount what is already in the cart.',
+    mark: '◈',
+    icon: undefined,
+    status: 'beta',
+    pricing: 'Free: 1 active bundle · Pro: $12.99/mo or $129/yr',
+    description:
+      'Frequently Bought Together, Build Your Own, and BOGO bundles — discounted at checkout without creating a single new product, variant, or SKU.',
+    links: [
+      { href: `mailto:${siteConfig.email}?subject=Mixly early access`, label: 'Request early access' },
+      { href: '/mixly/docs', label: 'Documentation' },
+      { href: '/mixly/privacy', label: 'Privacy' },
+      { href: '/mixly/terms', label: 'Terms' },
+    ],
+  },
+  {
     name: 'FeedGuard',
     tagline: 'Product feed monitor',
     mark: '🛡',
     icon: undefined,
-    available: false,
+    status: 'soon',
+    pricing: '',
     description:
       'Monitors your Google & Meta product feeds and alerts you the moment listings get disapproved — before you lose sales.',
     links: [],
@@ -96,12 +114,12 @@ const HomePage = () => {
               Shopify apps studio
             </span>
             <h1 className="mt-6 text-balance text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-              Sell more with automatic volume pricing
+              Sell more per order, automatically
             </h1>
             <p className="mx-auto mt-6 max-w-xl text-pretty text-lg leading-relaxed text-muted-foreground">
               Solora builds focused, reliable apps for Shopify merchants. Tierly applies
-              quantity breaks and tiered discounts at checkout automatically — simple, fast,
-              and privacy-first.
+              quantity breaks at checkout; Mixly discounts product bundles without creating a
+              single new SKU. Simple, fast, and privacy-first.
             </p>
             <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
               <Link
@@ -127,7 +145,7 @@ const HomePage = () => {
             <Card className="overflow-hidden p-1.5">
               <div className="rounded-lg bg-muted/60 p-6 sm:p-8">
                 <div className="flex items-center justify-between">
-                  <p className="text-sm font-semibold text-foreground">Volume pricing</p>
+                  <p className="text-sm font-semibold text-foreground">Volume pricing · Tierly</p>
                   <span className="rounded-full border bg-background px-2.5 py-1 text-xs font-medium text-muted-foreground">
                     Applied at checkout
                   </span>
@@ -219,7 +237,12 @@ const HomePage = () => {
                   <div>
                     <div className="flex items-center gap-2">
                       <h3 className="text-lg font-semibold">{app.name}</h3>
-                      {!app.available && (
+                      {app.status === 'beta' && (
+                        <span className="rounded-full border bg-background px-2 py-0.5 text-[0.7rem] font-semibold uppercase tracking-wide text-muted-foreground">
+                          In beta
+                        </span>
+                      )}
+                      {app.status === 'soon' && (
                         <span className="rounded-full border bg-background px-2 py-0.5 text-[0.7rem] font-semibold uppercase tracking-wide text-muted-foreground">
                           Coming soon
                         </span>
@@ -231,20 +254,21 @@ const HomePage = () => {
                 <p className="mt-4 flex-1 text-sm leading-relaxed text-muted-foreground">
                   {app.description}
                 </p>
-                {app.available && (
+                {app.status !== 'soon' && (
                   <p className="mt-3 text-xs font-medium text-muted-foreground">
-                    Free: 1 active offer · Pro: $9.99/mo or $99/yr
+                    {app.pricing}
                   </p>
                 )}
                 <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm font-medium">
-                  {app.available ? (
+                  {app.status !== 'soon' ? (
                     app.links.map((link) =>
-                      link.href.startsWith('http') ? (
+                      /^(https?|mailto):/.test(link.href) ? (
                         <a
                           key={link.href}
                           href={link.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                          {...(link.href.startsWith('http')
+                            ? { target: '_blank', rel: 'noopener noreferrer' }
+                            : {})}
                           className="text-foreground underline-offset-4 transition-colors hover:underline"
                         >
                           {link.label}

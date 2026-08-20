@@ -10,6 +10,7 @@ const footerSections = [
       { href: '/#apps', label: 'Apps' },
       { href: '/#features', label: 'Why Solora' },
       { href: '/tierly/docs', label: 'Tierly docs' },
+      { href: '/mixly/docs', label: 'Mixly docs' },
     ],
   },
   {
@@ -19,6 +20,8 @@ const footerSections = [
       { href: '/terms', label: 'Terms' },
       { href: '/tierly/privacy', label: 'Tierly privacy' },
       { href: '/tierly/terms', label: 'Tierly terms' },
+      { href: '/mixly/privacy', label: 'Mixly privacy' },
+      { href: '/mixly/terms', label: 'Mixly terms' },
     ],
   },
 ]

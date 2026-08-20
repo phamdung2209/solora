@@ -9,8 +9,8 @@ const navLinks = [
   { href: '/#apps', label: 'Apps' },
   { href: '/#features', label: 'Why Solora' },
   { href: '/tierly/docs', label: 'Tierly docs' },
+  { href: '/mixly/docs', label: 'Mixly docs' },
   { href: '/privacy', label: 'Privacy' },
-  { href: '/terms', label: 'Terms' },
 ]
 
 export const SiteHeader = () => {

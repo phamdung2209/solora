@@ -105,3 +105,11 @@ export const MailIcon = (props: SVGProps<SVGSVGElement>) => (
     <path d="m2 7 10 6 10-6" />
   </svg>
 )
+
+export const PackageIcon = (props: SVGProps<SVGSVGElement>) => (
+  <svg {...base} {...props}>
+    <path d="M21 8 12 3 3 8v8l9 5 9-5V8Z" />
+    <path d="m3 8 9 5 9-5" />
+    <path d="M12 13v9" />
+  </svg>
+)
