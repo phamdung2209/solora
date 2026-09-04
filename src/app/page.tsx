@@ -77,7 +77,7 @@ const apps = [
     name: 'Mixly',
     tagline: 'Product bundles that discount what is already in the cart.',
     mark: '◈',
-    icon: undefined,
+    icon: '/solora-mixly.png',
     status: 'beta',
     pricing: 'Free: 1 active bundle · Pro: $12.99/mo or $129/yr',
     description:
