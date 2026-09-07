@@ -34,11 +34,10 @@ const MixlyTermsPage = () => {
         bundles on the storefront, and view related analytics.
       </p>
 
-      <h2>2. Early access</h2>
+      <h2>2. Service changes</h2>
       <p>
-        Mixly is not currently listed on the Shopify App Store and is offered on an
-        invitation basis while it is in beta. Features may change, or be withdrawn, during
-        this period, and we may end early access with notice.
+        Mixly is under active development. Features may change, or be withdrawn, and we may
+        discontinue the Service with notice.
       </p>
 
       <h2>3. Eligibility &amp; account</h2>
