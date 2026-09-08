@@ -10,8 +10,8 @@ export const siteConfig = {
   description:
     'Solora builds focused, high-quality apps for Shopify merchants — Tierly for automatic volume pricing, Mixly for product bundles, both applied at checkout.',
   lastUpdated: {
-    tierlyPrivacy: 'July 15, 2026',
-    tierlyTerms: 'July 5, 2026',
+    tierlyPrivacy: 'September 8, 2026',
+    tierlyTerms: 'September 8, 2026',
     mixlyPrivacy: 'August 30, 2026',
     mixlyTerms: 'September 7, 2026',
   },

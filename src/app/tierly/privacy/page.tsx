@@ -91,21 +91,18 @@ const TierlyPrivacyPage = () => {
           Shopify&rsquo;s checkout.
         </li>
         <li>
-          <strong>Our cloud hosting provider</strong> — application hosting and encrypted
-          backups.
+          <strong>Hugging Face</strong> — application hosting, and the storage bucket that
+          holds our database backups. Backups contain everything described in section 1;
+          they are transferred over HTTPS, and the Shopify access tokens inside them stay
+          encrypted (see section 7).
         </li>
         <li>
           <strong>Crisp</strong> — our in-app support chat; receives your store domain, store
           name, owner email, and plan so we can support you in context.
         </li>
         <li>
-          <strong>Sentry</strong> — error monitoring; reports carry technical context, never
-          customer data.
-        </li>
-        <li>
-          <strong>Resend</strong> — our transactional email provider; it delivers service
-          emails (such as plan and offer notices) to your store owner email address, and
-          never receives customer data.
+          <strong>Sentry</strong> — error monitoring; reports carry technical context such as
+          your store domain and the action that failed, never customer data.
         </li>
       </ul>
 
@@ -133,14 +130,37 @@ const TierlyPrivacyPage = () => {
       <h2>6. Data retention &amp; deletion</h2>
       <p>
         We keep your store&rsquo;s configuration and aggregated statistics for as long as the
-        app is installed. When you uninstall Tierly, your data is scheduled for deletion. To
-        request deletion sooner, contact us at the address below.
+        app is installed.
+      </p>
+      <p>
+        <strong>When you uninstall</strong>, your Shopify session and the access tokens it
+        holds are deleted immediately, and your store is marked uninstalled. Your offers,
+        settings and statistics are kept for a short period so that reinstalling restores
+        what you had.
+      </p>
+      <p>
+        <strong>When Shopify sends <code>shop/redact</code></strong> — normally about 48
+        hours after uninstall — everything belonging to your store is erased from our live
+        database in a single transaction: offers, pricing configuration, daily statistics,
+        per-offer statistics, feature requests and votes, settings, webhook records, our
+        internal support-action log, sessions, and the store record itself.
+      </p>
+      <p>
+        <strong>Backups.</strong> Dated database snapshots are retained for up to 30 days, so
+        an erased store&rsquo;s data can persist in a backup until the last snapshot taken
+        before erasure ages out. Backups exist for disaster recovery and are not used for any
+        other purpose.
+      </p>
+      <p>
+        To request deletion sooner than the schedule above, contact us at the address below.
       </p>
 
       <h2>7. Security</h2>
       <p>
-        All traffic is served over HTTPS. Access tokens are encrypted at rest (AES-256-GCM).
-        We restrict internal access to store data to authorized operators only.
+        All traffic is served over HTTPS. Shopify access tokens are encrypted at rest with
+        AES-256-GCM, and stay encrypted inside database backups. We restrict internal access
+        to store data to authorized operators, and every support action an operator takes
+        against a store is written to an audit log.
       </p>
 
       <h2>8. Cookies</h2>

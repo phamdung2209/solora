@@ -35,54 +35,78 @@ const TierlyTermsPage = () => {
         analytics.
       </p>
 
-      <h2>2. Eligibility &amp; account</h2>
+      <h2>2. Service changes</h2>
+      <p>
+        Tierly is under active development. Features may change, or be withdrawn, and we may
+        discontinue the Service with notice.
+      </p>
+
+      <h2>3. Eligibility &amp; account</h2>
       <p>
         You must have an active Shopify store and comply with Shopify&rsquo;s terms. You are
         responsible for the configuration you create and for the accuracy of the discounts
         you set up.
       </p>
 
-      <h2>3. Plans &amp; billing</h2>
+      <h2>4. Plans &amp; billing</h2>
       <p>
-        Tierly offers a Free plan and a paid Pro plan. Paid subscriptions are billed through
-        Shopify&rsquo;s billing system and are subject to Shopify&rsquo;s terms. Prices are
-        shown in the app and may change with notice. The Pro plan may include a free trial;
-        you can cancel at any time and will retain Pro features until the end of the current
-        billing period.
+        Tierly offers a Free plan and a paid Pro plan, billed monthly or annually. Paid
+        subscriptions are billed through Shopify&rsquo;s billing system and are subject to
+        Shopify&rsquo;s terms. Pro is currently $9.99 per month or $99 per year and includes a
+        7-day free trial; the trial is available once per store, so switching plans or
+        resubscribing does not start a new one. The Free plan allows one active offer. Prices
+        are shown in the app and may change with notice. You can cancel at any time, and
+        Shopify prorates the current period.
+      </p>
+      <p>
+        If your plan drops to Free, offers beyond what the Free plan allows are{' '}
+        <strong>paused, not deleted</strong>. Tierly keeps one active offer running where it
+        can — but scheduling and variant-level targeting are Pro features, so if every one of
+        your active offers uses them, all of them pause until you upgrade or edit one. Your
+        configuration and your statistics are retained, and resubscribing reactivates what was
+        paused.
       </p>
 
-      <h2>4. Acceptable use</h2>
+      <h2>5. Feature requests</h2>
+      <p>
+        Content you submit to the Feature Requests board inside the app may be published to
+        other Tierly merchants alongside your store name, so do not submit anything
+        confidential. We may act on, decline, or ignore any request, and nothing on the board
+        is a commitment to build a feature.
+      </p>
+
+      <h2>6. Acceptable use</h2>
       <p>
         You agree not to misuse the Service, including by attempting to disrupt it,
         reverse-engineer it, or use it in violation of any law or Shopify policy.
       </p>
 
-      <h2>5. Availability</h2>
+      <h2>7. Availability</h2>
       <p>
         We work to keep the Service available and reliable but do not guarantee uninterrupted
         access. The Service is provided &ldquo;as is&rdquo; without warranties of any kind.
       </p>
 
-      <h2>6. Limitation of liability</h2>
+      <h2>8. Limitation of liability</h2>
       <p>
         To the maximum extent permitted by law, {siteConfig.legalEntity} shall not be liable for any indirect,
         incidental, or consequential damages, or for lost profits or revenue, arising from
         your use of the Service.
       </p>
 
-      <h2>7. Termination</h2>
+      <h2>9. Termination</h2>
       <p>
         You may stop using the Service and uninstall it at any time. We may suspend or
         terminate access for violation of these Terms.
       </p>
 
-      <h2>8. Changes</h2>
+      <h2>10. Changes</h2>
       <p>
         We may update these Terms from time to time; the &ldquo;Last updated&rdquo; date
         reflects the latest version.
       </p>
 
-      <h2>9. Contact</h2>
+      <h2>11. Contact</h2>
       <p>
         Questions about these Terms? Email{' '}
         <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.
