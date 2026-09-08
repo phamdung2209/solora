@@ -940,6 +940,14 @@ const MixlyDocsPage = () => (
               details. The price is flat, with no usage fees and no revenue share.
             </Callout>
           </div>
+
+          <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+            Full details, including the trial length and how Shopify billing works, live on the{' '}
+            <Link href="/mixly/pricing" className="font-medium text-foreground underline">
+              pricing page
+            </Link>
+            .
+          </p>
         </Section>
 
         <Section
