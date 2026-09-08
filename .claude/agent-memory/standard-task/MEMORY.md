@@ -1,0 +1,1 @@
+- [Mixly marketing pages](project_mixly_marketing_pages.md) — Mixly is beta/no App Store link yet (use mailto CTA); Free/Pro plan copy is duplicated in docs.tsx `plans` and pricing.tsx, keep both in sync.
