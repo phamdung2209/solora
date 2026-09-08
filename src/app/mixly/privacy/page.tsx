@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     title: 'Mixly — Privacy Policy | Solora',
     description: 'Privacy policy for the Mixly Shopify app.',
     url: '/mixly/privacy',
+    images: [siteConfig.ogImage],
   },
 }
 
@@ -18,7 +19,7 @@ const MixlyPrivacyPage = () => {
   return (
     <LegalShell
       title="Mixly — Privacy Policy"
-      updated={siteConfig.lastUpdated}
+      updated={siteConfig.lastUpdated.mixlyPrivacy}
       back={{ href: '/privacy', label: 'All privacy policies' }}
     >
       <p>

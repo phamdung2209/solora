@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     title: 'Tierly — Privacy Policy | Solora',
     description: 'Privacy policy for the Tierly Shopify app.',
     url: '/tierly/privacy',
+    images: [siteConfig.ogImage],
   },
 }
 
@@ -18,13 +19,13 @@ const TierlyPrivacyPage = () => {
   return (
     <LegalShell
       title="Tierly — Privacy Policy"
-      updated={siteConfig.lastUpdated}
+      updated={siteConfig.lastUpdated.tierlyPrivacy}
       back={{ href: '/privacy', label: 'All privacy policies' }}
     >
       <p>
-        This Privacy Policy explains what information the <strong>Tierly</strong> app (by
-        Solora Commerce) processes when you install it on your Shopify store, and how we
-        protect it. By installing Tierly you agree to this policy.
+        This Privacy Policy explains what information the <strong>Tierly</strong> app (by{' '}
+        {siteConfig.legalEntity}) processes when you install it on your Shopify store, and how
+        we protect it. By installing Tierly you agree to this policy.
       </p>
 
       <div className="my-6 rounded-xl border bg-muted px-5 py-4 not-italic">

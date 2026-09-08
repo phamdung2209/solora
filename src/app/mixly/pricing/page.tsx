@@ -18,6 +18,7 @@ export const metadata: Metadata = {
     description:
       'Mixly pricing: a free plan with one always-on bundle, and a Pro plan at $12.99/mo or $129/yr with unlimited bundles and analytics.',
     url: '/mixly/pricing',
+    images: [siteConfig.ogImage],
   },
 }
 
@@ -168,23 +169,23 @@ const MixlyPricingPage = () => (
           Ready to try Mixly?
         </h2>
         <p className="mx-auto mt-3 max-w-md text-base leading-relaxed text-muted-foreground">
-          Mixly is in early access. Email us for access, or read the docs to see how bundles
-          work before you install.
+          Read the docs to see exactly how bundles work before you pick a plan, or email us if
+          you have a question about billing.
         </p>
         <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
-          <a
-            href={`mailto:${siteConfig.email}?subject=Mixly early access`}
-            className={cn(buttonVariants({ variant: 'default', size: 'lg' }))}
-          >
-            <MailIcon />
-            Request early access
-          </a>
           <Link
             href="/mixly/docs"
-            className={cn(buttonVariants({ variant: 'outline', size: 'lg' }))}
+            className={cn(buttonVariants({ variant: 'default', size: 'lg' }))}
           >
             Documentation
           </Link>
+          <a
+            href={`mailto:${siteConfig.email}?subject=Mixly pricing question`}
+            className={cn(buttonVariants({ variant: 'outline', size: 'lg' }))}
+          >
+            <MailIcon />
+            Email us
+          </a>
         </div>
       </section>
     </div>

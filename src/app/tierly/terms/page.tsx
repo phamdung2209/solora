@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     title: 'Tierly — Terms of Service | Solora',
     description: 'Terms of service for the Tierly Shopify app.',
     url: '/tierly/terms',
+    images: [siteConfig.ogImage],
   },
 }
 
@@ -18,13 +19,13 @@ const TierlyTermsPage = () => {
   return (
     <LegalShell
       title="Tierly — Terms of Service"
-      updated={siteConfig.lastUpdated}
+      updated={siteConfig.lastUpdated.tierlyTerms}
       back={{ href: '/terms', label: 'All terms' }}
     >
       <p>
         These Terms of Service (&ldquo;Terms&rdquo;) govern your use of the{' '}
-        <strong>Tierly</strong> app by Solora (&ldquo;Tierly&rdquo;, &ldquo;the
-        Service&rdquo;). By installing or using Tierly you agree to these Terms.
+        <strong>Tierly</strong> app by {siteConfig.legalEntity} (&ldquo;Tierly&rdquo;,
+        &ldquo;the Service&rdquo;). By installing or using Tierly you agree to these Terms.
       </p>
 
       <h2>1. The Service</h2>
@@ -64,7 +65,7 @@ const TierlyTermsPage = () => {
 
       <h2>6. Limitation of liability</h2>
       <p>
-        To the maximum extent permitted by law, Solora shall not be liable for any indirect,
+        To the maximum extent permitted by law, {siteConfig.legalEntity} shall not be liable for any indirect,
         incidental, or consequential damages, or for lost profits or revenue, arising from
         your use of the Service.
       </p>

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 
 import { HubItem, LegalShell } from '@/components/legal-shell'
+import { siteConfig } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'Terms of Service',
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
     title: 'Terms of Service — Solora',
     description: 'Terms of service for Solora apps.',
     url: '/terms',
+    images: [siteConfig.ogImage],
   },
 }
 

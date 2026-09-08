@@ -31,6 +31,7 @@ export const metadata: Metadata = {
     description:
       'How Solora Tierly applies quantity breaks at checkout, how to set it up on your theme, and what to check when a volume discount is not applying.',
     url: '/tierly/docs',
+    images: [siteConfig.ogImage],
   },
 }
 

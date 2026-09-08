@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     title: 'Mixly — Terms of Service | Solora',
     description: 'Terms of service for the Mixly Shopify app.',
     url: '/mixly/terms',
+    images: [siteConfig.ogImage],
   },
 }
 
@@ -18,13 +19,13 @@ const MixlyTermsPage = () => {
   return (
     <LegalShell
       title="Mixly — Terms of Service"
-      updated={siteConfig.lastUpdated}
+      updated={siteConfig.lastUpdated.mixlyTerms}
       back={{ href: '/terms', label: 'All terms' }}
     >
       <p>
         These Terms of Service (&ldquo;Terms&rdquo;) govern your use of the{' '}
-        <strong>Mixly</strong> app by Solora (&ldquo;Mixly&rdquo;, &ldquo;the Service&rdquo;).
-        By installing or using Mixly you agree to these Terms.
+        <strong>Mixly</strong> app by {siteConfig.legalEntity} (&ldquo;Mixly&rdquo;, &ldquo;the
+        Service&rdquo;). By installing or using Mixly you agree to these Terms.
       </p>
 
       <h2>1. The Service</h2>
@@ -86,7 +87,7 @@ const MixlyTermsPage = () => {
 
       <h2>8. Limitation of liability</h2>
       <p>
-        To the maximum extent permitted by law, Solora shall not be liable for any indirect,
+        To the maximum extent permitted by law, {siteConfig.legalEntity} shall not be liable for any indirect,
         incidental, or consequential damages, or for lost profits or revenue, arising from
         your use of the Service.
       </p>

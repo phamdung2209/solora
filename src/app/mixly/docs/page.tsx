@@ -31,6 +31,7 @@ export const metadata: Metadata = {
     description:
       'How Mixly bundles work, how to add the bundle block to your theme, and what to check when a bundle discount is not applying at checkout.',
     url: '/mixly/docs',
+    images: [siteConfig.ogImage],
   },
 }
 

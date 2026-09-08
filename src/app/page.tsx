@@ -34,7 +34,7 @@ const features = [
     icon: LayersIcon,
     title: 'Built to work together',
     description:
-      'Run Tierly and Mixly side by side — volume breaks and bundle discounts stack cleanly at checkout, and each app tells you how to set the other up.',
+      'Run Tierly and Mixly side by side — each app detects the other, points you at the one stacking setting to turn on, and then volume breaks and bundle discounts combine at checkout.',
   },
   {
     icon: ShieldIcon,
