@@ -19,6 +19,11 @@ const routes = [
   '/mixly/pricing',
   '/mixly/privacy',
   '/mixly/terms',
+  '/combined-listings',
+  '/combined-listings/docs',
+  '/combined-listings/pricing',
+  '/combined-listings/privacy',
+  '/combined-listings/terms',
 ]
 
 const sitemap = (): MetadataRoute.Sitemap =>

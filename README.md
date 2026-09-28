@@ -15,13 +15,18 @@ Pages at the custom domain **[solora.dungpv.id.vn](https://solora.dungpv.id.vn)*
 
 ## Routes (clean URLs via `trailingSlash`)
 
-| Path              | Page                          |
-| ----------------- | ----------------------------- |
-| `/`               | Landing page                  |
-| `/privacy`        | Company privacy hub           |
-| `/terms`          | Company terms hub             |
-| `/tierly/privacy` | Tierly app privacy policy     |
-| `/tierly/terms`   | Tierly app terms of service   |
+| Path                         | Page                               |
+| ---------------------------- | ---------------------------------- |
+| `/`                          | Landing page                       |
+| `/privacy`                   | Company privacy hub                |
+| `/terms`                     | Company terms hub                  |
+| `/tierly/privacy`            | Tierly app privacy policy          |
+| `/tierly/terms`              | Tierly app terms of service        |
+| `/combined-listings`         | Combined Listings overview         |
+| `/combined-listings/docs`    | Combined Listings documentation    |
+| `/combined-listings/pricing` | Combined Listings pricing          |
+| `/combined-listings/privacy` | Combined Listings privacy policy   |
+| `/combined-listings/terms`   | Combined Listings terms of service |
 
 ## Develop
 

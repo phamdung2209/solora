@@ -90,6 +90,17 @@ const apps = [
     ],
   },
   {
+    name: 'Combined Listings',
+    tagline: 'Colour swatches that link separate products into one listing.',
+    mark: '◇',
+    icon: undefined,
+    status: 'soon',
+    pricing: 'Free: 10 groups · paid plans from $9.99/mo',
+    description:
+      "Link separate products into one combined listing with colour and image swatches on product, collection and search pages — without changing your products' titles, variants, images or prices.",
+    links: [],
+  },
+  {
     name: 'FeedGuard',
     tagline: 'Product feed monitor',
     mark: '🛡',

@@ -14,6 +14,8 @@ export const siteConfig = {
     tierlyTerms: 'September 8, 2026',
     mixlyPrivacy: 'August 30, 2026',
     mixlyTerms: 'September 7, 2026',
+    combinedListingsPrivacy: 'September 28, 2026',
+    combinedListingsTerms: 'September 28, 2026',
   },
   ogImage: { url: '/og-solora.png', width: 1200, height: 630, alt: 'Solora' },
 } as const

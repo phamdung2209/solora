@@ -36,6 +36,11 @@ const PrivacyHubPage = () => {
           title="Mixly"
           description="Product bundles & BOGO"
         />
+        <HubItem
+          href="/combined-listings/privacy"
+          title="Combined Listings"
+          description="Combined listings & colour swatches"
+        />
       </div>
     </LegalShell>
   )

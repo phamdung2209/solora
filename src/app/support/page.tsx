@@ -11,12 +11,12 @@ import { cn } from '@/lib/utils'
 export const metadata: Metadata = {
   title: 'Support',
   description:
-    'How to get help with Tierly or Mixly — live chat inside the app, email, and the docs for both apps.',
+    'How to get help with Tierly, Mixly or Combined Listings — live chat inside the app, email, and the docs for each app.',
   alternates: { canonical: '/support' },
   openGraph: {
     title: 'Support | Solora',
     description:
-      'How to get help with Tierly or Mixly — live chat inside the app, email, and the docs for both apps.',
+      'How to get help with Tierly, Mixly or Combined Listings — live chat inside the app, email, and the docs for each app.',
     url: '/support',
     images: [siteConfig.ogImage],
   },
@@ -35,11 +35,17 @@ const docsLinks = [
     title: 'Mixly docs',
     text: 'Setup, storefront behaviour, and troubleshooting.',
   },
+  {
+    icon: LayersIcon,
+    href: '/combined-listings/docs',
+    title: 'Combined Listings docs',
+    text: 'Setup, themes and troubleshooting for Combined Listings.',
+  },
 ]
 
 const emailChecklist = [
   'Your store’s .myshopify.com domain',
-  'Which app: Tierly or Mixly',
+  'Which app: Tierly, Mixly or Combined Listings',
   'What you expected to happen, and what happened instead',
   'Whether it shows up on the storefront, or only in the Shopify admin',
 ]
@@ -73,7 +79,7 @@ const SupportPage = () => (
               Support
             </span>
             <h1 className="mt-3 text-balance text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-              Get help with Tierly or Mixly
+              Get help with Tierly, Mixly or Combined Listings
             </h1>
           </div>
         </div>

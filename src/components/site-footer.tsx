@@ -14,6 +14,8 @@ const footerSections = [
       { href: '/tierly/docs', label: 'Tierly docs' },
       { href: '/mixly', label: 'Mixly' },
       { href: '/mixly/docs', label: 'Mixly docs' },
+      { href: '/combined-listings', label: 'Combined Listings' },
+      { href: '/combined-listings/docs', label: 'Combined Listings docs' },
     ],
   },
   {
@@ -25,6 +27,8 @@ const footerSections = [
       { href: '/tierly/terms', label: 'Tierly terms' },
       { href: '/mixly/privacy', label: 'Mixly privacy' },
       { href: '/mixly/terms', label: 'Mixly terms' },
+      { href: '/combined-listings/privacy', label: 'Combined Listings privacy' },
+      { href: '/combined-listings/terms', label: 'Combined Listings terms' },
     ],
   },
 ]
