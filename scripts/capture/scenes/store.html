@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>{{title}}</title>
+<link rel="stylesheet" href="/scene/store.css">
+{{head}}
+</head>
+<body class="{{bodyClass}}">
+<div class="browser">
+  <span class="browser-dots"><i></i><i></i><i></i></span>
+  <span class="browser-url"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 1a2.5 2.5 0 0 0-2.5 2.5V5H3a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1h-.5V3.5A2.5 2.5 0 0 0 6 1Zm1.5 4h-3V3.5a1.5 1.5 0 0 1 3 0V5Z" fill="currentColor"/></svg>demo-store.example{{path}}</span>
+</div>
+<header class="store-header">
+  <span class="store-logo"><span class="store-logo-mark"></span>Demo Store</span>
+  <nav class="store-nav"><span>Shop</span><span>New in</span><span>Journal</span></nav>
+  <span class="store-icons">
+    <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="5.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m13.2 13.2 3.6 3.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    <span class="store-cart"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3.5 5.5h13l-1.2 8.2a1.5 1.5 0 0 1-1.5 1.3H6.2a1.5 1.5 0 0 1-1.5-1.3Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M7 7.5V5a3 3 0 0 1 6 0v2.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>{{cartBadge}}</span>
+  </span>
+</header>
+<main class="store-main">
+{{main}}
+</main>
+{{scripts}}
+</body>
+</html>

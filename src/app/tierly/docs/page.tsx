@@ -4,6 +4,7 @@ import Link from 'next/link'
 import type { ReactNode } from 'react'
 
 import { Callout, Section } from '@/components/docs-shell'
+import { Figure } from '@/components/figure'
 import {
   ArrowRightIcon,
   BoltIcon,
@@ -329,7 +330,7 @@ const TierlyDocsPage = () => (
 
         <div className="mt-6 flex flex-col gap-6 sm:flex-row sm:items-center">
           <Image
-            src="/solora-tierly.png"
+            src="/solora-tierly.webp"
             alt=""
             width={64}
             height={64}
@@ -464,6 +465,15 @@ const TierlyDocsPage = () => (
             ))}
           </div>
 
+          <Figure
+            className="mt-8"
+            src="/guides/tierly/theme-editor.webp"
+            width={1200}
+            height={750}
+            alt="A theme editor on the Default product template. The cursor clicks Add block under Product information, opens the Apps tab and picks Tierly price table; the tier table appears under the Add to cart button in the preview, then the cursor clicks Save."
+            caption="On an Online Store 2.0 theme: Add block, Apps, Tierly price table, then Save."
+          />
+
           <div className="mt-4">
             <Callout tone="warn" title="Enable one path, not both">
               On an Online Store 2.0 theme, use the app blocks. The vintage embed exists for themes
@@ -573,41 +583,22 @@ const TierlyDocsPage = () => (
           lead="Three touchpoints, each doing a different job."
         >
           <div className="grid gap-4 md:grid-cols-[1.1fr_1fr]">
-            <Card className="overflow-hidden p-1.5">
-              <div className="rounded-lg bg-muted/60 p-6">
-                <div className="flex items-center justify-between">
-                  <p className="text-sm font-semibold">Buy more, save more</p>
-                  <span className="rounded-full border bg-background px-2.5 py-1 text-xs font-medium text-muted-foreground">
-                    Applied at checkout
-                  </span>
-                </div>
-                <ul className="mt-5 space-y-2.5">
-                  {[
-                    { qty: 'Buy 3+', unit: '$26.10 each', save: 'Save 10%', best: false },
-                    { qty: 'Buy 6+', unit: '$23.78 each', save: 'Save 18%', best: false },
-                    { qty: 'Buy 12+', unit: '$21.75 each', save: 'Save 25%', best: true },
-                  ].map(({ qty, unit, save, best }) => (
-                    <li
-                      key={qty}
-                      className={cn(
-                        'flex items-center justify-between gap-3 rounded-lg border bg-background px-4 py-3 text-sm shadow-sm',
-                        best && 'ring-1 ring-ring',
-                      )}
-                    >
-                      <span className="flex min-w-0 items-center gap-2.5">
-                        <CheckIcon className="size-4 shrink-0 text-muted-foreground" />
-                        <span className="truncate font-medium text-foreground">{qty}</span>
-                        <span className="truncate text-muted-foreground">{unit}</span>
-                      </span>
-                      <span className="shrink-0 font-semibold text-foreground">{save}</span>
-                    </li>
-                  ))}
-                </ul>
-                <p className="mt-4 text-center text-xs text-muted-foreground">
-                  An example of the price table block on a product page.
-                </p>
-              </div>
-            </Card>
+            <div className="space-y-6">
+              <Figure
+                src="/guides/tierly/tier-ladder.webp"
+                width={1200}
+                height={800}
+                alt="A Classic Tee - Black product page with the Tierly price table in cards: 2+ at $22.80, 3+ at $21.60 marked Best value, and 6+ at $19.68 each. The shopper raises the quantity to 2, then 3, and each tier it reaches is outlined; clicking the 6+ card sets the quantity to 6."
+                caption="The price table on a product page. The tier the current quantity reaches is outlined, and clicking a tier sets the quantity."
+              />
+              <Figure
+                src="/guides/tierly/cart-upsell.webp"
+                width={1200}
+                height={800}
+                alt="A cart with two Classic Tees. The Tierly cart upsell shows Total savings of $2.40 and Classic Tee: Add 1 more to save 10%. The shopper raises the quantity to 3 and the block updates to $7.20 saved and Add 3 more to save 18%."
+                caption="The cart upsell block shows what the cart already saves and how many more units reach the next tier."
+              />
+            </div>
 
             <div className="space-y-4">
               {[
