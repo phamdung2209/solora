@@ -1,8 +1,10 @@
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 
 import { Callout, Section } from '@/components/docs-shell'
+import { Figure } from '@/components/figure'
 import {
   ArrowRightIcon,
   BoltIcon,
@@ -361,12 +363,13 @@ const MixlyDocsPage = () => (
         </Link>
 
         <div className="mt-6 flex flex-col gap-6 sm:flex-row sm:items-center">
-          <span
-            aria-hidden
-            className="grid size-16 shrink-0 place-items-center rounded-2xl bg-primary text-2xl text-primary-foreground shadow-sm"
-          >
-            ◈
-          </span>
+          <Image
+            src="/solora-mixly.png"
+            alt=""
+            width={64}
+            height={64}
+            className="size-16 rounded-2xl border shadow-sm"
+          />
           <div>
             <span className="inline-flex items-center gap-2 rounded-full border bg-background px-3 py-1 text-xs font-medium text-muted-foreground shadow-sm">
               <span className="size-1.5 rounded-full bg-primary" />
@@ -603,6 +606,15 @@ const MixlyDocsPage = () => (
             ))}
           </div>
 
+          <Figure
+            className="mt-8"
+            src="/guides/mixly/theme-editor.webp"
+            width={1200}
+            height={750}
+            alt="A theme editor on the Default product template. The cursor clicks Add block under Product information, opens the Apps tab, picks Mixly bundle offer, and the bundle appears on the product page in the preview. Then it clicks Save."
+            caption="On an Online Store 2.0 theme: Add block, Apps, Mixly bundle offer, then Save. The preview shows the offer as soon as the block is added."
+          />
+
           <div className="mt-6 space-y-4">
             <Callout tone="warn" title="Cart drawers are not supported">
               The cart bundle block is enabled on the{' '}
@@ -676,51 +688,13 @@ const MixlyDocsPage = () => (
           lead="Three touchpoints, each doing a different job."
         >
           <div className="grid gap-4 md:grid-cols-[1.1fr_1fr]">
-            <Card className="overflow-hidden p-1.5">
-              <div className="rounded-lg bg-muted/60 p-6">
-                <div className="flex items-center justify-between">
-                  <p className="text-sm font-semibold">Frequently bought together</p>
-                  <span className="rounded-full border bg-background px-2.5 py-1 text-xs font-medium text-muted-foreground">
-                    Applied at checkout
-                  </span>
-                </div>
-                <ul className="mt-5 space-y-2.5">
-                  {[
-                    { name: 'Cotton crew tee', note: 'This item', price: '$28.00' },
-                    { name: 'Everyday chinos', note: 'Sand, 32', price: '$54.00' },
-                    { name: 'Canvas belt', note: 'Tan', price: '$18.00' },
-                  ].map(({ name, note, price }) => (
-                    <li
-                      key={name}
-                      className="flex items-center justify-between gap-3 rounded-lg border bg-background px-4 py-3 text-sm shadow-sm"
-                    >
-                      <span className="flex min-w-0 items-center gap-2.5">
-                        <CheckIcon className="size-4 shrink-0 text-muted-foreground" />
-                        <span className="truncate font-medium text-foreground">{name}</span>
-                        <span className="truncate text-muted-foreground">{note}</span>
-                      </span>
-                      <span className="shrink-0 text-muted-foreground">{price}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-5 space-y-1.5 border-t pt-4 text-sm">
-                  <p className="flex items-center justify-between">
-                    <span className="text-muted-foreground">You save 15% in total</span>
-                    <span className="font-medium text-foreground">&minus;$15.00</span>
-                  </p>
-                  <p className="flex items-center justify-between text-base">
-                    <span className="font-semibold">Total</span>
-                    <span className="font-bold tracking-tight">$85.00</span>
-                  </p>
-                </div>
-                <p className="mt-5 rounded-full bg-primary px-4 py-2.5 text-center text-sm font-semibold text-primary-foreground">
-                  Add bundle to cart
-                </p>
-                <p className="mt-4 text-center text-xs text-muted-foreground">
-                  An example of the bundle offer block on a product page.
-                </p>
-              </div>
-            </Card>
+            <Figure
+              src="/guides/mixly/bundle-offer.webp"
+              width={1200}
+              height={800}
+              alt="A Classic Tee product page. Below it the Mixly bundle offer lists the tee, marked This item, a Canvas Tote and a Sticker Pack, with a total of $54.40 instead of $64.00. The shopper clicks Add bundle to cart, the button reads Adding, and the cart opens with all three products."
+              caption="The bundle offer block on a product page: every product, the total, what the shopper saves, and one button that adds the lot."
+            />
 
             <div className="space-y-4">
               {storefrontSpots.map(({ icon: Icon, title, text }) => (
@@ -740,6 +714,15 @@ const MixlyDocsPage = () => (
               ))}
             </div>
           </div>
+
+          <Figure
+            className="mt-8 max-w-md"
+            src="/guides/mixly/cart-nudge.webp"
+            width={1200}
+            height={1120}
+            alt="A cart holding one Classic Tee. The Mixly cart bundle block reads Complete your bundle, Weekend set, 15% off, Add 2 more to unlock this offer, with Add buttons for a Canvas Tote and a Sticker Pack. The shopper adds the tote and the cart reloads with Add 1 more to unlock this offer."
+            caption="The cart bundle block on the cart page. One tap adds the missing product, and the progress line counts down to the offer."
+          />
 
           <Card className="mt-4 p-6">
             <h3 className="text-base font-semibold">Making the block match your theme</h3>

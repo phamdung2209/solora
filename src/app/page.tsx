@@ -61,7 +61,7 @@ const apps = [
     name: 'Tierly',
     tagline: 'Buy-more-save-more pricing that lifts average order value.',
     mark: '◆',
-    icon: '/solora-tierly.png',
+    icon: '/solora-tierly.webp',
     status: 'live',
     pricing: 'Free: 1 active offer · Pro: $9.99/mo or $99/yr',
     description:
@@ -93,7 +93,7 @@ const apps = [
     name: 'Combined Listings',
     tagline: 'Colour swatches that link separate products into one listing.',
     mark: '◇',
-    icon: undefined,
+    icon: '/solora-combined-listings.png',
     status: 'soon',
     pricing: 'Free: 10 groups · paid plans from $9.99/mo',
     description:

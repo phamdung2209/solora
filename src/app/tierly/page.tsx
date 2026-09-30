@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import { Figure } from '@/components/figure'
 import { ArrowRightIcon, CheckIcon, ChartIcon, LifeBuoyIcon, ShieldIcon } from '@/components/icons'
 import { buttonVariants } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
@@ -62,38 +63,50 @@ const TierlyPage = () => (
         All Solora apps
       </Link>
 
-      <div className="mt-6 flex flex-col gap-6 sm:flex-row sm:items-center">
-        <Image
-          src="/solora-tierly.png"
-          alt=""
-          width={64}
-          height={64}
-          className="size-16 rounded-2xl border shadow-sm"
-        />
+      <div className="mt-6 grid items-center gap-10 lg:grid-cols-[1fr_30rem] lg:gap-14">
         <div>
-          <span className="inline-flex items-center gap-2 rounded-full border bg-background px-3 py-1 text-xs font-medium text-muted-foreground shadow-sm">
-            <span className="size-1.5 rounded-full bg-primary" />
-            Overview
-          </span>
-          <h1 className="mt-3 text-balance text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-            Tierly
-          </h1>
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
+            <Image
+              src="/solora-tierly.webp"
+              alt=""
+              width={64}
+              height={64}
+              className="size-16 rounded-2xl border shadow-sm"
+            />
+            <div>
+              <span className="inline-flex items-center gap-2 rounded-full border bg-background px-3 py-1 text-xs font-medium text-muted-foreground shadow-sm">
+                <span className="size-1.5 rounded-full bg-primary" />
+                Overview
+              </span>
+              <h1 className="mt-3 text-balance text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
+                Tierly
+              </h1>
+            </div>
+          </div>
+
+          <p className="mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground">
+            Buy-more-save-more pricing that lifts average order value.
+          </p>
+
+          <div className="mt-7 flex flex-wrap items-center gap-3">
+            <a
+              href="https://apps.shopify.com/solora-tierly"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(buttonVariants({ variant: 'default', size: 'lg' }))}
+            >
+              Install on Shopify
+            </a>
+          </div>
         </div>
-      </div>
 
-      <p className="mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground">
-        Buy-more-save-more pricing that lifts average order value.
-      </p>
-
-      <div className="mt-7 flex flex-wrap items-center gap-3">
-        <a
-          href="https://apps.shopify.com/solora-tierly"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={cn(buttonVariants({ variant: 'default', size: 'lg' }))}
-        >
-          Install on Shopify
-        </a>
+        <Figure
+          src="/guides/tierly/tier-ladder.webp"
+          width={1200}
+          height={800}
+          alt="A tee product page with Tierly's quantity cards: 2+, 3+ marked Best value, and 6+. Raising the quantity from 1 to 3 lights up each tier it reaches, then clicking 6+ sets the quantity to 6."
+          priority
+        />
       </div>
 
       <div className="mt-10 grid gap-3 sm:grid-cols-3">

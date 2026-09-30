@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 
 import { Callout, Section } from '@/components/docs-shell'
@@ -67,12 +68,13 @@ const MixlyPricingPage = () => (
         </Link>
 
         <div className="mt-6 flex flex-col gap-6 sm:flex-row sm:items-center">
-          <span
-            aria-hidden
-            className="grid size-16 shrink-0 place-items-center rounded-2xl bg-primary text-2xl text-primary-foreground shadow-sm"
-          >
-            ◈
-          </span>
+          <Image
+            src="/solora-mixly.png"
+            alt=""
+            width={64}
+            height={64}
+            className="size-16 rounded-2xl border shadow-sm"
+          />
           <div>
             <span className="inline-flex items-center gap-2 rounded-full border bg-background px-3 py-1 text-xs font-medium text-muted-foreground shadow-sm">
               <span className="size-1.5 rounded-full bg-primary" />

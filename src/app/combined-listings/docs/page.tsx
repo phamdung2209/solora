@@ -1,8 +1,10 @@
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 
 import { Callout, Section } from '@/components/docs-shell'
+import { Figure } from '@/components/figure'
 import { ArrowRightIcon, BoltIcon, ChevronDownIcon, LayersIcon, LifeBuoyIcon, MailIcon } from '@/components/icons'
 import { buttonVariants } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
@@ -154,12 +156,13 @@ const CombinedListingsDocsPage = () => (
         </Link>
 
         <div className="mt-6 flex flex-col gap-6 sm:flex-row sm:items-center">
-          <span
-            aria-hidden
-            className="grid size-16 shrink-0 place-items-center rounded-2xl bg-primary text-2xl text-primary-foreground shadow-sm"
-          >
-            ◇
-          </span>
+          <Image
+            src="/solora-combined-listings.png"
+            alt=""
+            width={64}
+            height={64}
+            className="size-16 rounded-2xl border shadow-sm"
+          />
           <div>
             <span className="inline-flex items-center gap-2 rounded-full border bg-background px-3 py-1 text-xs font-medium text-muted-foreground shadow-sm">
               <span className="size-1.5 rounded-full bg-primary" />
@@ -238,6 +241,23 @@ const CombinedListingsDocsPage = () => (
             </p>
           </div>
 
+          <div className="mt-8 grid items-start gap-6 sm:grid-cols-2">
+            <Figure
+              src="/guides/combined-listings/pdp-swatches.webp"
+              width={1200}
+              height={750}
+              alt="A Classic Tee - Red product page with Red, Blue, Black and Sand swatches. The shopper clicks Blue and the Classic Tee - Blue page opens, then clicks Black."
+              caption="On a product page, each swatch opens that colour's own product. The ringed swatch is the one you are on."
+            />
+            <Figure
+              src="/guides/combined-listings/collection-swatches.webp"
+              width={1200}
+              height={750}
+              alt="A New in collection of a tee, a hoodie, a tote and a cap, each card with its own row of colour swatches. The shopper clicks Navy under the hoodie and the Everyday Hoodie - Navy page opens."
+              caption="Collection and search cards get their own row, so shoppers can jump to a colour straight from the grid."
+            />
+          </div>
+
           <div className="mt-8">
             <Callout title="Nothing in your catalogue is edited">
               Combined Listings never changes titles, variants, images, prices or inventory, and
@@ -262,6 +282,15 @@ const CombinedListingsDocsPage = () => (
             Turn on the app embed on every theme; on older (vintage) themes that cannot hold app
             blocks it is the only option.
           </p>
+
+          <Figure
+            className="mt-8"
+            src="/guides/combined-listings/theme-editor.webp"
+            width={1200}
+            height={750}
+            alt="A theme editor with App embeds open. The cursor switches on Combined Listings, clicks Save, and a row of colour swatches appears on the product page in the preview."
+            caption="In App embeds, switch on Combined Listings and save. Once you save your first group, its swatch row shows up on those product pages."
+          />
 
           <div className="mt-6">
             <Callout title="Swatch row in the wrong place?">
@@ -322,6 +351,15 @@ const CombinedListingsDocsPage = () => (
             Variants with no image selected fall back to the theme&rsquo;s normal gallery.
           </p>
 
+          <Figure
+            className="mt-6"
+            src="/guides/combined-listings/variant-images.webp"
+            width={1200}
+            height={750}
+            alt="An All-Mountain Snowboard product page with a four-photo gallery. Picking the Midnight design swaps the gallery to the four Midnight photos, then picking Ember swaps it to the Ember photos."
+            caption="Pick a design and the gallery keeps only that variant's photos: Aurora, then Midnight, then Ember."
+          />
+
           <div className="mt-6">
             <Callout tone="warn" title="Theme support">
               Gallery filtering works on Dawn and themes built like it. On Horizon, Shopify&rsquo;s
@@ -343,6 +381,15 @@ const CombinedListingsDocsPage = () => (
             <strong className="font-semibold text-foreground">Hide</strong>. The live preview
             shows your swatches on a sample product page, drawn by the storefront code.
           </p>
+
+          <Figure
+            className="mt-6"
+            src="/guides/combined-listings/swatch-appearance.webp"
+            width={1200}
+            height={750}
+            alt="The same product page shown five times: circle, square and rounded swatches, then the sold-out Sand swatch drawn with a strike through and then dimmed. A label on the photo names each setting."
+            caption="Circle, Square and Rounded, then a sold-out colour shown with Strike through and with Dim. Each step is labelled on the image."
+          />
         </Section>
 
         <Section id="card-per-variant" eyebrow="Collections" title="One card per variant">
