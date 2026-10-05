@@ -82,25 +82,92 @@ export class Recorder {
     }
   }
 
-  async click(target, { move = 640, after } = {}) {
+  async click(target, { move = 640, after, keepMarks } = {}) {
     if (target) await this.move(target, move)
     this.down = true
     await this.snap(FRAME_MS)
     await this.page.mouse.down()
     await this.page.mouse.up()
     this.down = false
+    if (!keepMarks) await this.page.evaluate(() => window.stage?.clear()).catch(() => {})
     if (after) await after()
     await this.snap(FRAME_MS)
   }
 
+  async drag(from, to, { move = 480, ms = 760 } = {}) {
+    await this.move(from, move)
+    this.down = true
+    await this.page.mouse.down()
+    await this.snap()
+    await this.move(to, ms)
+    await this.page.mouse.up()
+    this.down = false
+    await this.snap()
+  }
+
   async scroll(y, ms = 720) {
-    const from = await this.page.evaluate(() => window.scrollY)
+    const from = await this.page.evaluate(() => (document.querySelector('[data-scroll]') ?? document.scrollingElement).scrollTop)
     const steps = Math.max(2, Math.round(ms / FRAME_MS))
     for (let i = 1; i <= steps; i++) {
       const top = from + (y - from) * easeInOut(i / steps)
-      await this.page.evaluate((value) => window.scrollTo(0, value), top)
+      await this.page.evaluate((value) => {
+        ;(document.querySelector('[data-scroll]') ?? document.scrollingElement).scrollTop = value
+      }, top)
       await this.snap()
     }
+  }
+
+  async zoom(target, scale = 1.6, { ms = 320, focus } = {}) {
+    const [from, to] = await this.page.evaluate(([t, s, f]) => [window.stage.camera(), window.stage.plan(t, s, f)], [target, scale, focus])
+    const anchor = { x: (this.pos.x - from.x) / from.s, y: (this.pos.y - from.y) / from.s }
+    const steps = Math.max(2, Math.round(ms / FRAME_MS))
+    for (let i = 1; i <= steps; i++) {
+      const k = easeInOut(i / steps)
+      const camera = { x: from.x + (to.x - from.x) * k, y: from.y + (to.y - from.y) * k, s: from.s + (to.s - from.s) * k }
+      await this.page.evaluate((value) => window.stage.set(value), camera)
+      if (this.cursor) this.pos = { x: anchor.x * camera.s + camera.x, y: anchor.y * camera.s + camera.y }
+      await this.snap()
+    }
+  }
+
+  async unzoom(options) {
+    await this.zoom(null, 1, options)
+  }
+
+  async mark(n, target, options = {}) {
+    await this.page.evaluate(([value, t, o]) => window.stage.mark(value, t, o), [n, target, options])
+    await this.settle(480)
+  }
+
+  async unmark() {
+    await this.page.evaluate(() => window.stage.unmark())
+    await this.settle(240)
+  }
+
+  async type(target, text, { cps = 16 } = {}) {
+    await this.page.locator(target).first().focus()
+    for (let i = 1; i <= text.length; i++) {
+      await this.page.locator(target).first().evaluate((el, value) => {
+        el.value = value
+        el.dispatchEvent(new Event('input', { bubbles: true }))
+      }, text.slice(0, i))
+      await this.snap(1000 / cps)
+    }
+  }
+
+  async annotate(marks) {
+    const camera = await this.page.evaluate(() => window.stage.camera())
+    await this.page.evaluate((list) => {
+      document.activeElement?.blur()
+      window.stage.set({ x: 0, y: 0, s: 1 })
+      window.stage.clear()
+      for (const [n, target, options] of list) window.stage.mark(n, target, options)
+    }, marks)
+    await this.still()
+    await this.page.evaluate((value) => {
+      window.stage.clear()
+      window.stage.set(value)
+    }, camera)
   }
 
   async settle(ms, step = FRAME_MS) {
@@ -110,21 +177,19 @@ export class Recorder {
     }
   }
 
-  async encode(out, { maxBytes = 300_000, poster = this.frames.length - 1, stillOut, maxStill = 120_000 }) {
+  async encode(out, { maxBytes = 450_000, width = 960, poster = this.frames.length - 1, stillOut, maxStill = 120_000 }) {
     const delay = this.frames.map((frame) => Math.round(frame.delay))
+    const frames = await Promise.all(this.frames.map((frame) => sharp(frame.png).resize(width).png().toBuffer()))
     let bytes
-    let quality = 80
-    for (; quality >= 30; quality -= 8) {
-      const buffer = await sharp(
-        this.frames.map((frame) => frame.png),
-        { join: { animated: true } },
-      )
-        .webp({ quality, effort: 4, loop: 0, delay, smartSubsample: true })
+    let quality = 88
+    for (; quality >= 72; quality -= 4) {
+      const buffer = await sharp(frames, { join: { animated: true } })
+        .webp({ quality, effort: 4, loop: 0, delay })
         .toBuffer()
       bytes = buffer
       if (buffer.length <= maxBytes) break
     }
-    if (bytes.length > maxBytes) throw new Error(`${out} is ${bytes.length} bytes, over the ${maxBytes} budget even at quality 30`)
+    if (bytes.length > maxBytes) throw new Error(`${out} is ${bytes.length} bytes, over the ${maxBytes} budget even at quality 72; cut full-frame transitions`)
     let still
     let stillQuality = 86
     for (; stillQuality >= 40; stillQuality -= 6) {

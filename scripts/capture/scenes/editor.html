@@ -3,18 +3,20 @@
 <head>
 <meta charset="utf-8">
 <title>Theme editor</title>
+<link rel="stylesheet" href="/scene/kit/kit.css">
 <link rel="stylesheet" href="/scene/editor.css">
 </head>
-<body data-mode="{{mode}}">
+<body class="k-admin-body ed">
+<div id="stage">
 <header class="bar">
-  <span class="bar-exit"><svg viewBox="0 0 16 16"><path d="M10 3 5 8l5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-  <span class="bar-theme">Dawn <em>Live</em></span>
-  <span class="bar-template"><svg viewBox="0 0 16 16"><rect x="2.5" y="2.5" width="11" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M2.5 6h11" stroke="currentColor" stroke-width="1.4"/></svg>{{template}}<svg class="chev" viewBox="0 0 16 16"><path d="m4.5 6.5 3.5 3.5 3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+  <span class="bar-exit">{{exit}}</span>
+  <span class="bar-theme">{{theme}}<span class="k-badge is-success">Live</span></span>
+  <span class="bar-template" data-template><svg viewBox="0 0 16 16"><rect x="2.5" y="2.5" width="11" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M2.5 6h11" stroke="currentColor" stroke-width="1.4"/></svg>{{template}}{{chevron}}</span>
   <span class="bar-tools">
     <svg viewBox="0 0 16 16"><rect x="1.5" y="3" width="13" height="8.5" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 14h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
     <svg viewBox="0 0 16 16"><path d="M4 6.5 1.8 8.7 4 11M1.8 8.7h8.7a3.5 3.5 0 0 0 0-7H8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </span>
-  <button class="save" type="button" disabled data-save>Save</button>
+  {{save}}
 </header>
 <div class="shell">
   <nav class="rail">
@@ -24,9 +26,11 @@
   </nav>
   <aside class="panel">{{panel}}</aside>
   <section class="canvas">
-    <div class="viewport"><iframe title="Store preview" src="{{previewOff}}" data-preview data-on="{{previewOn}}" data-focus="{{focus}}"></iframe></div>
+    <div class="viewport" data-width="{{frameWidth}}">{{frames}}</div>
   </section>
 </div>
+</div>
+<script src="/scene/kit/kit.js"></script>
 <script src="/scene/editor.js"></script>
 </body>
 </html>

@@ -11,7 +11,7 @@ const assets = {
   '/assets/mixly-blocks.css': ['Mixly', 'extensions/theme-app-extension/assets/mixly-blocks.css'],
 }
 
-const types = { '.js': 'text/javascript', '.css': 'text/css', '.svg': 'image/svg+xml', '.png': 'image/png', '.html': 'text/html' }
+const types = { '.js': 'text/javascript', '.css': 'text/css', '.svg': 'image/svg+xml', '.png': 'image/png', '.html': 'text/html', '.woff2': 'font/woff2' }
 
 const typeOf = (file) => types[path.extname(file)] ?? 'application/octet-stream'
 
@@ -51,6 +51,7 @@ export const openScene = async (browser, scene) => {
   page.on('pageerror', (error) => console.error(`[${scene.app}/${scene.name}]`, error.message))
   await page.goto(`${ORIGIN}${scene.start}`)
   await page.waitForLoadState('load')
+  await page.evaluate(() => document.fonts.ready)
   await page.waitForTimeout(250)
   return { context, page, state }
 }

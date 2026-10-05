@@ -3,14 +3,17 @@
 <head>
 <meta charset="utf-8">
 <title>{{title}}</title>
+<link rel="stylesheet" href="/scene/kit/kit.css">
 <link rel="stylesheet" href="/scene/store.css">
 {{head}}
 </head>
 <body class="{{bodyClass}}">
+<div id="stage">
 <div class="browser">
   <span class="browser-dots"><i></i><i></i><i></i></span>
   <span class="browser-url"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 1a2.5 2.5 0 0 0-2.5 2.5V5H3a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1h-.5V3.5A2.5 2.5 0 0 0 6 1Zm1.5 4h-3V3.5a1.5 1.5 0 0 1 3 0V5Z" fill="currentColor"/></svg>demo-store.example{{path}}</span>
 </div>
+<div class="store-scroll" data-scroll>
 <header class="store-header">
   <span class="store-logo"><span class="store-logo-mark"></span>Demo Store</span>
   <nav class="store-nav"><span>Shop</span><span>New in</span><span>Journal</span></nav>
@@ -22,6 +25,9 @@
 <main class="store-main">
 {{main}}
 </main>
+</div>
+</div>
+<script src="/scene/kit/kit.js"></script>
 {{scripts}}
 </body>
 </html>

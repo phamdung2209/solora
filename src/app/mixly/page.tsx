@@ -90,7 +90,7 @@ const MixlyPage = () => (
         <Figure
           src="/guides/mixly/bundle-offer.webp"
           width={1200}
-          height={800}
+          height={750}
           alt="A tee product page with a Mixly bundle of the tee, a tote and a sticker pack at 15% off. The shopper clicks Add bundle to cart and the cart opens with all three."
           priority
         />

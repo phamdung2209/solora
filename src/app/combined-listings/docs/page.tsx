@@ -288,7 +288,7 @@ const CombinedListingsDocsPage = () => (
             src="/guides/combined-listings/theme-editor.webp"
             width={1200}
             height={750}
-            alt="A theme editor with App embeds open. The cursor switches on Combined Listings, clicks Save, and a row of colour swatches appears on the product page in the preview."
+            alt="The setup guide step Turn on the app embed, whose Open theme editor button opens the theme editor on App embeds. The cursor switches on Combined Listings, clicks Save, and a row of colour swatches appears on the product page in the preview."
             caption="In App embeds, switch on Combined Listings and save. Once you save your first group, its swatch row shows up on those product pages."
           />
 
@@ -387,7 +387,7 @@ const CombinedListingsDocsPage = () => (
             src="/guides/combined-listings/swatch-appearance.webp"
             width={1200}
             height={750}
-            alt="The same product page shown five times: circle, square and rounded swatches, then the sold-out Sand swatch drawn with a strike through and then dimmed. A label on the photo names each setting."
+            alt="A product page whose colour swatches restyle in place: circle, square and rounded shapes, a larger size, then the sold-out Sand swatch struck through, hidden and dimmed. A label beside Color names each setting."
             caption="Circle, Square and Rounded, then a sold-out colour shown with Strike through and with Dim. Each step is labelled on the image."
           />
         </Section>

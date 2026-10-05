@@ -611,7 +611,7 @@ const MixlyDocsPage = () => (
             src="/guides/mixly/theme-editor.webp"
             width={1200}
             height={750}
-            alt="A theme editor on the Default product template. The cursor clicks Add block under Product information, opens the Apps tab, picks Mixly bundle offer, and the bundle appears on the product page in the preview. Then it clicks Save."
+            alt="The setup guide step Add Mixly to your product page, whose Open theme editor button opens the theme editor on the Default product template. The cursor clicks Add block under Product information, picks Mixly bundle offer from the Apps list, and the bundle appears on the product page in the preview. Then it clicks Save."
             caption="On an Online Store 2.0 theme: Add block, Apps, Mixly bundle offer, then Save. The preview shows the offer as soon as the block is added."
           />
 
@@ -691,7 +691,7 @@ const MixlyDocsPage = () => (
             <Figure
               src="/guides/mixly/bundle-offer.webp"
               width={1200}
-              height={800}
+              height={750}
               alt="A Classic Tee product page. Below it the Mixly bundle offer lists the tee, marked This item, a Canvas Tote and a Sticker Pack, with a total of $54.40 instead of $64.00. The shopper clicks Add bundle to cart, the button reads Adding, and the cart opens with all three products."
               caption="The bundle offer block on a product page: every product, the total, what the shopper saves, and one button that adds the lot."
             />
@@ -719,8 +719,8 @@ const MixlyDocsPage = () => (
             className="mt-8 max-w-md"
             src="/guides/mixly/cart-nudge.webp"
             width={1200}
-            height={1120}
-            alt="A cart holding one Classic Tee. The Mixly cart bundle block reads Complete your bundle, Weekend set, 15% off, Add 2 more to unlock this offer, with Add buttons for a Canvas Tote and a Sticker Pack. The shopper adds the tote and the cart reloads with Add 1 more to unlock this offer."
+            height={750}
+            alt="A cart holding one Classic Tee. The Mixly cart bundle block reads Complete your bundle, Weekend set, 15% off, Add 2 more to unlock this offer, with a progress bar and an Add button for a Canvas Tote. The shopper adds the tote and the block moves on to Add 1 more and a Sticker Pack, then adds that too and the cart holds the whole bundle."
             caption="The cart bundle block on the cart page. One tap adds the missing product, and the progress line counts down to the offer."
           />
 

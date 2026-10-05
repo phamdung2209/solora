@@ -7,12 +7,23 @@ import { renderIcon } from './lib/icon.mjs'
 import { Recorder } from './lib/recorder.mjs'
 import { SITE_DIR } from './lib/site.mjs'
 import { openScene } from './lib/stage.mjs'
+import { combinedListingsAdminScenes } from './scenes/admin-combined-listings.mjs'
+import { mixlyAdminScenes } from './scenes/admin-mixly.mjs'
+import { tierlyAdminScenes } from './scenes/admin-tierly.mjs'
 import { combinedListingsScenes } from './scenes/combined-listings.mjs'
 import { editorScenes } from './scenes/editor.mjs'
 import { mixlyScenes } from './scenes/mixly.mjs'
 import { tierlyScenes } from './scenes/tierly.mjs'
 
-const scenes = [...combinedListingsScenes, ...mixlyScenes, ...tierlyScenes, ...editorScenes]
+const scenes = [
+  ...combinedListingsAdminScenes,
+  ...combinedListingsScenes,
+  ...mixlyAdminScenes,
+  ...mixlyScenes,
+  ...tierlyAdminScenes,
+  ...tierlyScenes,
+  ...editorScenes,
+]
 
 const filters = process.argv.slice(2)
 const selected = scenes.filter(({ app, name }) => !filters.length || filters.some((filter) => `${app}/${name}`.includes(filter)))

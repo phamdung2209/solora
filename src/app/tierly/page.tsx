@@ -103,7 +103,7 @@ const TierlyPage = () => (
         <Figure
           src="/guides/tierly/tier-ladder.webp"
           width={1200}
-          height={800}
+          height={750}
           alt="A tee product page with Tierly's quantity cards: 2+, 3+ marked Best value, and 6+. Raising the quantity from 1 to 3 lights up each tier it reaches, then clicking 6+ sets the quantity to 6."
           priority
         />

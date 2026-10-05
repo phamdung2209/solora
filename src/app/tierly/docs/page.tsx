@@ -470,7 +470,7 @@ const TierlyDocsPage = () => (
             src="/guides/tierly/theme-editor.webp"
             width={1200}
             height={750}
-            alt="A theme editor on the Default product template. The cursor clicks Add block under Product information, opens the Apps tab and picks Tierly price table; the tier table appears under the Add to cart button in the preview, then the cursor clicks Save."
+            alt="The setup guide step Add the price table to your product page, whose Add it for me button opens the theme editor on the Default product template with the Tierly price table already added. The cursor drags the block under Price, the quantity breaks move under the price in the preview, then the cursor clicks Save."
             caption="On an Online Store 2.0 theme: Add block, Apps, Tierly price table, then Save."
           />
 
@@ -587,14 +587,14 @@ const TierlyDocsPage = () => (
               <Figure
                 src="/guides/tierly/tier-ladder.webp"
                 width={1200}
-                height={800}
+                height={750}
                 alt="A Classic Tee - Black product page with the Tierly price table in cards: 2+ at $22.80, 3+ at $21.60 marked Best value, and 6+ at $19.68 each. The shopper raises the quantity to 2, then 3, and each tier it reaches is outlined; clicking the 6+ card sets the quantity to 6."
                 caption="The price table on a product page. The tier the current quantity reaches is outlined, and clicking a tier sets the quantity."
               />
               <Figure
                 src="/guides/tierly/cart-upsell.webp"
                 width={1200}
-                height={800}
+                height={750}
                 alt="A cart with two Classic Tees. The Tierly cart upsell shows Total savings of $2.40 and Classic Tee: Add 1 more to save 10%. The shopper raises the quantity to 3 and the block updates to $7.20 saved and Add 3 more to save 18%."
                 caption="The cart upsell block shows what the cart already saves and how many more units reach the next tier."
               />

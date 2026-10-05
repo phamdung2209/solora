@@ -1,5 +1,5 @@
 import { colors } from '../lib/art.mjs'
-import { html, img, json, money, ORIGIN, storePage } from '../lib/site.mjs'
+import { html, img, json, money, storePage } from '../lib/site.mjs'
 
 const APPEARANCE = { swatchShape: 'circle', swatchSize: 30, swatchRadius: 4, outOfStock: 'dim' }
 const MODULES = ['pdpSwatches', 'cardSwatches', 'variantImages']
@@ -36,7 +36,40 @@ const sizes = '<div class="pdp-label">Size</div><div class="pills"><span class="
 const buyForm = (variantId) =>
   `<form class="buy" action="/cart/add" onsubmit="return false"><input type="hidden" name="id" value="${variantId}"><span class="qty"><button type="button">&minus;</button><input name="quantity" value="1"><button type="button">+</button></span><button class="atc" type="button">Add to cart</button></form>`
 
-export const productPage = (handle, { withRuntime = true, appearance = APPEARANCE, soldOut, chip } = {}) => {
+const compactCss = '<style>.pdp{grid-template-columns:150px 1fr;gap:22px;width:402px;margin:0 auto}.store-main{padding-top:12px}.pdp-title{font-size:19px}.pdp-label{margin-top:10px}.buy{margin-top:12px}</style>'
+
+const chipCss = '<style>.pdp-label{display:flex;align-items:center;gap:4px;min-height:22px}.chip{margin-left:auto;padding:4px 10px;border-radius:999px;background:rgba(27,27,31,.9);color:#fff;font-size:10.5px;font-weight:600;letter-spacing:.01em;white-space:nowrap}.chip span{opacity:.62;font-weight:500}</style>'
+
+const swapCss = '<style>.pdp-media img.is-swap{animation:swap .34s ease both}@keyframes swap{from{opacity:.2;transform:scale(1.04)}to{opacity:1;transform:none}}</style>'
+
+const swapScript = (family) => {
+  const { title, art, values } = families[family]
+  const items = Object.fromEntries(values.map((value) => [`${family}-${value}`, { art: `${art}-${value}`, name: `${title} - ${label(value)}`, color: label(value) }]))
+  return `<script>
+const items = ${json(items)}
+Object.values(items).forEach((item) => { new Image().src = '/art/' + item.art + '.svg' })
+document.addEventListener('click', (event) => {
+  const link = event.target.closest('.solora-cl a[data-handle]')
+  if (!link) return
+  event.preventDefault()
+  const item = items[link.dataset.handle]
+  document.querySelectorAll('.solora-cl a').forEach((node) => {
+    node.classList.toggle('solora-cl__swatch--current', node === link)
+    node.toggleAttribute('aria-current', node === link)
+  })
+  const image = document.querySelector('.pdp-media img')
+  image.src = '/art/' + item.art + '.svg'
+  image.classList.remove('is-swap')
+  void image.offsetWidth
+  image.classList.add('is-swap')
+  document.querySelector('.pdp-title').textContent = item.name
+  document.querySelector('.pdp-label b').textContent = item.color
+  document.querySelector('.browser-url').lastChild.textContent = 'demo-store.example/products/' + link.dataset.handle
+})
+</script>`
+}
+
+export const productPage = (handle, { withRuntime = true, appearance = APPEARANCE, soldOut, chip, compact, swap, scripts = '' } = {}) => {
   const product = parse(handle)
   if (!product) return null
   const payload = {
@@ -53,20 +86,20 @@ export const productPage = (handle, { withRuntime = true, appearance = APPEARANC
   return storePage({
     title: name,
     path: `/products/${handle}`,
-    head: chip ? `${head}<style>.pdp-media{position:relative}.chip{position:absolute;left:10px;bottom:10px;padding:5px 10px;border-radius:999px;background:rgba(27,27,31,.88);color:#fff;font-size:11px;font-weight:600;letter-spacing:.01em;box-shadow:0 4px 14px -4px rgba(0,0,0,.35)}.chip span{opacity:.7;font-weight:500}</style>` : head,
+    head: `${head}${compact ? compactCss : ''}${chip ? chipCss : ''}${swap ? swapCss : ''}`,
     main: `<div class="pdp">
-  <div class="pdp-media">${img(`${product.art}-${product.value}`, name)}${chip ? `<span class="chip">${chip}</span>` : ''}</div>
+  <div class="pdp-media">${img(`${product.art}-${product.value}`, name)}</div>
   <div class="pdp-info">
     <div class="pdp-vendor">Demo Store</div>
     <h1 class="pdp-title">${name}</h1>
     <div class="pdp-price">${money(product.price)}</div>
-    <div class="pdp-label">Color <b>${label(product.value)}</b></div>
+    <div class="pdp-label">Color <b>${label(product.value)}</b>${chip ? `<span class="chip" data-chip>${chip}</span>` : ''}</div>
     <div data-solora-cl-mount="main"></div>
     ${sizes}
     ${buyForm(1)}
   </div>
 </div>`,
-    scripts: `${withRuntime ? runtime(payload) : ''}${soldOut ? `<script>document.addEventListener('DOMContentLoaded', function () { document.querySelector('.solora-cl a[data-handle="${soldOut}"]').classList.add('solora-cl__swatch--oos') })</script>` : ''}`,
+    scripts: `${withRuntime ? runtime(payload) : ''}${soldOut ? `<script>document.addEventListener('DOMContentLoaded', function () { document.querySelector('.solora-cl a[data-handle="${soldOut}"]').classList.add('solora-cl__swatch--oos') })</script>` : ''}${swap ? swapScript(product.family) : ''}${scripts}`,
   })
 }
 
@@ -134,7 +167,7 @@ const variantPage = () => {
     title: 'All-Mountain Snowboard',
     path: '/products/all-mountain-snowboard',
     head: `${head}<style>
-.pdp{grid-template-columns:244px 1fr}
+.store-main{padding-top:12px}.pdp{grid-template-columns:208px 1fr;gap:18px;width:446px;margin:0 auto}.pdp-title{font-size:18px}
 .product__media-list{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0;padding:0;list-style:none}
 .media-item{aspect-ratio:1;border-radius:10px;overflow:hidden;background:var(--soft);animation:fade .28s ease}
 @keyframes fade{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:none}}
@@ -166,74 +199,118 @@ document.querySelector('[data-picker]').addEventListener('click', function (even
   })
 }
 
-const looks = [
-  { chip: '<span>Swatch shape &middot;</span> Circle', appearance: { ...APPEARANCE, outOfStock: 'none' } },
-  { chip: '<span>Swatch shape &middot;</span> Square', appearance: { ...APPEARANCE, swatchShape: 'square', outOfStock: 'none' } },
-  { chip: '<span>Swatch shape &middot;</span> Rounded', appearance: { ...APPEARANCE, swatchShape: 'rounded', swatchRadius: 8, outOfStock: 'none' } },
-  { chip: '<span>Sold out &middot;</span> Strike through', appearance: { ...APPEARANCE, swatchShape: 'rounded', swatchRadius: 8, outOfStock: 'strike' } },
-  { chip: '<span>Sold out &middot;</span> Dim', appearance: { ...APPEARANCE, outOfStock: 'dim' } },
-]
+const lookScript = `<style>.solora-cl__swatch{transition:width .3s ease,height .3s ease,border-radius .3s ease,opacity .3s ease}</style><script>
+const radii = { circle: '50%', square: '0px', rounded: '8px' }
+window.look = ({ shape, size, stock, label, value }) => {
+  document.querySelectorAll('.solora-cl__swatch').forEach((node) => {
+    node.style.width = node.style.height = size + 'px'
+    node.style.borderRadius = radii[shape]
+  })
+  document.querySelector('.solora-cl').className = 'solora-cl solora-cl--oos-' + stock
+  document.querySelector('[data-chip]').innerHTML = '<span>' + label + ' &middot;</span> ' + value
+}
+</script>`
 
-const route = (pathname) => {
-  const look = pathname.match(/^\/appearance\/(\d)$/)
-  if (look) return html(productPage('classic-tee-red', { ...looks[look[1]], soldOut: 'classic-tee-sand' }))
+const appearancePage = () =>
+  productPage('classic-tee-red', {
+    compact: true,
+    appearance: { ...APPEARANCE, outOfStock: 'none' },
+    soldOut: 'classic-tee-sand',
+    chip: '<span>Swatch shape &middot;</span> Circle',
+    scripts: lookScript,
+  })
+
+const routeWith = (options) => (pathname) => {
+  if (pathname === '/appearance') return html(appearancePage())
   if (pathname === '/collections/new-in') return html(collectionPage())
   if (pathname === '/products/all-mountain-snowboard') return html(variantPage())
   const match = pathname.match(/^\/products\/([\w-]+)$/)
-  const page = match && productPage(match[1])
+  const page = match && productPage(match[1], options)
   return page ? html(page) : null
 }
 
 const swatch = (handle) => `.solora-cl a[data-handle="${handle}"]`
 
+const appearanceSteps = [
+  ['Swatch shape', 'Square', { shape: 'square' }],
+  ['Swatch shape', 'Rounded', { shape: 'rounded' }],
+  ['Swatch size', '40px', { size: 40 }],
+  ['Out of stock', 'Strike through', { stock: 'strike' }],
+  ['Out of stock', 'Hide', { stock: 'hide' }],
+  ['Out of stock', 'Dim', { stock: 'dim' }],
+]
+
 export const combinedListingsScenes = [
   {
     app: 'combined-listings',
     name: 'swatch-appearance',
-    start: '/appearance/0',
-    route,
+    start: '/appearance',
+    route: routeWith(),
     async play(rec, page) {
-      await rec.hold(1500)
-      for (const index of [1, 2, 3, 4]) {
-        await page.goto(`${ORIGIN}/appearance/${index}`)
-        await rec.hold(1500)
+      await rec.hold(1400)
+      await rec.zoom('.pdp', 1.35, { focus: { y: 0.54 } })
+      await rec.hold(1000)
+      let look = { shape: 'circle', size: 30, stock: 'none' }
+      for (const [label, value, change] of appearanceSteps) {
+        look = { ...look, ...change }
+        await page.evaluate((state) => window.look(state), { ...look, label, value })
+        await rec.settle(400)
+        await rec.hold(1000)
       }
+      await rec.unzoom()
+      await rec.hold(2200)
     },
   },
   {
     app: 'combined-listings',
     name: 'pdp-swatches',
     start: '/products/classic-tee-red',
-    route,
-    async play(rec, page) {
-      await rec.hold(1400)
-      await rec.show({ x: 560, y: 350 })
-      await rec.move(swatch('classic-tee-blue'), 720)
-      await rec.hold(360)
-      await rec.click(null, { after: () => page.waitForURL('**/classic-tee-blue') })
+    route: routeWith({ compact: true, swap: true }),
+    async play(rec) {
       await rec.hold(1500)
-      await rec.move(swatch('classic-tee-black'), 480)
-      await rec.hold(300)
-      await rec.click(null, { after: () => page.waitForURL('**/classic-tee-black') })
-      await rec.hold(2000)
+      await rec.show({ x: 520, y: 340 })
+      await rec.zoom('.pdp', 1.35)
+      await rec.hold(400)
+      await rec.move(swatch('classic-tee-blue'), 680)
+      await rec.hold(400)
+      await rec.click(null)
+      await rec.settle(400)
+      await rec.hold(1500)
+      await rec.move(swatch('classic-tee-black'), 520)
+      await rec.hold(350)
+      await rec.click(null)
+      await rec.settle(400)
+      await rec.hold(1700)
+      await rec.unzoom()
+      await rec.hold(2200)
     },
   },
   {
     app: 'combined-listings',
     name: 'collection-swatches',
     start: '/collections/new-in',
-    route,
+    route: routeWith({ compact: true }),
     async play(rec, page) {
-      await rec.hold(1500)
-      await rec.show({ x: 520, y: 360 })
-      await rec.move(swatch('everyday-hoodie-navy'), 760)
-      await rec.hold(260)
-      await rec.move(swatch('everyday-hoodie-charcoal'), 320)
-      await rec.hold(260)
-      await rec.move(swatch('everyday-hoodie-navy'), 320)
-      await rec.hold(300)
-      await rec.click(null, { after: () => page.waitForURL('**/everyday-hoodie-navy') })
       await rec.hold(2000)
+      await rec.show({ x: 540, y: 350 })
+      await rec.zoom('.grid__item:nth-child(2)', 1.4, { focus: { x: 0.42, y: 0.45 } })
+      await rec.hold(300)
+      await rec.move(swatch('everyday-hoodie-navy'), 640)
+      await rec.hold(450)
+      await rec.move(swatch('everyday-hoodie-charcoal'), 340)
+      await rec.hold(450)
+      await rec.move(swatch('everyday-hoodie-navy'), 340)
+      await rec.hold(450)
+      await rec.click(null, {
+        after: async () => {
+          await page.waitForURL('**/everyday-hoodie-navy')
+          await page.evaluate(() => window.stage.set(window.stage.plan('.pdp', 1.35)))
+        },
+      })
+      await rec.settle(500)
+      await rec.hold(900)
+      await rec.unzoom()
+      await rec.hold(3000)
     },
     poster: 0,
   },
@@ -241,16 +318,24 @@ export const combinedListingsScenes = [
     app: 'combined-listings',
     name: 'variant-images',
     start: '/products/all-mountain-snowboard',
-    route,
+    route: routeWith(),
     async play(rec) {
       await rec.hold(1500)
-      await rec.show({ x: 560, y: 360 })
-      await rec.click('[data-variant="202"]', { move: 720 })
-      await rec.settle(320)
-      await rec.hold(1500)
-      await rec.click('[data-variant="203"]', { move: 420 })
-      await rec.settle(320)
-      await rec.hold(2000)
+      await rec.show({ x: 540, y: 350 })
+      await rec.zoom('.pdp', 1.3)
+      await rec.hold(500)
+      await rec.move('[data-variant="202"]', 700)
+      await rec.hold(400)
+      await rec.click(null)
+      await rec.settle(400)
+      await rec.hold(1700)
+      await rec.move('[data-variant="203"]', 500)
+      await rec.hold(350)
+      await rec.click(null)
+      await rec.settle(400)
+      await rec.hold(1800)
+      await rec.unzoom()
+      await rec.hold(2200)
     },
   },
 ]
