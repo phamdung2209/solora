@@ -292,6 +292,15 @@ const CombinedListingsDocsPage = () => (
             caption="In App embeds, switch on Combined Listings and save. Once you save your first group, its swatch row shows up on those product pages."
           />
 
+          <Figure
+            className="mt-6"
+            src="/guides/combined-listings/theme-block.webp"
+            width={1200}
+            height={750}
+            alt="The setup guide step Place the swatch block, whose Open theme editor button opens the theme editor on the product template. The cursor drags the Combined Listings block into place and the swatch row moves to that spot in the preview."
+            caption="Optional: drag the Combined Listings app block to exactly where the swatch row should sit."
+          />
+
           <div className="mt-6">
             <Callout title="Swatch row in the wrong place?">
               In the app embed&rsquo;s settings, enter a CSS selector in{' '}
@@ -312,6 +321,15 @@ const CombinedListingsDocsPage = () => (
               </li>
             ))}
           </ol>
+
+          <Figure
+            className="mt-8"
+            src="/guides/combined-listings/create-group.webp"
+            width={1200}
+            height={750}
+            alt="The Groups page in the Combined Listings admin. The cursor clicks Create group, types Classic Tee, adds the red, blue and other Classic Tee products, enters a colour hex for each swatch and clicks Save."
+            caption="Create group: title it, add the products, give each its swatch colour and save."
+          />
 
           <div className="mt-8">
             <Callout title="A product can be in one group at a time">
@@ -389,6 +407,15 @@ const CombinedListingsDocsPage = () => (
             height={750}
             alt="A product page whose colour swatches restyle in place: circle, square and rounded shapes, a larger size, then the sold-out Sand swatch struck through, hidden and dimmed. A label beside Color names each setting."
             caption="Circle, Square and Rounded, then a sold-out colour shown with Strike through and with Dim. Each step is labelled on the image."
+          />
+
+          <Figure
+            className="mt-6"
+            src="/guides/combined-listings/design-settings.webp"
+            width={1200}
+            height={750}
+            alt="The Design page in the Combined Listings admin. The cursor changes the swatch shape to Rounded, drags the size slider, sets the out-of-stock style to Strike through, and the live preview updates before the cursor clicks Save."
+            caption="Design in the app: shape, size and out-of-stock style, with a live preview before you save."
           />
         </Section>
 

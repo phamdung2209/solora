@@ -615,6 +615,15 @@ const MixlyDocsPage = () => (
             caption="On an Online Store 2.0 theme: Add block, Apps, Mixly bundle offer, then Save. The preview shows the offer as soon as the block is added."
           />
 
+          <Figure
+            className="mt-6"
+            src="/guides/mixly/theme-embed.webp"
+            width={1200}
+            height={750}
+            alt="The setup guide step Turn on the Mixly embed on a vintage theme. Its button opens the theme editor on App embeds, the cursor switches on Mixly (vintage themes), and the bundle offer appears on the product page in the preview."
+            caption="On a vintage theme the offer comes from an app embed instead: switch on Mixly (vintage themes) under App embeds, then save."
+          />
+
           <div className="mt-6 space-y-4">
             <Callout tone="warn" title="Cart drawers are not supported">
               The cart bundle block is enabled on the{' '}
@@ -674,6 +683,23 @@ const MixlyDocsPage = () => (
             ))}
           </div>
 
+          <div className="mt-8 grid gap-6 md:grid-cols-2">
+            <Figure
+              src="/guides/mixly/create-bundle.webp"
+              width={1200}
+              height={750}
+              alt="The Create bundle page in the Mixly admin. The cursor picks the Frequently bought together type, adds a Classic Tee, a Canvas Tote and a Sticker Pack, sets a 15 percent discount, names the bundle Weekend set and clicks Save."
+              caption="Create bundle: pick the type, add the products, set the discount, name it and save."
+            />
+            <Figure
+              src="/guides/mixly/activate-bundle.webp"
+              width={1200}
+              height={750}
+              alt="The Mixly bundles list with the Weekend set bundle. The cursor opens the row menu and switches the bundle on, and its status changes to Active."
+              caption="Activate the bundle from the list. It starts discounting at checkout as soon as it is active."
+            />
+          </div>
+
           <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
             From the bundles list you can pause, duplicate or delete any bundle. Pausing takes it
             off your storefront and out of checkout without losing the setup, and duplicating is the
@@ -722,6 +748,15 @@ const MixlyDocsPage = () => (
             height={750}
             alt="A cart holding one Classic Tee. The Mixly cart bundle block reads Complete your bundle, Weekend set, 15% off, Add 2 more to unlock this offer, with a progress bar and an Add button for a Canvas Tote. The shopper adds the tote and the block moves on to Add 1 more and a Sticker Pack, then adds that too and the cart holds the whole bundle."
             caption="The cart bundle block on the cart page. One tap adds the missing product, and the progress line counts down to the offer."
+          />
+
+          <Figure
+            className="mt-6 max-w-md"
+            src="/guides/mixly/bundle-checkout.webp"
+            width={1200}
+            height={750}
+            alt="A shopper opens the Classic Tee, adds the whole bundle to the cart and clicks Checkout. At checkout the bundle discount shows as its own line on the order summary."
+            caption="The same bundle at checkout: the discount is applied automatically and shown as its own line on the order summary."
           />
 
           <Card className="mt-4 p-6">
@@ -995,6 +1030,15 @@ const MixlyDocsPage = () => (
               </details>
             ))}
           </div>
+
+          <Figure
+            className="mt-8"
+            src="/guides/mixly/reconnect-discount.webp"
+            width={1200}
+            height={750}
+            alt="The Mixly home screen with an alert that the discount is disconnected. The cursor clicks Reconnect discount and the setup checklist moves on once the discount is back."
+            caption="If the discount was deleted or switched off in Shopify, Reconnect discount on the home screen recreates it in one click."
+          />
         </Section>
 
         <section className="border-t pt-14">

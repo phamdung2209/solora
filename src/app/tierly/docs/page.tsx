@@ -474,6 +474,15 @@ const TierlyDocsPage = () => (
             caption="On an Online Store 2.0 theme: Add block, Apps, Tierly price table, then Save."
           />
 
+          <Figure
+            className="mt-6"
+            src="/guides/tierly/theme-embed.webp"
+            width={1200}
+            height={750}
+            alt="The setup guide step Turn on the Tierly app embed on a vintage theme. Its Turn on the embed button opens the theme editor on App embeds, the cursor switches on Tierly (vintage themes), and the quantity breaks appear on the product page in the preview."
+            caption="On a vintage theme: switch on Tierly (vintage themes) under App embeds, then save."
+          />
+
           <div className="mt-4">
             <Callout tone="warn" title="Enable one path, not both">
               On an Online Store 2.0 theme, use the app blocks. The vintage embed exists for themes
@@ -567,7 +576,24 @@ const TierlyDocsPage = () => (
             </Card>
           </div>
 
-          <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+          <div className="mt-8 grid gap-6 md:grid-cols-2">
+            <Figure
+              src="/guides/tierly/create-offer.webp"
+              width={1200}
+              height={750}
+              alt="The Create offer page in the Tierly admin. The cursor names the offer Bulk savings, applies it to all products, picks the Gentle preset, edits the second and third tiers and clicks Save."
+              caption="Create offer: name it, choose what it applies to, build the ladder from a preset and save."
+            />
+            <Figure
+              src="/guides/tierly/activate-offer.webp"
+              width={1200}
+              height={750}
+              alt="The Tierly offers list. The cursor activates the Bulk savings offer and a confirmation appears. Back on the home screen, Store health shows the discount connected."
+              caption="Activate the offer from the list. Store health on the home screen confirms the discount is connected."
+            />
+          </div>
+
+          <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
             Building a lot of these at once?{' '}
             <strong className="font-semibold text-foreground">Import CSV</strong> on the offers page
             brings ladders in as paused drafts for you to review before anything goes live, and{' '}
@@ -646,6 +672,15 @@ const TierlyDocsPage = () => (
               ))}
             </div>
           </div>
+
+          <Figure
+            className="mt-8"
+            src="/guides/tierly/cart-checkout.webp"
+            width={1200}
+            height={750}
+            alt="A shopper raises the quantity on the Classic Tee - Black page and adds it to the cart. The Tierly cart block shows the savings, then the shopper clicks Checkout and the volume discount shows on the order summary."
+            caption="From product page to checkout: the tier the cart reaches is discounted automatically and labelled on the order summary."
+          />
         </Section>
 
         <Section
