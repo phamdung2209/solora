@@ -4,8 +4,10 @@ import Link from 'next/link'
 
 import { Figure } from '@/components/figure'
 import { ArrowRightIcon, CheckIcon, LayersIcon, LifeBuoyIcon, ShieldIcon } from '@/components/icons'
+import { buttonVariants } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { siteConfig } from '@/lib/site'
+import { cn } from '@/lib/utils'
 
 export const metadata: Metadata = {
   title: 'Mixly',
@@ -85,6 +87,17 @@ const MixlyPage = () => (
           <p className="mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground">
             Product bundles that discount what is already in the cart.
           </p>
+
+          <div className="mt-7 flex flex-wrap items-center gap-3">
+            <a
+              href="https://apps.shopify.com/solora-mixly-bundles"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(buttonVariants({ variant: 'default', size: 'lg' }))}
+            >
+              Install on Shopify
+            </a>
+          </div>
         </div>
 
         <Figure

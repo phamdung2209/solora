@@ -78,12 +78,12 @@ const apps = [
     tagline: 'Product bundles that discount what is already in the cart.',
     mark: '◈',
     icon: '/solora-mixly.png',
-    status: 'beta',
+    status: 'live',
     pricing: 'Free: 1 active bundle · Pro: $12.99/mo or $129/yr',
     description:
       'Frequently Bought Together, Build Your Own, and BOGO bundles — discounted at checkout without creating a single new product, variant, or SKU.',
     links: [
-      { href: `mailto:${siteConfig.email}?subject=Mixly early access`, label: 'Request early access' },
+      { href: 'https://apps.shopify.com/solora-mixly-bundles', label: 'Install on Shopify' },
       { href: '/mixly/docs', label: 'Documentation' },
       { href: '/mixly/privacy', label: 'Privacy' },
       { href: '/mixly/terms', label: 'Terms' },

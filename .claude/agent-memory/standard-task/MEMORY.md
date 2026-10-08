@@ -1,1 +1,1 @@
-- [Mixly marketing pages](project_mixly_marketing_pages.md) — Mixly is beta/no App Store link yet (use mailto CTA); Free/Pro plan copy is duplicated in docs.tsx `plans` and pricing.tsx, keep both in sync.
+- [Mixly marketing pages](project_mixly_marketing_pages.md) — Mixly is live on the App Store since 2026-10-08 (Install on Shopify CTA); Free/Pro plan copy is duplicated in docs.tsx `plans` and pricing.tsx, keep both in sync.

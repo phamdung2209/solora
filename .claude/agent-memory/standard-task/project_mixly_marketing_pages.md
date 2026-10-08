@@ -1,14 +1,14 @@
 ---
 name: project_mixly_marketing_pages
-description: Mixly marketing pages on the Solora site — beta/early-access status and where plan pricing copy lives
+description: Mixly marketing pages on the Solora site — live App Store status and where plan pricing copy lives
 metadata:
   type: project
 ---
 
-Mixly has no Shopify App Store listing yet — `src/app/page.tsx` marks it `status: 'beta'` and its CTA is a `mailto:` "Request early access" link, not an "Install on Shopify" button (unlike Tierly, which links to `https://apps.shopify.com/solora-tierly`).
+Mixly is live on the Shopify App Store as of 2026-10-08 (https://apps.shopify.com/solora-mixly-bundles, "Solora Mixly: Bundles & BOGO") — `src/app/page.tsx` marks it `status: 'live'` with an "Install on Shopify" CTA, same as Tierly.
 
-**Why:** Mixly's App Store listing is in progress; a marketing page that assumes an app-store install link would be wrong today.
+**Why:** The site was pre-launch (beta, mailto "Request early access") until the listing went live; the install CTA now replaces it.
 
-**How to apply:** Any new Mixly page (pricing, docs, landing) should offer email early-access + docs links as its primary CTA, not an install link, until the app is confirmed live on the App Store — check `src/app/page.tsx`'s Mixly `status` field first.
+**How to apply:** Any Mixly page (pricing, docs, landing) should use the "Install on Shopify" link to the listing as its primary CTA, mirroring Tierly. Swatchbox is still not live — don't copy this to it.
 
 The canonical Free/Pro plan numbers (price, cadence, features) live in the `plans` array inside `src/app/mixly/docs/page.tsx`'s `id="plans"` Section (~line 274), sourced from Mixly's own `src/lib/plans.ts`. `src/app/mixly/pricing/page.tsx` duplicates this array — if the plan numbers ever change, update both files, not just one.
