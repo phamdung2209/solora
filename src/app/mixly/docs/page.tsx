@@ -132,30 +132,29 @@ const discountModes = [
 
 const setupPaths = [
   {
+    icon: SlidersIcon,
+    badge: 'Recommended',
+    title: 'Turn on the Mixly app embed',
+    note: 'One switch, every theme — Dawn, Horizon, older vintage themes and heavily customised builds alike.',
+    steps: [
+      'On your Mixly home screen, click Turn on in theme editor. The theme editor opens on App embeds with Mixly already switched on.',
+      'Click Save. Bundles now show below the Add to cart button on product pages, and below your items on the cart page.',
+      'Use the Show on product pages and Show on the cart page switches to choose where Mixly appears.',
+      'If it lands in the wrong place, put a CSS selector in Product page: CSS selector to insert after (for example .product-form) or the matching Cart page field (for example .cart__footer).',
+      'To hide Mixly from your store, switch the embed off and save. Pause a bundle in Mixly to stop its discount too.',
+    ],
+  },
+  {
     icon: LayersIcon,
-    badge: 'Most themes',
-    title: 'Online Store 2.0 themes',
-    note: 'Dawn, Refresh, Sense, and almost every theme sold since 2021.',
+    badge: 'Optional',
+    title: 'Place an app block yourself',
+    note: 'For an exact spot on an Online Store 2.0 theme. The embed steps aside on any page that has a Mixly block.',
     steps: [
       'In your Shopify admin go to Online Store → Themes → Customize.',
       'Switch the top template selector to Products → Default product.',
       'Click Add block in the product information area, open the Apps group, and pick Mixly bundle offer.',
-      'Drag it where you want it — just under the add-to-cart button works well — then Save.',
+      'Drag it where you want it, then Save.',
       'Optional: switch the template selector to Cart, add the Mixly cart bundle block, and set Maximum offers to show (1 to 3, two by default).',
-    ],
-  },
-  {
-    icon: SlidersIcon,
-    badge: 'Vintage themes',
-    title: 'Online Store 1.0 themes',
-    note: 'Older themes such as Debut or Brooklyn, and heavily customised builds that cannot host app blocks.',
-    steps: [
-      'Go to Online Store → Themes → Customize.',
-      'Open App embeds in the left sidebar.',
-      'Toggle on Mixly (vintage themes), then Save.',
-      'Mixly inserts itself after your add-to-cart form and your cart form automatically — there is no block to position.',
-      'If it lands in the wrong place, put a CSS selector in Product page: CSS selector to insert after (for example .product-form) or the matching Cart page field (for example .cart__footer).',
-      'Leaving the embed on while you switch to a newer theme is safe: it hides itself on any page where a Mixly app block is already rendering.',
     ],
   },
 ]
@@ -253,7 +252,6 @@ const blockReasons = [
   'Cart is empty. Add a product to preview this.',
   'No live bundle applies to this cart.',
   'Shows on product and cart pages only.',
-  'Buy X get Y shows on the product page, not the cart, on vintage themes.',
 ]
 
 const stackingSettings: { label: string; state: 'On' | 'Off'; text: string }[] = [
@@ -576,8 +574,8 @@ const MixlyDocsPage = () => (
         <Section
           id="setup"
           eyebrow="Setup"
-          title="Add it to your theme"
-          lead="Activating a bundle is enough for the discount to apply at checkout. Adding the block is what makes the offer visible before the cart — and that is where the extra items come from."
+          title="Turn it on in your theme"
+          lead="Activating a bundle is enough for the discount to apply at checkout. Turning Mixly on in your theme is what makes the offer visible before the cart — and that is where the extra items come from."
         >
           <div className="grid gap-4 md:grid-cols-2">
             {setupPaths.map(({ icon: Icon, badge, title, note, steps }) => (
@@ -608,47 +606,29 @@ const MixlyDocsPage = () => (
 
           <Figure
             className="mt-8"
-            src="/guides/mixly/theme-editor.webp"
+            src="/guides/mixly/theme-embed.webp"
             width={1200}
             height={750}
-            alt="The setup guide step Add Mixly to your product page, whose Open theme editor button opens the theme editor on the Default product template. The cursor clicks Add block under Product information, picks Mixly bundle offer from the Apps list, and the bundle appears on the product page in the preview. Then it clicks Save."
-            caption="On an Online Store 2.0 theme: Add block, Apps, Mixly bundle offer, then Save. The preview shows the offer as soon as the block is added."
+            alt="The setup guide step Turn on Mixly in your theme. Its button opens the theme editor on App embeds, the cursor switches on Mixly, and the bundle offer appears on the product page in the preview. Then it clicks Save."
+            caption="One switch under App embeds turns Mixly on for product and cart pages. The preview shows the offer as soon as it is on."
           />
 
           <Figure
             className="mt-6"
-            src="/guides/mixly/theme-embed.webp"
+            src="/guides/mixly/theme-editor.webp"
             width={1200}
             height={750}
-            alt="The setup guide step Turn on the Mixly embed on a vintage theme. Its button opens the theme editor on App embeds, the cursor switches on Mixly (vintage themes), and the bundle offer appears on the product page in the preview."
-            caption="On a vintage theme the offer comes from an app embed instead: switch on Mixly (vintage themes) under App embeds, then save."
+            alt="The cursor clicks Add block under Product information on the Default product template, picks Mixly bundle offer from the Apps list, and the bundle appears on the product page in the preview. Then it clicks Save."
+            caption="Optional, on an Online Store 2.0 theme: Add block, Apps, Mixly bundle offer, then Save — for when you want the offer in an exact spot."
           />
 
           <div className="mt-6 space-y-4">
             <Callout tone="warn" title="Cart drawers are not supported">
-              The cart bundle block is enabled on the{' '}
-              <strong className="font-semibold text-foreground">Cart page template only</strong>. If
-              your theme opens a slide-out drawer instead of navigating to a cart page, shoppers
-              will not see it. Your product-page block and your checkout discount are unaffected —
-              only the cart-side nudge goes missing.
-            </Callout>
-
-            <Callout title="On a vintage theme, Buy X get Y is product-page only">
-              The vintage embed covers all three bundle types on the product page, but its cart
-              nudge only handles Frequently bought together and Mix &amp; match. Mixly says as much
-              in the theme editor:{' '}
-              <em>Buy X get Y shows on the product page, not the cart, on vintage themes.</em>
-            </Callout>
-
-            <Callout title="Step 3 of the setup checklist never ticks on a vintage theme">
-              The <strong className="font-semibold text-foreground">Finish setup</strong> checklist
-              on your Mixly home screen has four steps, and step 3 —{' '}
-              <em>Add Mixly to your product page</em> — checks for exactly one thing: the{' '}
-              <strong className="font-semibold text-foreground">Mixly bundle offer</strong> app
-              block being active on your theme. The vintage app embed is a different extension, so
-              it does not count towards it. If you are on a vintage theme, expect step 3 to sit
-              unticked forever even though everything is working. Trust step 4 instead — a real
-              cart, with the discount showing at checkout — then dismiss the checklist.
+              Mixly shows on the{' '}
+              <strong className="font-semibold text-foreground">cart page only</strong>. If your
+              theme opens a slide-out drawer instead of navigating to a cart page, shoppers will not
+              see the cart nudge there. Your product-page offer and your checkout discount are
+              unaffected — only the cart-side nudge goes missing.
             </Callout>
           </div>
         </Section>

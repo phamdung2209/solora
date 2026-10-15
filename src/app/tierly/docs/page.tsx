@@ -86,29 +86,29 @@ const steps = [
 
 const setupPaths = [
   {
+    icon: SlidersIcon,
+    badge: 'Recommended',
+    title: 'Turn on the Tierly app embed',
+    note: 'One switch, every theme — Dawn, Horizon, older vintage themes and heavily customised builds alike.',
+    steps: [
+      'On your Tierly dashboard, click Turn on Tierly. The theme editor opens on App embeds with Tierly already switched on.',
+      'Click Save. The price table shows above the Add to cart button on product pages, and the cart upsell below your items on the cart page.',
+      'Use the Show on product pages and Show on the cart page switches to choose where Tierly appears.',
+      'If it lands in the wrong place, set the Product page and Cart page CSS selectors under Placement — .product-form and .cart__footer are typical.',
+      'To hide Tierly from your store, switch the embed off and save. Pause an offer in Tierly to stop its discount too.',
+    ],
+  },
+  {
     icon: LayersIcon,
-    badge: 'Most themes',
-    title: 'Online Store 2.0 themes',
-    note: 'Dawn, Refresh, Sense, and almost every theme sold since 2021.',
+    badge: 'Optional',
+    title: 'Place an app block yourself',
+    note: 'For an exact spot on an Online Store 2.0 theme. The embed steps aside on any page that has a Tierly block.',
     steps: [
       'In your Shopify admin go to Online Store → Themes → Customize.',
       'Switch the top template selector to Products → Default product.',
       'Click Add block in the product information area, open the Apps group, and pick Tierly price table.',
       'Drag it where you want it — just under the quantity selector works well — then Save.',
       'Optional: on the Cart template, add the Tierly cart upsell block to nudge shoppers who are one unit away from the next tier.',
-    ],
-  },
-  {
-    icon: SlidersIcon,
-    badge: 'Vintage themes',
-    title: 'Online Store 1.0 themes',
-    note: 'Older themes such as Debut, Brooklyn, or a heavily customised build that cannot host app blocks.',
-    steps: [
-      'Go to Online Store → Themes → Customize.',
-      'Open App embeds in the left sidebar.',
-      'Toggle on Tierly (vintage themes), then Save.',
-      'The price table is inserted into your product and cart pages automatically — there is no block to position.',
-      'If the table lands in the wrong place, set the Product page and Cart page CSS selectors under Placement — .product-form and .cart__footer are typical. Leave them blank to auto-detect.',
     ],
   },
 ]
@@ -146,7 +146,7 @@ const blockSettings: { title: string; text: ReactNode }[] = [
   },
   {
     title: 'Clickable tiers',
-    text: 'On by default: clicking a tier sets the quantity field to that tier minimum, so a shopper reaches the saving in one tap. Turn it off if your theme uses an unusual quantity input. It applies to the price table and the vintage embed — the cart upsell has no equivalent.',
+    text: 'On by default: clicking a tier sets the quantity field to that tier minimum, so a shopper reaches the saving in one tap. Turn it off if your theme uses an unusual quantity input. It applies to the price table, whether it comes from the app embed or the block — the cart upsell has no equivalent.',
   },
   {
     title: '“Ends in” countdown',
@@ -223,11 +223,11 @@ const faqs: { q: string; a: ReactNode }[] = [
   },
   {
     q: 'The block is on my product page but shows nothing',
-    a: 'In the theme editor — and only there, never for shoppers — Tierly prints the reason it rendered nothing, so you rarely have to guess. It will tell you that no pricing rules have been published to the store yet, that this product has no rule of its own and no store-wide rule covers it, that the product is excluded from your store-wide rule, that the end date has already passed, or that the tiers cannot be shown in the currency the storefront is currently displaying. On a vintage theme it also reports when it could not read the product on the page, when every tier works out at or above the current price, and when the page is neither a product nor a cart page.',
+    a: 'In the theme editor — and only there, never for shoppers — Tierly prints the reason it rendered nothing, so you rarely have to guess. It will tell you that no pricing rules have been published to the store yet, that this product has no rule of its own and no store-wide rule covers it, that the product is excluded from your store-wide rule, that the end date has already passed, or that the tiers cannot be shown in the currency the storefront is currently displaying. The app embed also reports when it could not read the product on the page, when every tier works out at or above the current price, and when the page is neither a product nor a cart page.',
   },
   {
-    q: 'The price table block does not appear in the theme editor',
-    a: 'App blocks only show on Online Store 2.0 themes, and only after the app is installed on the store. If the Apps group is missing when you click Add block, your theme is a vintage 1.0 theme — use the app embed route instead.',
+    q: 'I cannot find the Tierly price table block in the theme editor',
+    a: 'App blocks only show on Online Store 2.0 themes, and only after the app is installed on the store. If the Apps group is missing when you click Add block, your theme is a vintage 1.0 theme — the app embed works on it and needs no block: switch Tierly on under App embeds.',
   },
   {
     q: 'Some tiers vanish when a shopper switches currency',
@@ -256,7 +256,7 @@ const faqs: { q: string; a: ReactNode }[] = [
   },
   {
     q: 'Does Tierly slow my storefront down?',
-    a: 'It depends which path your theme uses, and neither one blocks the page. On an Online Store 2.0 theme the price table block is rendered server-side in Liquid, so it arrives with the rest of the page and causes no layout shift. On a vintage theme the app embed loads a small deferred script that reads your product and cart JSON after the page has painted, so the table appears a moment after everything else. Either way there is no blocking third-party script on your product pages.',
+    a: 'It depends which path you use, and neither one blocks the page. The price table block is rendered server-side in Liquid, so it arrives with the rest of the page and causes no layout shift. The app embed loads a small deferred script that reads your product and cart JSON after the page has painted, so the table appears a moment after everything else. Either way there is no blocking third-party script on your product pages.',
   },
   {
     q: 'What happens to my discounts if I uninstall the app?',
@@ -435,8 +435,8 @@ const TierlyDocsPage = () => (
         <Section
           id="setup"
           eyebrow="Setup"
-          title="Add it to your theme"
-          lead="Installing the app is enough for discounts to apply at checkout. Adding the block is what makes the savings visible on the product page — and that is where the extra units come from. The Finish setup checklist on your dashboard has an “Add it for me” button that opens the theme editor in the right place, and the Store health card afterwards tells you whether the block is on your published theme."
+          title="Turn it on in your theme"
+          lead="Installing the app is enough for discounts to apply at checkout. Turning Tierly on in your theme is what makes the savings visible on the product page — and that is where the extra units come from. The Finish setup checklist on your dashboard has a “Turn on Tierly” button that opens the theme editor on App embeds, and the Store health card afterwards tells you whether Tierly is on in your published theme."
         >
           <div className="grid gap-4 md:grid-cols-2">
             {setupPaths.map(({ icon: Icon, badge, title, note, steps }) => (
@@ -467,29 +467,22 @@ const TierlyDocsPage = () => (
 
           <Figure
             className="mt-8"
-            src="/guides/tierly/theme-editor.webp"
+            src="/guides/tierly/theme-embed.webp"
             width={1200}
             height={750}
-            alt="The setup guide step Add the price table to your product page, whose Add it for me button opens the theme editor on the Default product template with the Tierly price table already added. The cursor drags the block under Price, the quantity breaks move under the price in the preview, then the cursor clicks Save."
-            caption="On an Online Store 2.0 theme: Add block, Apps, Tierly price table, then Save."
+            alt="The setup guide step Turn on Tierly in your theme. Its Turn on Tierly button opens the theme editor on App embeds, the cursor switches on Tierly, and the quantity breaks appear on the product page in the preview. Then it clicks Save."
+            caption="One switch under App embeds turns Tierly on for product and cart pages. The preview shows the price table as soon as it is on."
           />
 
           <Figure
             className="mt-6"
-            src="/guides/tierly/theme-embed.webp"
+            src="/guides/tierly/theme-editor.webp"
             width={1200}
             height={750}
-            alt="The setup guide step Turn on the Tierly app embed on a vintage theme. Its Turn on the embed button opens the theme editor on App embeds, the cursor switches on Tierly (vintage themes), and the quantity breaks appear on the product page in the preview."
-            caption="On a vintage theme: switch on Tierly (vintage themes) under App embeds, then save."
+            alt="The cursor drags the Tierly price table block under Price on the Default product template, the quantity breaks move under the price in the preview, then the cursor clicks Save."
+            caption="Optional, on an Online Store 2.0 theme: Add block, Apps, Tierly price table, then Save — for when you want the table in an exact spot."
           />
 
-          <div className="mt-4">
-            <Callout tone="warn" title="Enable one path, not both">
-              On an Online Store 2.0 theme, use the app blocks. The vintage embed exists for themes
-              that cannot host them. If both end up switched on, Tierly suppresses the embed so
-              nothing renders twice.
-            </Callout>
-          </div>
         </Section>
 
         <Section
