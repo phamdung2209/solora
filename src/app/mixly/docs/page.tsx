@@ -26,12 +26,12 @@ import { cn } from '@/lib/utils'
 export const metadata: Metadata = {
   title: 'Mixly — Help & Documentation',
   description:
-    'How Mixly bundles work, how to add the bundle block to your theme, and what to check when a bundle discount is not applying at checkout.',
+    'How Mixly bundles work, how to turn it on in your theme, and what to check when a bundle discount is not applying at checkout.',
   alternates: { canonical: '/mixly/docs' },
   openGraph: {
     title: 'Mixly — Help & Documentation | Solora',
     description:
-      'How Mixly bundles work, how to add the bundle block to your theme, and what to check when a bundle discount is not applying at checkout.',
+      'How Mixly bundles work, how to turn it on in your theme, and what to check when a bundle discount is not applying at checkout.',
     url: '/mixly/docs',
     images: [siteConfig.ogImage],
   },
@@ -41,7 +41,7 @@ const chapters = [
   { id: 'how-it-works', label: 'How Mixly works' },
   { id: 'bundle-types', label: 'The three bundle types' },
   { id: 'discounts', label: 'Discount modes' },
-  { id: 'setup', label: 'Add it to your theme' },
+  { id: 'setup', label: 'Turn it on in your theme' },
   { id: 'first-bundle', label: 'Create your first bundle' },
   { id: 'storefront', label: 'Where shoppers see it' },
   { id: 'priority', label: 'When bundles overlap' },
@@ -62,7 +62,7 @@ const highlights = [
     icon: LayersIcon,
     href: '#setup',
     title: 'Setup',
-    text: 'Add the bundle block to your product page.',
+    text: 'Turn Mixly on in your theme.',
   },
   {
     icon: LifeBuoyIcon,
@@ -79,7 +79,7 @@ const steps = [
   },
   {
     title: 'Shoppers see the offer on your storefront',
-    text: 'The Mixly block on your product page shows the bundle with real prices, the total, and what the shopper saves — with one button that adds every product in it to the cart.',
+    text: 'Mixly shows the bundle on your product page with real prices, the total, and what the shopper saves — with one button that adds every product in it to the cart.',
   },
   {
     title: 'Shopify applies the discount at checkout',
@@ -135,7 +135,7 @@ const setupPaths = [
     icon: SlidersIcon,
     badge: 'Recommended',
     title: 'Turn on the Mixly app embed',
-    note: 'One switch, every theme — Dawn, Horizon, older vintage themes and heavily customised builds alike.',
+    note: 'One switch, every theme — Dawn, Horizon, older themes and heavily customised builds alike.',
     steps: [
       'On your Mixly home screen, click Turn on in theme editor. The theme editor opens on App embeds with Mixly already switched on.',
       'Click Save. Bundles now show below the Add to cart button on product pages, and below your items on the cart page.',
@@ -240,6 +240,7 @@ const storefrontSpots: { icon: typeof LayersIcon; title: string; text: ReactNode
 ]
 
 const blockReasons = [
+  'Mixly is turned off — switch it on under App embeds to show this block.',
   'Nothing published yet. Open Mixly and save a bundle.',
   'No bundle is live. Activate one in Mixly.',
   'This product is in no bundle. Add it in Mixly.',
@@ -279,7 +280,7 @@ const plans = [
     features: [
       '1 active bundle',
       'Frequently Bought Together bundles',
-      'Full storefront blocks on product and cart',
+      'Storefront widgets on product and cart',
       'Automatic checkout discounts',
     ],
     featured: false,
@@ -306,7 +307,7 @@ const faqs: { q: string; a: ReactNode }[] = [
   },
   {
     q: 'The Mixly block is on my theme but shows nothing',
-    a: 'Open the theme editor and look at the spot where the block sits. Mixly prints a short note there — visible only in the editor — naming the exact reason: no bundle saved yet, no bundle live, this product is in no bundle, the block is filtered to a different bundle type, a product in the bundle is unavailable, the discount saves nothing at that price, or the cart currency does not match. Fix what the note names and the block appears.',
+    a: 'Check Mixly is on under App embeds first. Then open the theme editor and look at the spot where the block sits. Mixly prints a short note there — visible only in the editor — naming the exact reason: no bundle saved yet, no bundle live, this product is in no bundle, the block is filtered to a different bundle type, a product in the bundle is unavailable, the discount saves nothing at that price, or the cart currency does not match. Fix what the note names and the block appears.',
   },
   {
     q: 'The discount is not applying at checkout',
@@ -333,7 +334,7 @@ const faqs: { q: string; a: ReactNode }[] = [
     a: (
       <>
         The Shopify Function is removed with the app, so bundle discounts stop applying immediately
-        and the storefront blocks stop rendering. Your store data is queued for deletion — see the{' '}
+        and the storefront widgets stop rendering. Your store data is queued for deletion — see the{' '}
         <Link href="/mixly/privacy" className="font-medium text-foreground underline">
           privacy policy
         </Link>{' '}
@@ -764,6 +765,10 @@ const MixlyDocsPage = () => (
                 message, and the rest. The block renders exactly what you type, so those fields are
                 also how you translate the storefront into your shoppers&rsquo; language.
               </p>
+              <p>
+                These appearance and wording settings live on the block. Without a block, the app
+                embed shows Mixly with the default look and English text.
+              </p>
             </div>
           </Card>
 
@@ -899,7 +904,7 @@ const MixlyDocsPage = () => (
           id="plans"
           eyebrow="Billing"
           title="Free vs Pro"
-          lead="The free plan is a real plan, not a trial — one active Frequently Bought Together bundle runs indefinitely, with the storefront blocks and the automatic checkout discount included."
+          lead="The free plan is a real plan, not a trial — one active Frequently Bought Together bundle runs indefinitely, with the storefront widgets and the automatic checkout discount included."
         >
           <div className="grid gap-4 sm:grid-cols-2">
             {plans.map(({ name, price, cadence, features, featured }) => (

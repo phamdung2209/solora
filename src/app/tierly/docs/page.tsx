@@ -76,7 +76,7 @@ const steps = [
   },
   {
     title: 'Shoppers see the ladder on the product page',
-    text: 'The Tierly price table block renders the tiers with real per-unit prices, so the incentive to add more is visible before the cart.',
+    text: 'Tierly shows the tiers with real per-unit prices, so the incentive to add more is visible before the cart.',
   },
   {
     title: 'Shopify applies the discount at checkout',
@@ -89,7 +89,7 @@ const setupPaths = [
     icon: SlidersIcon,
     badge: 'Recommended',
     title: 'Turn on the Tierly app embed',
-    note: 'One switch, every theme — Dawn, Horizon, older vintage themes and heavily customised builds alike.',
+    note: 'One switch, every theme — Dawn, Horizon, older themes and heavily customised builds alike.',
     steps: [
       'On your Tierly dashboard, click Turn on Tierly. The theme editor opens on App embeds with Tierly already switched on.',
       'Click Save. The price table shows above the Add to cart button on product pages, and the cart upsell below your items on the cart page.',
@@ -141,11 +141,11 @@ const blockSettings: { title: string; text: ReactNode }[] = [
   },
   {
     title: 'Accent colour & corner radius',
-    text: 'One colour drives the highlighted row, the Best value badge and the countdown, so the block picks up your brand without any CSS. Corner radius runs from 0 to 24px — square it off or round it to match your buttons.',
+    text: 'One colour drives the highlighted row, the Best value badge and the countdown, so the block picks up your brand without any CSS. Corner radius runs from 0 to 24px — square it off or round it to match your buttons. These are settings on the Tierly blocks; the app embed uses the default accent and corner radius.',
   },
   {
     title: 'Clickable tiers',
-    text: 'On by default: clicking a tier sets the quantity field to that tier minimum, so a shopper reaches the saving in one tap. Turn it off if your theme uses an unusual quantity input. It applies to the price table, whether it comes from the app embed or the block — the cart upsell has no equivalent.',
+    text: 'On by default: clicking a tier sets the quantity field to that tier minimum, so a shopper reaches the saving in one tap. Turn it off if your theme uses an unusual quantity input. It is a setting on the price table block only: the app embed always has clickable tiers, and the cart upsell has no equivalent.',
   },
   {
     title: '“Ends in” countdown',
@@ -163,7 +163,7 @@ const blockSettings: { title: string; text: ReactNode }[] = [
         . Tierly&rsquo;s admin is available in English, 日本語, Français, Deutsch, Español and
         Português (Brasil), set under Settings → Language or following your Shopify Admin, but that
         setting does <strong className="font-semibold text-foreground">not</strong> translate the
-        storefront blocks. They render exactly what you type into these fields.
+        storefront blocks. They render exactly what you type into these fields on the Tierly blocks; the app embed uses the default wording.
       </>
     ),
   },
@@ -222,11 +222,11 @@ const faqs: { q: string; a: ReactNode }[] = [
   },
   {
     q: 'The block is on my product page but shows nothing',
-    a: 'In the theme editor — and only there, never for shoppers — Tierly prints the reason it rendered nothing, so you rarely have to guess. It will tell you that no pricing rules have been published to the store yet, that this product has no rule of its own and no store-wide rule covers it, that the product is excluded from your store-wide rule, that the end date has already passed, or that the tiers cannot be shown in the currency the storefront is currently displaying. The app embed also reports when it could not read the product on the page, when every tier works out at or above the current price, and when the page is neither a product nor a cart page.',
+    a: 'First check Tierly is switched on under App embeds — a block stays hidden while the embed is off, and in the theme editor it says so. Otherwise, in the theme editor — and only there, never for shoppers — Tierly prints the reason it rendered nothing, so you rarely have to guess. It will tell you that no pricing rules have been published to the store yet, that this product has no rule of its own and no store-wide rule covers it, that the product is excluded from your store-wide rule, that the end date has already passed, or that the tiers cannot be shown in the currency the storefront is currently displaying. The app embed also reports when it could not read the product on the page, when every tier works out at or above the current price, and when the page is neither a product nor a cart page.',
   },
   {
     q: 'I cannot find the Tierly price table block in the theme editor',
-    a: 'App blocks only show on Online Store 2.0 themes, and only after the app is installed on the store. If the Apps group is missing when you click Add block, your theme is a vintage 1.0 theme — the app embed works on it and needs no block: switch Tierly on under App embeds.',
+    a: 'The block needs an Online Store 2.0 theme and Tierly switched on under App embeds. Without the block, the embed alone covers every theme.',
   },
   {
     q: 'Some tiers vanish when a shopper switches currency',
@@ -679,7 +679,7 @@ const TierlyDocsPage = () => (
           id="appearance"
           eyebrow="Appearance"
           title="Make it match your theme"
-          lead="The blocks ship deliberately neutral so they inherit your theme rather than fight it. Every visual and textual choice is a theme setting you change in Online Store → Themes → Customize — no code, no support ticket."
+          lead="The blocks ship deliberately neutral so they inherit your theme rather than fight it. Every visual and textual choice is a setting on the Tierly blocks, changed in Online Store → Themes → Customize — no code, no support ticket. Without a block, the app embed uses the default look and wording."
         >
           <div className="grid gap-3 sm:grid-cols-2">
             {blockSettings.map(({ title, text }) => (

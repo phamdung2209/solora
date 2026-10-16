@@ -313,8 +313,8 @@ const homePage = ({ mode, fixed = false }) => {
     body: `<div class="k-cols">
   ${card(`<div class="mx-guide"><div class="mx-ghead">${ring(done)}<div class="mx-gtext"><b>Set up Mixly</b><span>Four quick steps to get your first bundle discounting at checkout.</span></div><div class="mx-gtools"><span>${icons.chevron.replace('<svg', '<svg style="transform:rotate(180deg)"')}</span><span>${icons.x}</span></div></div>
 <div class="mx-segs">${[0, 1, 2, 3].map((index) => `<i${index < done ? ' class="is-done"' : ''}></i>`).join('')}</div>
-<ol class="mx-steps">${step({ id: 'create', label: 'Create your first bundle', meta: '1 bundle created', done: true })}${secondStep}${step({ id: 'theme', label: 'Add Mixly to your product page', meta: 'Block added', done: true })}${step({ id: 'cart', label: 'See it work in a cart', meta: '1 min' })}</ol></div>`, { flush: true, attrs: 'data-guide' })}
-  ${card(`<div class="mx-head mx-wrap"><h2>Bundle status</h2>${rollup}</div><div class="mx-rule" style="margin:0"></div>${alert}<div class="mx-checks">${discountRow}${check('success', 'Block is live on your product page')}${check('success', 'Synced just now')}</div>`, { attrs: 'data-status-card' })}
+<ol class="mx-steps">${step({ id: 'create', label: 'Create your first bundle', meta: '1 bundle created', done: true })}${secondStep}${step({ id: 'theme', label: 'Turn on Mixly in your theme', meta: 'On in your theme', done: true })}${step({ id: 'cart', label: 'See it work in a cart', meta: '1 min' })}</ol></div>`, { flush: true, attrs: 'data-guide' })}
+  ${card(`<div class="mx-head mx-wrap"><h2>Bundle status</h2>${rollup}</div><div class="mx-rule" style="margin:0"></div>${alert}<div class="mx-checks">${discountRow}${check('success', 'Mixly is on in your theme')}${check('success', 'Synced just now')}</div>`, { attrs: 'data-status-card' })}
 </div>`,
     scripts: `<script>
 var go = document.querySelector('[data-go]')

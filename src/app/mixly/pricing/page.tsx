@@ -31,7 +31,7 @@ const plans = [
     features: [
       '1 active bundle',
       'Frequently Bought Together bundles',
-      'Full storefront blocks on product and cart',
+      'Storefront widgets on product and cart',
       'Automatic checkout discounts',
     ],
     featured: false,
@@ -98,7 +98,7 @@ const MixlyPricingPage = () => (
         id="plans"
         eyebrow="Plans"
         title="Free vs Pro"
-        lead="The free plan is a real plan, not a trial — one active Frequently Bought Together bundle runs indefinitely, with the storefront blocks and the automatic checkout discount included."
+        lead="The free plan is a real plan, not a trial — one active Frequently Bought Together bundle runs indefinitely, with the storefront widgets and the automatic checkout discount included."
       >
         <div className="grid gap-4 sm:grid-cols-2">
           {plans.map(({ name, price, cadence, features, featured }) => (

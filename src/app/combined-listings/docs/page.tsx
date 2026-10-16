@@ -279,7 +279,7 @@ const CombinedListingsDocsPage = () => (
           </ol>
 
           <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
-            Turn on the app embed on every theme; on older (vintage) themes that cannot hold app
+            Turn on the app embed on every theme; on older themes that cannot hold app
             blocks it is the only option.
           </p>
 

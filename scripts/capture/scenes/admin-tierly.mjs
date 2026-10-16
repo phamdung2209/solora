@@ -234,7 +234,7 @@ const homeView = `<div data-view="home" hidden>
     ${card(
       `<div class="ty-health">
   ${healthRow(' data-discount-row', `<span data-hicon>${spinner}</span>`, '<span data-htext>Checkout discount connects automatically when you activate an offer</span>')}
-  ${healthRow('', `<span class="is-ok">${icons.success}</span>`, 'Price table added')}
+  ${healthRow('', `<span class="is-ok">${icons.success}</span>`, 'Tierly is on in your theme')}
   ${healthRow(' data-sync-row', `<span data-sicon>${icons.info}</span>`, '<span data-stext>Not synced yet</span>')}
 </div>`,
       { title: `Store health${badge('All good', 'success is-plain')}`, attrs: 'data-health' },

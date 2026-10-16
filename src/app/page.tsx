@@ -28,7 +28,7 @@ const features = [
     icon: CodeOffIcon,
     title: 'No theme code required',
     description:
-      'Configure offers and bundles from a clean admin. Storefront pricing and bundle blocks display through Shopify blocks — nothing to edit in Liquid.',
+      'Configure offers and bundles from a clean admin. Turn the app embed on once and offers, bundles and swatches appear on every theme — nothing to edit in Liquid.',
   },
   {
     icon: LayersIcon,

@@ -16,6 +16,18 @@ engine.registerTag('schema', {
     return ''
   },
 })
+engine.registerTag('style', {
+  parse(_, remainTokens) {
+    this.tokens = []
+    for (let token = remainTokens.shift(); token; token = remainTokens.shift()) {
+      if (token.name === 'endstyle') return
+      this.tokens.push(token)
+    }
+  },
+  render() {
+    return ''
+  },
+})
 engine.registerFilter('money', (cents) => money(Math.round(Number(cents))))
 engine.registerFilter('t', (key) => key)
 engine.registerFilter('asset_url', (name) => `/assets/tierly/${name}`)
@@ -49,14 +61,17 @@ const product = {
 
 const shop = { metafields: { tierly: { rules: { value: rules } } } }
 
-const render = (file, scope, settings = {}) => {
+const unlock = '<style data-tierly-unlock>:root [data-tierly-gate]{display:block}:root [data-tierly-off]{display:none}</style>'
+
+const render = async (file, scope, settings = {}) => {
   const { template, defaults } = block(file)
-  return engine.render(template, {
+  const out = await engine.render(template, {
     shop,
     request: { design_mode: false },
     block: { id: 'AbC123', settings: { ...defaults, ...settings } },
     ...scope,
   })
+  return unlock + out
 }
 
 export const tierlyBlock = (settings) => render('price-table.liquid', { product, cart: { currency: { iso_code: 'USD' } } }, settings)

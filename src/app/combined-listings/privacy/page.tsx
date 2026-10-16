@@ -84,7 +84,7 @@ const CombinedListingsPrivacyPage = () => {
         What the app writes into your store is limited to three metafields in the{' '}
         <code>solora_cl</code> namespace — <code>group</code> and <code>variant_images</code> on the
         products you group or map, and <code>settings</code> on your shop — plus the storefront token
-        above and whichever Combined Listings blocks you turn on in your theme. These metafields are
+        above, the app embed and any blocks you add to your theme. These metafields are
         readable by your storefront, which is how swatches render. They are ordinary metafields: you
         can see, edit, or delete them under Settings → Custom data.
       </p>

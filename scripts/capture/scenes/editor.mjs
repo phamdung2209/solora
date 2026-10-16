@@ -95,7 +95,7 @@ const ring = (done, total) => {
 
 const stepRow = (step) => `<li class="sg-step${step.done ? ' is-done' : ''}${step.help ? ' is-open' : ''}">
   <div class="sg-step-head"><span class="sg-mark">${step.done ? icons.check : ''}</span><span class="sg-step-title">${step.label}</span><span class="sg-meta">${step.meta}</span></div>
-  ${step.help ? `<div class="sg-body"><p>${step.help}</p><div class="sg-actions">${button(step.action, { variant: 'primary', attrs: 'data-open' })}${button('Watch how', { variant: 'plain', icon: 'play' })}</div></div>` : ''}
+  ${step.help ? `<div class="sg-body"><p>${step.help}</p><div class="sg-actions">${step.link ? `<span class="k-muted">${step.alternative}</span>${button(step.link, { variant: 'plain', attrs: 'data-open' })}` : `${button(step.action, { variant: 'primary', attrs: 'data-open' })}${button('Watch how', { variant: 'plain', icon: 'play' })}`}</div></div>` : ''}
 </li>`
 
 const introPage = (scene) => {
@@ -173,20 +173,22 @@ const scenes = [
     reveal: '#mixly-main',
     heading: 'Set up Mixly',
     subtitle: 'Four quick steps to get your first bundle discounting at checkout.',
-    left: 'About 2 min left',
+    left: 'About 1 min left',
     steps: [
       { label: 'Create your first bundle', meta: '1 bundle created', done: true },
       { label: 'Activate it', meta: '1 bundle live', done: true },
       {
-        label: 'Add Mixly to your product page',
-        meta: '1 min',
-        help: 'Bundles only show to shoppers after you add the Mixly block to your product template.',
-        action: 'Open theme editor',
+        label: 'Turn on Mixly in your theme',
+        meta: 'On in your theme',
+        done: true,
+        help: 'One switch shows your bundles on product and cart pages. Mixly finds the right spot in your theme for you.',
+        alternative: 'Want bundles in an exact spot?',
+        link: 'Add the Mixly block too',
       },
       { label: 'See it work in a cart', meta: '1 min' },
     ],
     previews: {
-      off: () => mixlyProduct([], { withBlock: false }),
+      off: () => mixlyProduct([]),
       on: () => mixlyProduct([]),
     },
   },
@@ -226,15 +228,17 @@ const scenes = [
     previewCss: '.pdp{grid-template-columns:104px 1fr;gap:16px}',
     heading: 'Setup guide',
     subtitle: 'A few steps to start selling with volume pricing.',
-    left: 'About 3 min left',
+    left: 'About 2 min left',
     steps: [
       { label: 'Create a volume pricing offer', meta: '1 offer created', done: true },
       { label: 'Activate an offer', meta: '1 offer active', done: true },
       {
-        label: 'Add the price table to your product page',
-        meta: '1 min',
-        help: 'Shoppers only see your quantity breaks once the price table block is on your product template.',
-        action: 'Add it for me',
+        label: 'Turn on Tierly in your theme',
+        meta: 'Tierly turned on',
+        done: true,
+        help: 'Shoppers only see your quantity breaks once Tierly is turned on under App embeds. It works on every theme and places itself on your product and cart pages.',
+        alternative: 'Want the price table in an exact spot?',
+        link: 'Add the Tierly block too',
       },
       { label: 'See it work in a cart', meta: '2 min' },
     ],

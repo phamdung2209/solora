@@ -78,9 +78,9 @@ const MixlyPrivacyPage = () => {
       </p>
       <p>
         Mixly also writes very little into your store. It creates a single automatic discount
-        and one app-owned shop metafield (<code>mixly.bundles</code>) that your theme blocks
+        and one app-owned shop metafield (<code>mixly.bundles</code>) that the Mixly app embed and your theme blocks
         read in order to display bundles — plus whichever Mixly blocks you choose to add to
-        your theme. That metafield is readable by your storefront, which is how the blocks
+        your theme. That metafield is readable by your storefront, which is how the storefront widgets
         render, and holds bundle configuration only. Mixly never creates products, variants,
         or SKUs, and never writes to your product catalog.
       </p>
@@ -191,7 +191,7 @@ const MixlyPrivacyPage = () => {
         Your browser&rsquo;s local storage holds a few dismissal flags, such as whether you
         closed the setup checklist, the what&rsquo;s-new note, the review prompt, or a
         product-change banner. When support chat is enabled, Crisp sets its own cookies. The
-        Mixly storefront blocks set no cookies and no tracking of any kind.
+        Mixly storefront widgets (the app embed and blocks) set no cookies and no tracking of any kind.
       </p>
 
       <h2>9. Changes to this policy</h2>
