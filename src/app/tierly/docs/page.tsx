@@ -102,7 +102,7 @@ const setupPaths = [
     icon: LayersIcon,
     badge: 'Optional',
     title: 'Place an app block yourself',
-    note: 'For an exact spot on an Online Store 2.0 theme. The embed steps aside on any page that has a Tierly block.',
+    note: 'For an exact spot on an Online Store 2.0 theme. Blocks only show while the Tierly embed is on, and the embed steps aside on any page that has one.',
     steps: [
       'In your Shopify admin go to Online Store → Themes → Customize.',
       'Switch the top template selector to Products → Default product.',

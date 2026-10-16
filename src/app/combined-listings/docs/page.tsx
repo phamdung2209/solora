@@ -69,7 +69,7 @@ const setupSteps: ReactNode[] = [
     <strong className="font-semibold text-foreground">App embeds</strong>, switch on Combined
     Listings and save.
   </>,
-  'Optional: add the Combined Listings app block to your product template if you want to choose exactly where the row sits.',
+  'Optional: add the Combined Listings app block to your product template if you want to choose exactly where the row sits. The block only shows while the app embed is on.',
 ]
 
 const firstGroupSteps: ReactNode[] = [
