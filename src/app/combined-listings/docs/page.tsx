@@ -105,7 +105,7 @@ const faqs: { q: string; a: ReactNode }[] = [
   },
   {
     q: 'The row appears but in an odd spot.',
-    a: 'Set Custom mount selector in the app embed, or add the app block to your product template and drag it where you want it.',
+    a: 'Set Product page selector under Design → Placement (advanced) in the app, or add the app block to your product template and drag it where you want it.',
   },
   {
     q: "Stock doesn't show on swatches.",
@@ -303,8 +303,9 @@ const CombinedListingsDocsPage = () => (
 
           <div className="mt-6">
             <Callout title="Swatch row in the wrong place?">
-              In the app embed&rsquo;s settings, enter a CSS selector in{' '}
-              <strong className="font-semibold text-foreground">Custom mount selector</strong>.
+              In the app, open Design and enter a CSS selector in{' '}
+              <strong className="font-semibold text-foreground">Product page selector</strong> under
+              Placement (advanced).
               The row is placed right after the first element that matches.
             </Callout>
           </div>
@@ -441,7 +442,7 @@ const CombinedListingsDocsPage = () => (
             Combined Listings finds the variant picker, gallery and product cards on its own. It
             has a profile for Dawn, places the row under the variant picker on Horizon, and falls
             back to the add-to-cart form on other themes. If the row lands somewhere odd, use{' '}
-            <strong className="font-semibold text-foreground">Custom mount selector</strong> (see
+            <strong className="font-semibold text-foreground">Product page selector</strong> (see
             Setup) or add the app block, or email us with your theme&rsquo;s name.
           </p>
         </Section>

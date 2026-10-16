@@ -93,8 +93,7 @@ const setupPaths = [
     steps: [
       'On your Tierly dashboard, click Turn on Tierly. The theme editor opens on App embeds with Tierly already switched on.',
       'Click Save. The price table shows above the Add to cart button on product pages, and the cart upsell below your items on the cart page.',
-      'Use the Show on product pages and Show on the cart page switches to choose where Tierly appears.',
-      'If it lands in the wrong place, set the Product page and Cart page CSS selectors under Placement — .product-form and .cart__footer are typical.',
+      'If it lands in the wrong place, open Settings → Placement (advanced) in Tierly and set the Product page and Cart page selectors — .product-form and .cart__footer are typical.',
       'To hide Tierly from your store, switch the embed off and save. Pause an offer in Tierly to stop its discount too.',
     ],
   },

@@ -139,8 +139,7 @@ const setupPaths = [
     steps: [
       'On your Mixly home screen, click Turn on in theme editor. The theme editor opens on App embeds with Mixly already switched on.',
       'Click Save. Bundles now show below the Add to cart button on product pages, and below your items on the cart page.',
-      'Use the Show on product pages and Show on the cart page switches to choose where Mixly appears.',
-      'If it lands in the wrong place, put a CSS selector in Product page: CSS selector to insert after (for example .product-form) or the matching Cart page field (for example .cart__footer).',
+      'If it lands in the wrong place, open Settings → Placement (advanced) in Mixly and enter a Product page selector (for example .product-form) or a Cart page selector (for example .cart__footer).',
       'To hide Mixly from your store, switch the embed off and save. Pause a bundle in Mixly to stop its discount too.',
     ],
   },
