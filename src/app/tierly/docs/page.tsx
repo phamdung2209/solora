@@ -45,6 +45,7 @@ const chapters = [
   { id: 'stacking', label: 'Other discounts' },
   { id: 'plans', label: 'Free vs Pro' },
   { id: 'analytics', label: 'Reading your analytics' },
+  { id: 'health', label: 'Health and your data' },
   { id: 'troubleshooting', label: 'Discount not applying?' },
 ]
 
@@ -141,11 +142,11 @@ const blockSettings: { title: string; text: ReactNode }[] = [
   },
   {
     title: 'Accent colour & corner radius',
-    text: 'One colour drives the highlighted row, the Best value badge and the countdown, so the block picks up your brand without any CSS. Corner radius runs from 0 to 24px — square it off or round it to match your buttons. These are settings on the Tierly blocks; the app embed uses the default accent and corner radius.',
+    text: 'One colour drives the highlighted row, the Best value badge and the countdown, so the block picks up your brand without any CSS. Corner radius runs from 0 to 24px — square it off or round it to match your buttons. Set them shop-wide under Settings → Storefront appearance for the app embed; a placed block uses its own.',
   },
   {
     title: 'Clickable tiers',
-    text: 'On by default: clicking a tier sets the quantity field to that tier minimum, so a shopper reaches the saving in one tap. Turn it off if your theme uses an unusual quantity input. It is a setting on the price table block only: the app embed always has clickable tiers, and the cart upsell has no equivalent.',
+    text: 'On by default: clicking a tier sets the quantity field to that tier minimum, so a shopper reaches the saving in one tap. Turn it off if your theme uses an unusual quantity input. Set it shop-wide under Settings → Storefront appearance, or on the price table block; the cart upsell has no equivalent.',
   },
   {
     title: '“Ends in” countdown',
@@ -160,16 +161,20 @@ const blockSettings: { title: string; text: ReactNode }[] = [
         <strong className="font-semibold text-foreground">
           this is also how you translate the storefront
         </strong>
-        . Tierly&rsquo;s admin is available in English, 日本語, Français, Deutsch, Español and
-        Português (Brasil), set under Settings → Language or following your Shopify Admin, but that
-        setting does <strong className="font-semibold text-foreground">not</strong> translate the
-        storefront blocks. They render exactly what you type into these fields on the Tierly blocks; the app embed uses the default wording.
+        . Leave a field blank and Tierly translates it automatically into your storefront&rsquo;s
+        language: English, German, Spanish, French, Japanese, Portuguese (Brazil), Portuguese
+        (Portugal) and Vietnamese ship built in, and any other language shows English. A block
+        field wins, then the text under Settings → Storefront text, then the automatic
+        translation. Anything you type is shown as is, in every language. Tierly&rsquo;s admin
+        language (English, 日本語, Français, Deutsch, Español and Português (Brasil)) is a separate
+        setting and does <strong className="font-semibold text-foreground">not</strong> change the
+        storefront.
       </>
     ),
   },
   {
     title: 'Cart upsell',
-    text: 'The cart block carries its own heading, accent colour and corner radius, plus a Show total savings toggle so the cart can mirror the figure shoppers meet at checkout.',
+    text: 'The cart block carries its own heading, accent colour and corner radius, plus a Show total savings toggle so the cart can mirror the figure shoppers meet at checkout. The toggle is also available shop-wide in Settings → Storefront appearance.',
   },
 ]
 
@@ -261,6 +266,16 @@ const faqs: { q: string; a: ReactNode }[] = [
     q: 'What happens to my discounts if I uninstall the app?',
     a: 'The Shopify Function is removed with the app, so volume discounts stop applying immediately and your products return to their normal prices. Your store data is scheduled for deletion — see the privacy policy.',
   },
+]
+
+const healthChecks = [
+  'The checkout discount is missing, or its rules are too large to publish (broken).',
+  'Offers paused automatically because every product they targeted was removed (broken).',
+  'The checkout discount is switched off.',
+  'Tierly is off under App embeds in your theme.',
+  'Offers target products hidden from the Online Store.',
+  'Offers paused after a plan change.',
+  'The storefront sync is out of date.',
 ]
 
 const combineDefaults: { label: string; state: 'On' | 'Off'; text: string }[] = [
@@ -679,7 +694,7 @@ const TierlyDocsPage = () => (
           id="appearance"
           eyebrow="Appearance"
           title="Make it match your theme"
-          lead="The blocks ship deliberately neutral so they inherit your theme rather than fight it. Every visual and textual choice is a setting on the Tierly blocks, changed in Online Store → Themes → Customize — no code, no support ticket. Without a block, the app embed uses the default look and wording."
+          lead="The blocks ship deliberately neutral so they inherit your theme rather than fight it. Set the look and wording shop-wide in Tierly under Settings → Storefront appearance and Storefront text, or per block in Online Store → Themes → Customize — no code, no support ticket. A block you place keeps its own settings."
         >
           <div className="grid gap-3 sm:grid-cols-2">
             {blockSettings.map(({ title, text }) => (
@@ -870,6 +885,50 @@ const TierlyDocsPage = () => (
               Attribution is recorded when the order comes in and cannot be backfilled — an offer
               you label today will not gain last month&rsquo;s orders.
             </Callout>
+          </div>
+        </Section>
+
+        <Section
+          id="health"
+          eyebrow="Settings"
+          title="Health and your data"
+          lead="One page that lists what is wrong with your setup, and one setting that wipes it clean."
+        >
+          <div className="space-y-4">
+            <Card className="p-6">
+              <h3 className="text-base font-semibold">The Health page</h3>
+              <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                On your dashboard, click{' '}
+                <strong className="font-semibold text-foreground">View details</strong> on the
+                Store health card. Health sorts what it finds into{' '}
+                <strong className="font-semibold text-foreground">Broken</strong> (shoppers are
+                affected now) and{' '}
+                <strong className="font-semibold text-foreground">Needs attention</strong>, and
+                names the offers involved. When all is well it reads{' '}
+                <em>Nothing needs attention</em>.
+              </p>
+              <ul className="mt-5 space-y-2.5 border-t pt-5 text-sm">
+                {healthChecks.map((check) => (
+                  <li key={check} className="flex gap-2.5">
+                    <CheckIcon className="mt-0.5 size-4 shrink-0 text-muted-foreground" />
+                    <span className="text-muted-foreground">{check}</span>
+                  </li>
+                ))}
+              </ul>
+            </Card>
+
+            <Card className="p-6">
+              <h3 className="text-base font-semibold">Remove app data</h3>
+              <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                <strong className="font-semibold text-foreground">Settings → Remove app data</strong>{' '}
+                deletes every offer, setting and statistic Tierly saved for your store, removes its
+                automatic discount from Shopify and clears the pricing data it wrote to your store.
+                Your products and orders stay untouched, and volume pricing stops applying at
+                checkout. Type{' '}
+                <strong className="font-semibold text-foreground">REMOVE</strong> to confirm. It
+                cannot be undone.
+              </p>
+            </Card>
           </div>
         </Section>
 

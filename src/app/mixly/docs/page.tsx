@@ -48,6 +48,7 @@ const chapters = [
   { id: 'stacking', label: 'Other discounts' },
   { id: 'plans', label: 'Free vs Pro' },
   { id: 'analytics', label: 'Reading your analytics' },
+  { id: 'health', label: 'Health and your data' },
   { id: 'troubleshooting', label: 'Discount not applying?' },
 ]
 
@@ -252,6 +253,15 @@ const blockReasons = [
   'Cart is empty. Add a product to preview this.',
   'No live bundle applies to this cart.',
   'Shows on product and cart pages only.',
+]
+
+const healthChecks = [
+  'The checkout discount was deleted in Shopify (broken), is switched off, or could not be verified.',
+  'Shopify rejected the last sync, or Mixly lost access to your store and needs a reinstall (broken).',
+  'The sync is more than a day behind.',
+  'A product used by a bundle was deleted.',
+  'You have more active bundles than the Free plan allows.',
+  'Mixly is off under App embeds in your theme.',
 ]
 
 const stackingSettings: { label: string; state: 'On' | 'Off'; text: string }[] = [
@@ -743,8 +753,13 @@ const MixlyDocsPage = () => (
             <h3 className="text-base font-semibold">Making the block match your theme</h3>
             <div className="mt-1.5 space-y-3 text-sm leading-relaxed text-muted-foreground">
               <p>
-                Every Mixly block carries the same handful of appearance settings in the theme
-                editor: an{' '}
+                Without a block, the app embed is styled from{' '}
+                <strong className="font-semibold text-foreground">
+                  Settings → Storefront appearance
+                </strong>{' '}
+                in Mixly: accent colour, corner radius, and switches for product images and cart
+                progress. It applies shop-wide, and a block you place keeps its own style. Every
+                Mixly block carries the same settings in the theme editor: an{' '}
                 <strong className="font-semibold text-foreground">accent colour</strong>, a{' '}
                 <strong className="font-semibold text-foreground">corner radius</strong> from 0 to
                 24px, and switches for product images and the cart-progress line. Mixly picks a
@@ -762,12 +777,19 @@ const MixlyDocsPage = () => (
                   Text (translate to your language)
                 </strong>{' '}
                 — Total, You save, Add bundle to cart, This item, free, the add-to-cart error
-                message, and the rest. The block renders exactly what you type, so those fields are
-                also how you translate the storefront into your shoppers&rsquo; language.
+                message, and the rest.
               </p>
               <p>
-                These appearance and wording settings live on the block. Without a block, the app
-                embed shows Mixly with the default look and English text.
+                Wording is resolved in this order: the text typed on a placed block, then the text
+                you set shop-wide under{' '}
+                <strong className="font-semibold text-foreground">
+                  Settings → Storefront text
+                </strong>
+                , then Mixly&rsquo;s automatic translation. Leave a field blank and it falls
+                through to the next. The automatic translation follows your storefront&rsquo;s
+                language and ships in English, German, Spanish, French, Japanese, Portuguese
+                (Brazil) and Vietnamese; any other language shows English until you type your own
+                wording, which is shown as is in every language.
               </p>
             </div>
           </Card>
@@ -995,6 +1017,49 @@ const MixlyDocsPage = () => (
               </div>
             </div>
           </Card>
+        </Section>
+
+        <Section
+          id="health"
+          eyebrow="Settings"
+          title="Health and your data"
+          lead="One page that lists what is wrong with your setup, and one setting that wipes it clean."
+        >
+          <div className="space-y-4">
+            <Card className="p-6">
+              <h3 className="text-base font-semibold">The Health page</h3>
+              <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                On your Mixly home screen, click{' '}
+                <strong className="font-semibold text-foreground">View details</strong> on the
+                Bundle status card. Health sorts what it finds into{' '}
+                <strong className="font-semibold text-foreground">Broken</strong> (shoppers are
+                affected now) and{' '}
+                <strong className="font-semibold text-foreground">Needs attention</strong>, each
+                with a button to fix it. When all is well it reads{' '}
+                <em>Nothing needs attention</em>.
+              </p>
+              <ul className="mt-5 space-y-2.5 border-t pt-5 text-sm">
+                {healthChecks.map((check) => (
+                  <li key={check} className="flex gap-2.5">
+                    <CheckIcon className="mt-0.5 size-4 shrink-0 text-muted-foreground" />
+                    <span className="text-muted-foreground">{check}</span>
+                  </li>
+                ))}
+              </ul>
+            </Card>
+
+            <Card className="p-6">
+              <h3 className="text-base font-semibold">Remove app data</h3>
+              <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                <strong className="font-semibold text-foreground">Settings → Remove app data</strong>{' '}
+                deletes every bundle, setting and statistic Mixly saved for your store, plus its
+                checkout discount and the storefront data it published. Your products and orders
+                stay untouched, and your plan and billing are not affected. Type{' '}
+                <strong className="font-semibold text-foreground">REMOVE</strong> to confirm. It
+                cannot be undone.
+              </p>
+            </Card>
+          </div>
         </Section>
 
         <Section
