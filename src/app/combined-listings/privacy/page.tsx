@@ -157,9 +157,7 @@ const CombinedListingsPrivacyPage = () => {
       </p>
       <p>
         The metafields the app wrote stay in your store after an uninstall, because an uninstalled
-        app can no longer reach it. To remove them first, use <strong>Settings → Remove app data</strong>{' '}
-        in the app before uninstalling: it deletes the three metafield definitions and every value
-        they hold, and revokes the storefront token.
+        app can no longer reach it.
       </p>
       <p>
         Database backup snapshots are retained for up to 30 days, so deleted data may remain in a

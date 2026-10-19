@@ -48,7 +48,7 @@ const chapters = [
   { id: 'stacking', label: 'Other discounts' },
   { id: 'plans', label: 'Free vs Pro' },
   { id: 'analytics', label: 'Reading your analytics' },
-  { id: 'health', label: 'Health and your data' },
+  { id: 'health', label: 'Store health' },
   { id: 'troubleshooting', label: 'Discount not applying?' },
 ]
 
@@ -753,13 +753,9 @@ const MixlyDocsPage = () => (
             <h3 className="text-base font-semibold">Making the block match your theme</h3>
             <div className="mt-1.5 space-y-3 text-sm leading-relaxed text-muted-foreground">
               <p>
-                Without a block, the app embed is styled from{' '}
-                <strong className="font-semibold text-foreground">
-                  Settings → Storefront appearance
-                </strong>{' '}
-                in Mixly: accent colour, corner radius, and switches for product images and cart
-                progress. It applies shop-wide, and a block you place keeps its own style. Every
-                Mixly block carries the same settings in the theme editor: an{' '}
+                Look and wording are set on the app blocks in the theme editor. With only the
+                app embed on, the widget uses the default look and texts translated automatically
+                into your store&rsquo;s language. Every Mixly block carries the same settings: an{' '}
                 <strong className="font-semibold text-foreground">accent colour</strong>, a{' '}
                 <strong className="font-semibold text-foreground">corner radius</strong> from 0 to
                 24px, and switches for product images and the cart-progress line. Mixly picks a
@@ -780,16 +776,12 @@ const MixlyDocsPage = () => (
                 message, and the rest.
               </p>
               <p>
-                Wording is resolved in this order: the text typed on a placed block, then the text
-                you set shop-wide under{' '}
-                <strong className="font-semibold text-foreground">
-                  Settings → Storefront text
-                </strong>
-                , then Mixly&rsquo;s automatic translation. Leave a field blank and it falls
-                through to the next. The automatic translation follows your storefront&rsquo;s
+                Leave a text field blank and the block uses Mixly&rsquo;s automatic translation. The
+                automatic translation follows your storefront&rsquo;s
                 language and ships in English, German, Spanish, French, Japanese, Portuguese
                 (Brazil) and Vietnamese; any other language shows English until you type your own
-                wording, which is shown as is in every language.
+                wording, which is shown as is in every language. Theme editor text you enter can be
+                translated with Shopify&rsquo;s Translate &amp; Adapt app, like other theme content.
               </p>
             </div>
           </Card>
@@ -1022,8 +1014,8 @@ const MixlyDocsPage = () => (
         <Section
           id="health"
           eyebrow="Settings"
-          title="Health and your data"
-          lead="One page that lists what is wrong with your setup, and one setting that wipes it clean."
+          title="Store health"
+          lead="One page that lists what is wrong with your setup."
         >
           <div className="space-y-4">
             <Card className="p-6">
@@ -1046,18 +1038,6 @@ const MixlyDocsPage = () => (
                   </li>
                 ))}
               </ul>
-            </Card>
-
-            <Card className="p-6">
-              <h3 className="text-base font-semibold">Remove app data</h3>
-              <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
-                <strong className="font-semibold text-foreground">Settings → Remove app data</strong>{' '}
-                deletes every bundle, setting and statistic Mixly saved for your store, plus its
-                checkout discount and the storefront data it published. Your products and orders
-                stay untouched, and your plan and billing are not affected. Type{' '}
-                <strong className="font-semibold text-foreground">REMOVE</strong> to confirm. It
-                cannot be undone.
-              </p>
             </Card>
           </div>
         </Section>

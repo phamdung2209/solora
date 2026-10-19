@@ -474,16 +474,8 @@ const CombinedListingsDocsPage = () => (
             Uninstalling turns the storefront code off straight away. The swatch data the app
             wrote stays on your products as ordinary metafields in the solora_cl namespace, and
             your shop keeps its solora_cl.settings metafield, which holds the storefront token,
-            because an uninstalled app can no longer reach your store. To leave nothing behind,
-            first open{' '}
-            <strong className="font-semibold text-foreground">
-              Settings → Remove app data
-            </strong>{' '}
-            in the app, type{' '}
-            <strong className="font-semibold text-foreground">REMOVE</strong> and confirm: it
-            deletes every group, rule, variant-image mapping and appearance setting, plus the
-            swatch data on your products and the shop metafield, and revokes the storefront
-            token. Your products, images and variants are not touched.
+            because an uninstalled app can no longer reach your store. Your products, images and
+            variants are not touched.
           </p>
         </Section>
 

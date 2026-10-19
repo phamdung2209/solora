@@ -45,7 +45,7 @@ const chapters = [
   { id: 'stacking', label: 'Other discounts' },
   { id: 'plans', label: 'Free vs Pro' },
   { id: 'analytics', label: 'Reading your analytics' },
-  { id: 'health', label: 'Health and your data' },
+  { id: 'health', label: 'Store health' },
   { id: 'troubleshooting', label: 'Discount not applying?' },
 ]
 
@@ -142,11 +142,11 @@ const blockSettings: { title: string; text: ReactNode }[] = [
   },
   {
     title: 'Accent colour & corner radius',
-    text: 'One colour drives the highlighted row, the Best value badge and the countdown, so the block picks up your brand without any CSS. Corner radius runs from 0 to 24px — square it off or round it to match your buttons. Set them shop-wide under Settings → Storefront appearance for the app embed; a placed block uses its own.',
+    text: 'One colour drives the highlighted row, the Best value badge and the countdown, so the block picks up your brand without any CSS. Corner radius runs from 0 to 24px — square it off or round it to match your buttons. Set them on each block in the theme editor; with only the app embed on, the default look is used.',
   },
   {
     title: 'Clickable tiers',
-    text: 'On by default: clicking a tier sets the quantity field to that tier minimum, so a shopper reaches the saving in one tap. Turn it off if your theme uses an unusual quantity input. Set it shop-wide under Settings → Storefront appearance, or on the price table block; the cart upsell has no equivalent.',
+    text: 'On by default: clicking a tier sets the quantity field to that tier minimum, so a shopper reaches the saving in one tap. Turn it off if your theme uses an unusual quantity input. Set it on the price table block in the theme editor; the cart upsell has no equivalent.',
   },
   {
     title: '“Ends in” countdown',
@@ -163,9 +163,10 @@ const blockSettings: { title: string; text: ReactNode }[] = [
         </strong>
         . Leave a field blank and Tierly translates it automatically into your storefront&rsquo;s
         language: English, German, Spanish, French, Japanese, Portuguese (Brazil), Portuguese
-        (Portugal) and Vietnamese ship built in, and any other language shows English. A block
-        field wins, then the text under Settings → Storefront text, then the automatic
-        translation. Anything you type is shown as is, in every language. Tierly&rsquo;s admin
+        (Portugal) and Vietnamese ship built in, and any other language shows English. With
+        only the app embed on, the automatic translation is used. Anything you type is shown as
+        is, in every language, and the theme editor text you enter can be translated with
+        Shopify&rsquo;s Translate &amp; Adapt app, like other theme content. Tierly&rsquo;s admin
         language (English, 日本語, Français, Deutsch, Español and Português (Brasil)) is a separate
         setting and does <strong className="font-semibold text-foreground">not</strong> change the
         storefront.
@@ -174,7 +175,7 @@ const blockSettings: { title: string; text: ReactNode }[] = [
   },
   {
     title: 'Cart upsell',
-    text: 'The cart block carries its own heading, accent colour and corner radius, plus a Show total savings toggle so the cart can mirror the figure shoppers meet at checkout. The toggle is also available shop-wide in Settings → Storefront appearance.',
+    text: 'The cart block carries its own heading, accent colour and corner radius, plus a Show total savings toggle so the cart can mirror the figure shoppers meet at checkout.',
   },
 ]
 
@@ -694,7 +695,7 @@ const TierlyDocsPage = () => (
           id="appearance"
           eyebrow="Appearance"
           title="Make it match your theme"
-          lead="The blocks ship deliberately neutral so they inherit your theme rather than fight it. Set the look and wording shop-wide in Tierly under Settings → Storefront appearance and Storefront text, or per block in Online Store → Themes → Customize — no code, no support ticket. A block you place keeps its own settings."
+          lead="The blocks ship deliberately neutral so they inherit your theme rather than fight it. Set the look and wording on each block in Online Store → Themes → Customize — no code, no support ticket. With only the app embed on, the widget uses the default look and texts translated automatically into your store&rsquo;s language."
         >
           <div className="grid gap-3 sm:grid-cols-2">
             {blockSettings.map(({ title, text }) => (
@@ -891,8 +892,8 @@ const TierlyDocsPage = () => (
         <Section
           id="health"
           eyebrow="Settings"
-          title="Health and your data"
-          lead="One page that lists what is wrong with your setup, and one setting that wipes it clean."
+          title="Store health"
+          lead="One page that lists what is wrong with your setup."
         >
           <div className="space-y-4">
             <Card className="p-6">
@@ -915,19 +916,6 @@ const TierlyDocsPage = () => (
                   </li>
                 ))}
               </ul>
-            </Card>
-
-            <Card className="p-6">
-              <h3 className="text-base font-semibold">Remove app data</h3>
-              <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
-                <strong className="font-semibold text-foreground">Settings → Remove app data</strong>{' '}
-                deletes every offer, setting and statistic Tierly saved for your store, removes its
-                automatic discount from Shopify and clears the pricing data it wrote to your store.
-                Your products and orders stay untouched, and volume pricing stops applying at
-                checkout. Type{' '}
-                <strong className="font-semibold text-foreground">REMOVE</strong> to confirm. It
-                cannot be undone.
-              </p>
             </Card>
           </div>
         </Section>
