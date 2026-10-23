@@ -28,8 +28,9 @@ const installCursor = ({ svg, x, y, down }) => {
 }
 
 export class Recorder {
-  constructor(page) {
+  constructor(page, { omitBackground = false } = {}) {
     this.page = page
+    this.omitBackground = omitBackground
     this.frames = []
     this.pos = { x: -40, y: -40 }
     this.down = false
@@ -50,14 +51,14 @@ export class Recorder {
 
   async snap(delay = FRAME_MS) {
     await this.drawCursor()
-    const png = await this.page.screenshot({ type: 'png', animations: 'allow', caret: 'hide' })
+    const png = await this.page.screenshot({ type: 'png', animations: 'allow', caret: 'hide', omitBackground: this.omitBackground })
     const last = this.frames.at(-1)
     if (last && last.png.equals(png)) last.delay += delay
     else this.frames.push({ png, delay })
   }
 
   async still() {
-    this.posterPng = await this.page.screenshot({ type: 'png', animations: 'disabled', caret: 'hide', style: '#__cursor{display:none}' })
+    this.posterPng = await this.page.screenshot({ type: 'png', animations: 'disabled', caret: 'hide', style: '#__cursor{display:none}', omitBackground: this.omitBackground })
   }
 
   async hold(ms) {
@@ -177,11 +178,11 @@ export class Recorder {
     }
   }
 
-  async encode(out, { maxBytes = 450_000, width = 960, poster = this.frames.length - 1, stillOut, maxStill = 120_000 }) {
+  async encode(out, { maxBytes = 450_000, width = 960, poster = this.frames.length - 1, stillOut, maxStill = 120_000, quality: top = 88, stillWidth, stillLossless = false }) {
     const delay = this.frames.map((frame) => Math.round(frame.delay))
     const frames = await Promise.all(this.frames.map((frame) => sharp(frame.png).resize(width).png().toBuffer()))
     let bytes
-    let quality = 88
+    let quality = top
     for (; quality >= 72; quality -= 4) {
       const buffer = await sharp(frames, { join: { animated: true } })
         .webp({ quality, effort: 4, loop: 0, delay })
@@ -192,10 +193,16 @@ export class Recorder {
     if (bytes.length > maxBytes) throw new Error(`${out} is ${bytes.length} bytes, over the ${maxBytes} budget even at quality 72; cut full-frame transitions`)
     let still
     let stillQuality = 86
-    for (; stillQuality >= 40; stillQuality -= 6) {
-      still = await sharp(this.posterPng ?? this.frames[poster].png).webp({ quality: stillQuality, effort: 6, smartSubsample: true }).toBuffer()
-      if (still.length <= maxStill) break
-    }
+    const source = this.posterPng ?? this.frames[poster].png
+    const image = stillWidth ? await sharp(source).resize(stillWidth).png().toBuffer() : source
+    if (stillLossless) {
+      still = await sharp(image).webp({ lossless: true, effort: 6 }).toBuffer()
+      stillQuality = 'lossless'
+    } else
+      for (; stillQuality >= 40; stillQuality -= 6) {
+        still = await sharp(image).webp({ quality: stillQuality, effort: 6, smartSubsample: true }).toBuffer()
+        if (still.length <= maxStill) break
+      }
     await writeFile(out, bytes)
     await writeFile(stillOut, still)
     return { frames: this.frames.length, bytes: bytes.length, quality, stillBytes: still.length, stillQuality }

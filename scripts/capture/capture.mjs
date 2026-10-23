@@ -10,6 +10,7 @@ import { openScene } from './lib/stage.mjs'
 import { combinedListingsAdminScenes } from './scenes/admin-combined-listings.mjs'
 import { mixlyAdminScenes } from './scenes/admin-mixly.mjs'
 import { tierlyAdminScenes } from './scenes/admin-tierly.mjs'
+import { artScenes } from './scenes/art.mjs'
 import { combinedListingsScenes } from './scenes/combined-listings.mjs'
 import { editorScenes } from './scenes/editor.mjs'
 import { mixlyScenes } from './scenes/mixly.mjs'
@@ -23,6 +24,7 @@ const scenes = [
   ...tierlyAdminScenes,
   ...tierlyScenes,
   ...editorScenes,
+  ...artScenes,
 ]
 
 const filters = process.argv.slice(2)
@@ -30,22 +32,30 @@ const selected = scenes.filter(({ app, name }) => !filters.length || filters.som
 
 if (!filters.length) await renderIcon()
 
-const browser = await chromium.launch()
+const browsers = new Map()
+const browserFor = (scene) => {
+  const key = JSON.stringify(scene.launch ?? {})
+  if (!browsers.has(key)) browsers.set(key, chromium.launch(scene.launch))
+  return browsers.get(key)
+}
+
 try {
   for (const scene of selected) {
-    const { context, page, state } = await openScene(browser, scene)
-    const rec = new Recorder(page)
+    const { context, page, state } = await openScene(await browserFor(scene), scene)
+    const rec = new Recorder(page, scene.recorder)
     await scene.play(rec, page, state)
     if (!rec.posterPng && scene.poster === undefined) await rec.still()
-    const dir = path.join(SITE_DIR, 'public', 'guides', scene.app)
+    const dir = scene.dir ?? path.join(SITE_DIR, 'public', 'guides', scene.app)
+    const file = scene.file ?? scene.name
     await mkdir(dir, { recursive: true })
-    const result = await rec.encode(path.join(dir, `${scene.name}.webp`), {
-      stillOut: path.join(dir, `${scene.name}-still.webp`),
+    const result = await rec.encode(path.join(dir, `${file}.webp`), {
+      stillOut: path.join(dir, `${file}-still.webp`),
       poster: scene.poster ?? 0,
+      ...scene.encode,
     })
     console.log(`${scene.app}/${scene.name}`, result)
     await context.close()
   }
 } finally {
-  await browser.close()
+  for (const browser of browsers.values()) await (await browser).close()
 }
