@@ -69,10 +69,10 @@ const TierlyTermsPage = () => {
 
       <h2>5. Feature requests</h2>
       <p>
-        Content you submit to the Feature Requests board inside the app may be published to
-        other Tierly merchants alongside your store name, so do not submit anything
-        confidential. We may act on, decline, or ignore any request, and nothing on the board
-        is a commitment to build a feature.
+        Content you submit to the Feature Requests board inside the app, comments
+        included, may be published to other Tierly merchants alongside your store name,
+        so do not submit anything confidential. We may act on, decline, or ignore any
+        request, and nothing on the board is a commitment to build a feature.
       </p>
 
       <h2>6. Acceptable use</h2>

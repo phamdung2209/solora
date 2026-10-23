@@ -140,10 +140,11 @@ const TierlyPrivacyPage = () => {
       </p>
       <p>
         <strong>When Shopify sends <code>shop/redact</code></strong> — normally about 48
-        hours after uninstall — everything belonging to your store is erased from our live
-        database in a single transaction: offers, pricing configuration, daily statistics,
-        per-offer statistics, feature requests and votes, settings, webhook records, our
-        internal support-action log, sessions, and the store record itself.
+        hours after uninstall — everything belonging to your store is erased from our
+        live database in a single transaction: offers, pricing configuration, daily
+        statistics, per-offer statistics, feature requests, comments and votes,
+        settings, webhook records, our internal support-action log, sessions, and the
+        store record itself.
       </p>
       <p>
         <strong>Backups.</strong> Dated database snapshots are retained for up to 30 days, so

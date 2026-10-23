@@ -66,11 +66,11 @@ const MixlyTermsPage = () => {
 
       <h2>5. Feature requests</h2>
       <p>
-        Content you submit to the Feature Requests board inside the app may be published to
-        other Mixly merchants alongside your store name, so do not submit anything
-        confidential. We review submissions and may edit, decline, or remove them. Posting a
-        request does not obligate us to build it, and you grant us the right to implement it
-        without compensation.
+        Content you submit to the Feature Requests board inside the app, comments
+        included, may be published to other Mixly merchants alongside your store name,
+        so do not submit anything confidential. We review submissions and may edit,
+        decline, or remove them. Posting a request does not obligate us to build it, and
+        you grant us the right to implement it without compensation.
       </p>
 
       <h2>6. Acceptable use</h2>

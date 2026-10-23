@@ -62,8 +62,9 @@ const MixlyPrivacyPage = () => {
         </li>
         <li>
           <strong>Feature requests</strong> — if you post to the Feature Requests board
-          inside the app, we store the title and description you write and a record of which
-          stores voted. Requests we approve are shown to other Mixly merchants{' '}
+          inside the app, we store the title and description you write, any comments you
+          add, and a record of which stores voted. Requests and comments we approve are
+          shown to other Mixly merchants{' '}
           <strong>with your store name attached</strong>, so please do not post anything
           confidential.
         </li>
@@ -163,8 +164,9 @@ const MixlyPrivacyPage = () => {
         When Shopify sends the <code>shop/redact</code> request that follows an uninstall —
         or when you ask us to delete sooner — we erase your store&rsquo;s record in a single
         transaction, together with your bundles, your bundle configuration and stacking
-        settings, your bundle statistics, your feature requests and votes, your Shopify
-        sessions, our webhook de-duplication records, and our internal support-action log.
+        settings, your bundle statistics, your feature requests, comments and votes, your
+        Shopify sessions, our webhook de-duplication records, and our internal
+        support-action log.
       </p>
       <p>
         Database backup snapshots are retained for up to 30 days, so deleted data may remain
