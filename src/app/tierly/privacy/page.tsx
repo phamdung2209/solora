@@ -162,6 +162,10 @@ const TierlyPrivacyPage = () => {
         to store data to authorized operators, and every support action an operator takes
         against a store is written to an audit log.
       </p>
+      <p>
+        Our support team may open your Tierly app on your behalf to help you, and every change
+        made that way is logged.
+      </p>
 
       <h2>8. Cookies</h2>
       <p>
