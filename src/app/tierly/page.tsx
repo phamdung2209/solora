@@ -97,6 +97,17 @@ const TierlyPage = () => (
             >
               Install on Shopify
             </a>
+            <span className="text-sm text-muted-foreground">
+              Featured on{' '}
+              <a
+                href="https://keaz.ai"
+                target="_blank"
+                rel="noopener"
+                className="font-medium text-foreground underline-offset-4 hover:underline"
+              >
+                Keaz AI
+              </a>
+            </span>
           </div>
         </div>
 
