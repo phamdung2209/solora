@@ -4,8 +4,10 @@ import Link from 'next/link'
 
 import { Figure } from '@/components/figure'
 import { ArrowRightIcon, CheckIcon, LayersIcon, LifeBuoyIcon, ShieldIcon } from '@/components/icons'
+import { buttonVariants } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { siteConfig } from '@/lib/site'
+import { cn } from '@/lib/utils'
 
 export const metadata: Metadata = {
   title: 'Combined Listings',
@@ -85,6 +87,17 @@ const CombinedListingsPage = () => (
           <p className="mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground">
             Colour swatches that link separate products into one listing.
           </p>
+
+          <div className="mt-7 flex flex-wrap items-center gap-3">
+            <a
+              href="https://apps.shopify.com/solora-combined-listings"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(buttonVariants({ variant: 'default', size: 'lg' }))}
+            >
+              Install on Shopify
+            </a>
+          </div>
         </div>
 
         <Figure

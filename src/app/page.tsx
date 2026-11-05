@@ -94,11 +94,16 @@ const apps = [
     tagline: 'Colour swatches that link separate products into one listing.',
     mark: '◇',
     icon: '/solora-combined-listings.png',
-    status: 'soon',
+    status: 'live',
     pricing: 'Free: 10 groups · paid plans from $9.99/mo',
     description:
       "Link separate products into one combined listing with colour and image swatches on product, collection and search pages — without changing your products' titles, variants, images or prices.",
-    links: [],
+    links: [
+      { href: 'https://apps.shopify.com/solora-combined-listings', label: 'Install on Shopify' },
+      { href: '/combined-listings/docs', label: 'Documentation' },
+      { href: '/combined-listings/privacy', label: 'Privacy' },
+      { href: '/combined-listings/terms', label: 'Terms' },
+    ],
   },
   {
     name: 'FeedGuard',
