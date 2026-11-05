@@ -829,8 +829,9 @@ const TierlyDocsPage = () => (
               running, pauses the rest, and the dashboard tells you which ones. An offer using a
               Pro-only trait — a schedule, or variant-level targeting — is never the one kept, and
               its dates are preserved rather than stripped, so a Black Friday ladder does not come
-              back running all year round. If every active offer uses a Pro trait, they all pause
-              until you upgrade or edit one.
+              back running all year round. If every active offer uses a Pro trait, they all pause.
+              Upgrading doesn&rsquo;t switch paused offers back on: turn on the ones you want from
+              Quantity breaks.
             </Callout>
           </div>
         </Section>

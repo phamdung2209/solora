@@ -952,7 +952,7 @@ const MixlyDocsPage = () => (
               Free runs one active Frequently Bought Together bundle without a schedule. Move back to Free and Mixly pauses every
               Build Your Own, BOGO and scheduled bundle, keeps your most recently edited other bundle running, and
               names on your home screen which ones it paused. Those bundles stay paused while the store is on Free, even after a reinstall. Nothing is removed.
-              Bundles Mixly paused switch back on by themselves when you return to Pro; ones you paused yourself stay paused. Shopify handles the billing throughout: you approve the charge
+              Returning to Pro doesn&rsquo;t switch them back on: turn on the ones you want from Product bundles. Shopify handles the billing throughout: you approve the charge
               in your admin and it lands on your regular Shopify bill, so Mixly never sees your card
               details. The price is flat, with no usage fees and no revenue share.
             </Callout>

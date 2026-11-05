@@ -462,7 +462,7 @@ const CombinedListingsDocsPage = () => (
 
           <div className="mt-6">
             <Callout title="Changing plans never deletes anything">
-              A plan&rsquo;s limit caps how many groups are live. Move to a plan with a lower limit and your most recently edited groups stay live up to it (10 on Free); the rest are paused and their swatches are hidden. When you upgrade, groups the app paused switch back on as far as the new limit allows; groups you paused yourself stay paused. Paused groups stay editable.
+              A plan&rsquo;s limit caps how many groups are live. Move to a plan with a lower limit and your most recently edited groups stay live up to it (10 on Free); the rest are paused and their swatches are hidden. Upgrading doesn&rsquo;t switch paused groups back on: resume the ones you want from Product groups, up to your new limit. Paused groups stay editable.
             </Callout>
           </div>
         </Section>
