@@ -139,7 +139,7 @@ const setupPaths = [
     note: 'One switch, every theme — Dawn, Horizon, older themes and heavily customised builds alike.',
     steps: [
       'On your Mixly home screen, click Turn on in theme editor. The theme editor opens on App embeds with Mixly already switched on.',
-      'Click Save. Bundles now show below the Add to cart button on product pages, and below your items on the cart page.',
+      'Click Save. Bundles now show right after the Add to cart form on product pages, and after the cart form on the cart page (not in a header, cart drawer or cart notification pop-up).',
       'If it lands in the wrong place, open Settings → Placement (advanced) in Mixly and enter a Product page selector (for example .product-form) or a Cart page selector (for example .cart__footer).',
       'To hide Mixly from your store, switch the embed off and save. Pause a bundle in Mixly to stop its discount too.',
     ],
@@ -199,7 +199,7 @@ const firstBundleCards: { title: string; body: ReactNode; rules?: string[]; foot
     ),
     rules: productRules,
     footer:
-      'If one of these products is later deleted from your store, Mixly flags it on your home screen and names both the bundle and the missing product. A bundle that can still discount something keeps running with fewer products; one that cannot is paused rather than left to fail quietly at checkout.',
+      'If one of these products is later deleted from your store, Mixly flags it on your home screen and names both the bundle and the missing product. A Build Your Own bundle keeps running with fewer products while at least one is left; Frequently Bought Together and BOGO bundles are paused rather than left to fail quietly at checkout.',
   },
   {
     title: '4. Set the discount, then watch the preview',
@@ -220,7 +220,7 @@ const storefrontSpots: { icon: typeof LayersIcon; title: string; text: ReactNode
   {
     icon: LayersIcon,
     title: 'Product page',
-    text: 'The bundle offer block lists every product in the bundle, badges the one being viewed as This item, and shows the total next to what the shopper saves. One button adds the whole bundle to the cart. On a Build Your Own bundle it also counts how many more products are needed to unlock the offer.',
+    text: 'The bundle offer block lists every product in the bundle, badges the one being viewed as This item, and shows the total next to what the shopper saves. On Frequently Bought Together and BOGO bundles one button adds the whole bundle to the cart. A Build Your Own bundle has an Add button on each product card, counts how many more products are needed to unlock the offer, and shows a Go to cart button once it is unlocked.',
   },
   {
     icon: CartIcon,
@@ -256,9 +256,9 @@ const blockReasons = [
 ]
 
 const healthChecks = [
-  'The checkout discount was deleted in Shopify (broken), is switched off, or could not be verified.',
+  'The checkout discount was deleted in Shopify (broken), or is switched off or could not be verified (needs attention).',
   'Shopify rejected the last sync, or Mixly lost access to your store and needs a reinstall (broken).',
-  'The sync is more than a day behind.',
+  'The sync is behind: a bundle was changed after the last sync.',
   'A product used by a bundle was deleted.',
   'You have more active bundles than the Free plan allows.',
   'Mixly is off under App embeds in your theme.',
@@ -325,15 +325,15 @@ const faqs: { q: string; a: ReactNode }[] = [
   },
   {
     q: 'My home screen says the checkout discount is pending, turned off, or gone',
-    a: 'Mixly creates one automatic discount in Shopify the first time you activate a bundle, and every bundle you run flows through that single discount. If it is deleted or switched off in Shopify → Discounts, every bundle stops discounting at once. The Bundle status panel on the home screen flags it, and Reconnect discount recreates it in one click.',
+    a: 'Mixly creates one automatic discount in Shopify the first time Mixly syncs your bundles to Shopify, which happens whenever you save, pause, delete or reorder a bundle, and every bundle you run flows through that single discount. If it is deleted or switched off in Shopify → Discounts, every bundle stops discounting at once. The Bundle status panel on the home screen flags it, and Reconnect discount recreates it in one click. While a bundle is active, Mixly also recreates a deleted discount on its own.',
   },
   {
     q: 'I do not see the Order column on my bundles list',
-    a: 'It only appears when two or more active bundles cover the same product or variant. With no overlap, order could not change what a shopper gets, so Mixly leaves the column out rather than asking you to rank things that never compete.',
+    a: 'It only appears when two or more live bundles (switched on and inside their schedule) cover the same product or variant. With no overlap, order could not change what a shopper gets, so Mixly leaves the column out rather than asking you to rank things that never compete.',
   },
   {
     q: 'I deleted a product that was in a bundle',
-    a: 'Mixly notices and tells you on the home screen, naming the bundle and the missing product. If the bundle can still discount something without it, it keeps running with fewer products. If it cannot — a Frequently Bought Together bundle that lost one of its required products, for instance — Mixly pauses it rather than letting it silently fail. Edit the bundle, swap in another product, then reactivate.',
+    a: 'Mixly notices and tells you on the home screen, naming the bundle and the missing product. A Build Your Own bundle keeps running with fewer products while at least one is left. A Frequently Bought Together or BOGO bundle that lost any product is paused by Mixly rather than left to fail silently. Edit the bundle, swap in another product, then reactivate.',
   },
   {
     q: 'My theme uses a cart drawer instead of a cart page',
@@ -344,7 +344,7 @@ const faqs: { q: string; a: ReactNode }[] = [
     a: (
       <>
         The Shopify Function is removed with the app, so bundle discounts stop applying immediately
-        and the storefront widgets stop rendering. Your store data is queued for deletion — see the{' '}
+        and the storefront widgets stop rendering. Your bundles, settings and stats are kept, and everything is deleted when Shopify sends its store-erasure request after the uninstall — see the{' '}
         <Link href="/mixly/privacy" className="font-medium text-foreground underline">
           privacy policy
         </Link>{' '}
@@ -501,13 +501,13 @@ const MixlyDocsPage = () => (
               in the Mixly admin. Nothing behaves differently — only the wording changes.
             </p>
             <div className="mt-5 grid gap-1 border-b pb-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground sm:grid-cols-2">
-              <span>Mixly admin</span>
+              <span>Mixly admin</span>{' '}
               <span>Theme editor</span>
             </div>
             <ul className="divide-y text-sm">
               {typeNames.map(({ admin, editor }) => (
                 <li key={admin} className="grid gap-1 py-2.5 sm:grid-cols-2">
-                  <span className="font-medium text-foreground">{admin}</span>
+                  <span className="font-medium text-foreground">{admin}</span>{' '}
                   <span className="text-muted-foreground">{editor}</span>
                 </li>
               ))}
@@ -517,8 +517,8 @@ const MixlyDocsPage = () => (
               <strong className="font-semibold text-foreground">Bundle type to show</strong>{' '}
               dropdown uses those storefront names. Leave it on{' '}
               <strong className="font-semibold text-foreground">Any (first match)</strong> and no
-              filter is applied — the block shows the first live bundle that covers the product,
-              preferring a Frequently bought together bundle and falling back to any other type.
+              filter is applied — the block shows the first bundle that can show for the product
+              following the Order column on your bundles list (newest first when tied), whatever its type.
               Pick a specific type and the block will only ever render that one.
             </p>
           </div>
@@ -545,7 +545,7 @@ const MixlyDocsPage = () => (
               <em>the bundle&rsquo;s total price, not a per-item price</em> — and it is still the
               single most common misreading. If your three products normally come to $72 and you
               want the bundle at $59, enter{' '}
-              <strong className="font-semibold text-foreground">59</strong>, not 19.67.
+              <strong className="font-semibold text-foreground">59</strong>, not 19.67. On a BOGO only the Get items are priced, and on Build Your Own and BOGO the price applies once per full group in the cart.
             </Callout>
 
             <Callout title="On a BOGO, 100% off means the Get item is free">
@@ -647,7 +647,7 @@ const MixlyDocsPage = () => (
           id="first-bundle"
           eyebrow="Bundles"
           title="Create your first bundle"
-          lead="Open Mixly from your Shopify admin and click Create bundle. Four decisions, and the preview shows you the result of all of them before you go live."
+          lead="Open Mixly from your Shopify admin and click Create bundle. Five steps — Type, Products, Discount, Details and Schedule — and the preview shows you the result of all of them before you go live."
         >
           <div className="space-y-4">
             {firstBundleCards.map(({ title, body, rules, footer }) => (
@@ -765,7 +765,7 @@ const MixlyDocsPage = () => (
               <p>
                 Headings are per type — one for Frequently bought together, one for Mix &amp; match,
                 one for Buy X get Y — so the wording can suit the offer rather than being one
-                compromise across all three.
+                compromise across all three. A heading typed on a bundle in Mixly replaces the theme heading for that bundle.
               </p>
               <p>
                 Everything else the block says is a text field too, gathered under{' '}
@@ -924,7 +924,7 @@ const MixlyDocsPage = () => (
             {plans.map(({ name, price, cadence, features, featured }) => (
               <Card key={name} className={cn('p-6', featured && 'ring-1 ring-ring')}>
                 <div className="flex items-center justify-between gap-3">
-                  <h3 className="text-base font-semibold">{name}</h3>
+                  <h3 className="text-base font-semibold">{name}</h3>{' '}
                   {featured && (
                     <span className="rounded-full bg-primary px-2.5 py-0.5 text-[0.7rem] font-semibold uppercase tracking-wide text-primary-foreground">
                       Most complete
@@ -932,7 +932,7 @@ const MixlyDocsPage = () => (
                   )}
                 </div>
                 <p className="mt-3 flex items-baseline gap-1.5">
-                  <span className="text-2xl font-bold tracking-tight">{price}</span>
+                  <span className="text-2xl font-bold tracking-tight">{price}</span>{' '}
                   <span className="text-sm text-muted-foreground">{cadence}</span>
                 </p>
                 <ul className="mt-5 space-y-2.5 border-t pt-5 text-sm">
@@ -949,10 +949,10 @@ const MixlyDocsPage = () => (
 
           <div className="mt-4">
             <Callout title="Downgrading never deletes anything">
-              Free runs one active bundle. Move back to it and Mixly keeps one running, pauses the
-              rest, and names on your home screen exactly which ones it paused. Nothing is removed —
-              the setup and the statistics stay put, and switching a bundle back on is one click
-              once you return to Pro. Shopify handles the billing throughout: you approve the charge
+              Free runs one active Frequently Bought Together bundle without a schedule. Move back to Free and Mixly pauses every
+              Build Your Own, BOGO and scheduled bundle, keeps your most recently edited other bundle running, and
+              names on your home screen which ones it paused. Those bundles stay paused while the store is on Free, even after a reinstall. Nothing is removed.
+              Bundles Mixly paused switch back on by themselves when you return to Pro; ones you paused yourself stay paused. Shopify handles the billing throughout: you approve the charge
               in your admin and it lands on your regular Shopify bill, so Mixly never sees your card
               details. The price is flat, with no usage fees and no revenue share.
             </Callout>

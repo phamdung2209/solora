@@ -82,7 +82,7 @@ const firstGroupSteps: ReactNode[] = [
     <strong className="font-semibold text-foreground">Option name</strong> starts as Color.
   </>,
   <>
-    Under <strong className="font-semibold text-foreground">Members</strong>, click{' '}
+    In the <strong className="font-semibold text-foreground">Products</strong> step, click{' '}
     <strong className="font-semibold text-foreground">Add products</strong> and pick the products
     that belong together.
   </>,
@@ -94,18 +94,18 @@ const firstGroupSteps: ReactNode[] = [
   </>,
   <>
     Click <strong className="font-semibold text-foreground">Save</strong>. The swatch data is
-    written to each member product within seconds.
+    written to each member product within seconds. If that fails, the group shows Sync failed and is retried within about an hour.
   </>,
 ]
 
 const faqs: { q: string; a: ReactNode }[] = [
   {
     q: 'I created a group but see no swatches.',
-    a: 'Check that the Combined Listings app embed is switched on in your live theme (Home → setup checklist shows its state), then reload the product page.',
+    a: 'Check that the Combined Listings app embed is switched on in your live theme (the setup checklist on Home shows this unless you have hidden it), then reload the product page.',
   },
   {
     q: 'The row appears but in an odd spot.',
-    a: 'Set Product page selector under Design → Placement (advanced) in the app, or add the app block to your product template and drag it where you want it.',
+    a: 'Add the app block to your product template and drag it where you want it. If the block is on the page, the Product page selector under Design → Placement (advanced) is ignored; without the block, set that selector instead.',
   },
   {
     q: "Stock doesn't show on swatches.",
@@ -120,7 +120,7 @@ const faqs: { q: string; a: ReactNode }[] = [
   },
   {
     q: 'Swatches disappeared after I filtered or sorted a collection.',
-    a: 'Some themes reload the product grid without a page load. Reload the page to redraw them, and email us with your theme’s name so we can add support.',
+    a: 'Swatches are redrawn automatically when a theme reloads the product grid, but only on card layouts Combined Listings recognises. If they still disappear, reload the page and email us with your theme’s name so we can add support.',
   },
   {
     q: 'How do I get help?',
@@ -231,7 +231,7 @@ const CombinedListingsDocsPage = () => (
               A combined listing is a set of separate products — say a Red tee, a Blue tee and a
               Black tee — that shoppers browse as one. Combined Listings links them with a group:
               each member product gets a swatch, and every product page, collection card and
-              search result in the group shows the whole row. Clicking a swatch opens that
+              search result in the group shows the whole row. Other pages, including the home page, show no swatches, so a featured collection on the home page has none. Clicking a swatch opens that
               colour&rsquo;s own product page.
             </p>
             <p>
@@ -306,7 +306,7 @@ const CombinedListingsDocsPage = () => (
               In the app, open Design and enter a CSS selector in{' '}
               <strong className="font-semibold text-foreground">Product page selector</strong> under
               Placement (advanced).
-              The row is placed right after the first element that matches.
+              The row is placed right after the first element that matches, unless the app block is on the page, in which case the block decides and the selector is ignored.
             </Callout>
           </div>
         </Section>
@@ -346,8 +346,7 @@ const CombinedListingsDocsPage = () => (
             before a separator becomes the group), a Tag prefix such as color:, or a Metafield key
             such as custom.family. Click{' '}
             <strong className="font-semibold text-foreground">Preview rule</strong> to see the
-            groups, conflicts and duplicates before anything is created. A saved rule keeps
-            working: a product you add later joins its group on its own.
+            groups, conflicts and duplicates before anything is created. Title prefix and Tag rules keep working after you save them: a new or edited product that matches joins its group on its own. A rule never creates a new group by itself, and Metafield rules do not pick up later changes.
           </p>
         </Section>
 
@@ -356,7 +355,7 @@ const CombinedListingsDocsPage = () => (
             Import / export moves groups in and out as a CSV file.{' '}
             <strong className="font-semibold text-foreground">Export CSV</strong> gives every
             group&rsquo;s handle, title, option and members, ready to edit and re-import. Imports
-            run in the background; when one finishes you see how many rows were imported and can
+            run in the background; when one finishes you see how many groups were imported and can
             download an error report for the rest.
           </p>
         </Section>
@@ -381,9 +380,9 @@ const CombinedListingsDocsPage = () => (
 
           <div className="mt-6">
             <Callout tone="warn" title="Theme support">
-              Gallery filtering works on Dawn and themes built like it. On Horizon, Shopify&rsquo;s
-              newer default theme, the gallery is a slideshow that already moves the selected
-              variant&rsquo;s image to the front, so Combined Listings leaves it alone.
+              Gallery filtering works on Dawn and themes built like it, wherever Combined Listings
+              recognises the gallery. On a gallery it does not recognise, the theme keeps drawing it
+              as before.
             </Callout>
           </div>
         </Section>
@@ -422,8 +421,8 @@ const CombinedListingsDocsPage = () => (
 
         <Section id="card-per-variant" eyebrow="Collections" title="One card per variant">
           <p className="text-sm leading-relaxed text-muted-foreground">
-            Card per variant shows one collection and search card per value of an option — one
-            card per colour, for example — instead of one card per product. Choose the{' '}
+            Card per variant shows one collection card per value of an option — one
+            card per colour, for example — instead of one card per product. It applies to collection pages only; search results are not split. Choose the{' '}
             <strong className="font-semibold text-foreground">Option to explode</strong> and the{' '}
             <strong className="font-semibold text-foreground">Max cards per product</strong>.
           </p>
@@ -439,7 +438,7 @@ const CombinedListingsDocsPage = () => (
 
         <Section id="themes" eyebrow="Themes" title="Supported themes">
           <p className="text-sm leading-relaxed text-muted-foreground">
-            Combined Listings finds the variant picker, gallery and product cards on its own. It
+            Combined Listings finds the variant picker, gallery and product cards on its own; cards loaded later (filter, sort, load more) get swatches only on card layouts it recognises. It
             has a profile for Dawn, places the row under the variant picker on Horizon, and falls
             back to the add-to-cart form on other themes. If the row lands somewhere odd, use{' '}
             <strong className="font-semibold text-foreground">Product page selector</strong> (see
@@ -450,7 +449,7 @@ const CombinedListingsDocsPage = () => (
         <Section id="plans" eyebrow="Billing" title="Plans">
           <p className="text-sm leading-relaxed text-muted-foreground">
             Every feature is on every plan, including Free. Plans differ only in how many groups
-            you can create: Free 10, Starter 200, Growth 1,000, Pro unlimited.
+            can be live: Free 10, Starter 200, Growth 1,000, Pro unlimited.
           </p>
 
           <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
@@ -463,8 +462,7 @@ const CombinedListingsDocsPage = () => (
 
           <div className="mt-6">
             <Callout title="Changing plans never deletes anything">
-              A plan&rsquo;s limit only stops new groups from being created. Groups you already
-              have keep showing and stay editable.
+              A plan&rsquo;s limit caps how many groups are live. Move to a plan with a lower limit and your most recently edited groups stay live up to it (10 on Free); the rest are paused and their swatches are hidden. When you upgrade, groups the app paused switch back on as far as the new limit allows; groups you paused yourself stay paused. Paused groups stay editable.
             </Callout>
           </div>
         </Section>
@@ -472,9 +470,8 @@ const CombinedListingsDocsPage = () => (
         <Section id="remove" eyebrow="Data" title="Removing the app">
           <p className="text-sm leading-relaxed text-muted-foreground">
             Uninstalling turns the storefront code off straight away. The swatch data the app
-            wrote stays on your products as ordinary metafields in the solora_cl namespace, and
-            your shop keeps its solora_cl.settings metafield, which holds the storefront token,
-            because an uninstalled app can no longer reach your store. Your products, images and
+            wrote stays on your products as ordinary metafields, and a small amount of app
+            data stays on your shop, because an uninstalled app can no longer reach your store. Your products, images and
             variants are not touched.
           </p>
         </Section>
@@ -511,7 +508,7 @@ const CombinedListingsDocsPage = () => (
                 className={cn(buttonVariants({ variant: 'default', size: 'lg' }))}
               >
                 See pricing
-              </Link>
+              </Link>{' '}
               <a
                 href={`mailto:${siteConfig.email}?subject=Combined Listings question`}
                 className={cn(buttonVariants({ variant: 'outline', size: 'lg' }))}

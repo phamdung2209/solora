@@ -81,7 +81,7 @@ const steps = [
   },
   {
     title: 'Shopify applies the discount at checkout',
-    text: 'Tierly runs as a Shopify Function. When the cart quantity reaches a tier, the discount is applied automatically — no codes for the shopper to enter, nothing for you to approve.',
+    text: 'Tierly runs as a Shopify Function. When the quantity of a single item (one variant) in the cart reaches a tier, the discount is applied automatically — no codes for the shopper to enter, nothing for you to approve.',
   },
 ]
 
@@ -175,7 +175,7 @@ const blockSettings: { title: string; text: ReactNode }[] = [
   },
   {
     title: 'Cart upsell',
-    text: 'The cart block carries its own heading, accent colour and corner radius, plus a Show total savings toggle so the cart can mirror the figure shoppers meet at checkout.',
+    text: 'The cart block carries its own heading, accent colour and corner radius, plus a Show total savings toggle that adds a row with the whole cart discount total, including any discounts that do not come from Tierly.',
   },
 ]
 
@@ -195,7 +195,7 @@ const faqs: { q: string; a: ReactNode }[] = [
             <strong className="font-semibold text-foreground">Active</strong>, and if you gave it a
             schedule, today falls inside the start and end dates.
           </li>
-          <li>The cart quantity has actually reached the first tier.</li>
+          <li>That item&rsquo;s own quantity in the cart has reached the first tier. Each variant is counted separately, never added together.</li>
           <li>
             The product is inside the offer target and not in its exclusions. A collection target
             only covers products currently in that collection.
@@ -451,7 +451,7 @@ const TierlyDocsPage = () => (
           id="setup"
           eyebrow="Setup"
           title="Turn it on in your theme"
-          lead="Installing the app is enough for discounts to apply at checkout. Turning Tierly on in your theme is what makes the savings visible on the product page — and that is where the extra units come from. The Finish setup checklist on your dashboard has a “Turn on Tierly” button that opens the theme editor on App embeds, and the Store health card afterwards tells you whether Tierly is on in your published theme."
+          lead="The checkout discount is set up the first time you save or activate an offer, so discounts apply at checkout from then on. Turning Tierly on in your theme is what makes the savings visible on the product page — and that is where the extra units come from. The Setup guide on your dashboard has a “Turn on Tierly” button that opens the theme editor on App embeds, and the Store health card afterwards tells you whether Tierly is on in your published theme."
         >
           <div className="grid gap-4 md:grid-cols-2">
             {setupPaths.map(({ icon: Icon, badge, title, note, steps }) => (
@@ -527,7 +527,7 @@ const TierlyDocsPage = () => (
             <Card className="p-6">
               <h3 className="text-base font-semibold">2. Build the ladder</h3>
               <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
-                Each tier is a minimum quantity plus a discount. Three tiers is the sweet spot —
+                Each tier is a minimum quantity plus a discount. Three to four tiers work best —
                 enough to create a ladder, few enough to read at a glance. Mark one as{' '}
                 <strong className="font-semibold text-foreground">Best value</strong> to anchor
                 the choice.
@@ -545,7 +545,7 @@ const TierlyDocsPage = () => (
             <Card className="p-6">
               <h3 className="text-base font-semibold">3. Activate it</h3>
               <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
-                Save, then set the offer to Active. On Pro you can also give it a start and end
+                A new offer is Active and goes live as soon as you save it. On Free, saving fails with a limit message if you already have an active offer. On Pro you can also give it a start and end
                 date for a seasonal or flash sale — outside that window the offer sits idle
                 without you having to remember to switch it off. Give it an end date and the price
                 table adds an{' '}
@@ -564,7 +564,7 @@ const TierlyDocsPage = () => (
                 4. When two offers cover the same product
               </h3>
               <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
-                Only one ladder ever applies to a product, and it is resolved the same way every
+                Only one ladder applies to each cart line, and it is resolved the same way every
                 time:{' '}
                 <strong className="font-semibold text-foreground">
                   most specific wins — variant, then product, then collection, then all products
@@ -800,7 +800,7 @@ const TierlyDocsPage = () => (
                 className={cn('p-6', featured && 'ring-1 ring-ring')}
               >
                 <div className="flex items-center justify-between gap-3">
-                  <h3 className="text-base font-semibold">{name}</h3>
+                  <h3 className="text-base font-semibold">{name}</h3>{' '}
                   {featured && (
                     <span className="rounded-full bg-primary px-2.5 py-0.5 text-[0.7rem] font-semibold uppercase tracking-wide text-primary-foreground">
                       Most complete
@@ -808,7 +808,7 @@ const TierlyDocsPage = () => (
                   )}
                 </div>
                 <p className="mt-3 flex items-baseline gap-1.5">
-                  <span className="text-2xl font-bold tracking-tight">{price}</span>
+                  <span className="text-2xl font-bold tracking-tight">{price}</span>{' '}
                   <span className="text-sm text-muted-foreground">{cadence}</span>
                 </p>
                 <ul className="mt-5 space-y-2.5 border-t pt-5 text-sm">
