@@ -346,7 +346,7 @@ const CombinedListingsDocsPage = () => (
             before a separator becomes the group), a Tag prefix such as color:, or a Metafield key
             such as custom.family. Click{' '}
             <strong className="font-semibold text-foreground">Preview rule</strong> to see the
-            groups, conflicts and duplicates before anything is created. Title prefix and Tag rules keep working after you save them: a new or edited product that matches joins its group on its own. A rule never creates a new group by itself, and Metafield rules do not pick up later changes.
+            groups, conflicts and duplicates before anything is created. All three rule types keep working after you save them: a new or edited product that matches joins its group on its own. A rule never creates a new group by itself, and a change to a metafield alone may need Run rule now.
           </p>
         </Section>
 
