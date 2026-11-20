@@ -133,13 +133,15 @@ const CombinedListingsPricingPage = () => (
         id="downgrading"
         eyebrow="Switching plans"
         title="Changing plans never deletes anything"
-        lead="A plan's limit only stops new groups from being created."
+        lead="Changing plans never deletes anything."
       >
         <Callout title="What happens when you downgrade or cancel">
           Moving to a lower paid plan takes effect at your next billing cycle. Cancelling moves
-          you to Free straight away and Shopify credits the unused part of the period. Either
-          way, every group you already have keeps showing on your storefront and stays editable;
-          you just can&rsquo;t add new groups until you are under the new limit.
+          you to Free straight away and Shopify credits the unused part of the period. When the
+          new limit is lower than your group count, your most recently edited groups stay live up
+          to that limit (10 on Free) and the rest are paused, with their swatches hidden. Nothing
+          is deleted and paused groups stay editable. Upgrading doesn&rsquo;t turn them back on:
+          you resume the ones you want.
         </Callout>
       </Section>
 

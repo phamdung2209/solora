@@ -122,10 +122,6 @@ const MixlyPrivacyPage = () => {
           storefront domain, and timezone so we can support you in context.
         </li>
         <li>
-          <strong>Sentry</strong> — error monitoring, when configured; reports carry
-          technical context, never customer data.
-        </li>
-        <li>
           <strong>Solora Tierly</strong> — if you also use our Tierly app, Mixly may ask the
           Tierly service whether Tierly is installed on your store, so it can show you the
           right discount-stacking advice. Only your store domain is sent, and both services

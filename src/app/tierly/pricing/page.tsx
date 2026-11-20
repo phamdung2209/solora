@@ -170,8 +170,9 @@ const TierlyPricingPage = () => (
           things are Pro-only — scheduling and variant-level targeting — so if every one of
           your active offers uses one of them, there is no Free-eligible offer to keep and all
           of them pause until you upgrade or edit one. Nothing is deleted either way: your
-          offers, their targeting and your statistics stay put, and resubscribing reactivates
-          what was paused.
+          offers, their targeting and your statistics stay put. When you drop to Free you choose
+          which active offer stays on, and upgrading doesn&rsquo;t switch paused offers back on:
+          you turn on the ones you want.
         </Callout>
         <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
           Analytics is a Pro feature, but the numbers keep accruing on Free — the dashboard is

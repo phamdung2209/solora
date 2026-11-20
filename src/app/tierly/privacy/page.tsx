@@ -100,10 +100,6 @@ const TierlyPrivacyPage = () => {
           <strong>Crisp</strong> — our in-app support chat; receives your store domain, store
           name, owner email, and plan so we can support you in context.
         </li>
-        <li>
-          <strong>Sentry</strong> — error monitoring; reports carry technical context such as
-          your store domain and the action that failed, never customer data.
-        </li>
       </ul>
 
       <h2>5. Protected customer data &amp; GDPR</h2>

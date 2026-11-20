@@ -105,17 +105,6 @@ const apps = [
       { href: '/combined-listings/terms', label: 'Terms' },
     ],
   },
-  {
-    name: 'FeedGuard',
-    tagline: 'Product feed monitor',
-    mark: '🛡',
-    icon: undefined,
-    status: 'soon',
-    pricing: '',
-    description:
-      'Monitors your Google & Meta product feeds and alerts you the moment listings get disapproved — before you lose sales.',
-    links: [],
-  },
 ]
 
 const HomePage = () => {

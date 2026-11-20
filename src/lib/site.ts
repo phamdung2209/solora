@@ -8,14 +8,14 @@ export const siteConfig = {
   url: 'https://solora.dungpv.id.vn',
   email: 'support@dungpv.id.vn',
   description:
-    'Solora builds focused, high-quality apps for Shopify merchants — Tierly for automatic volume pricing, Mixly for product bundles, both applied at checkout.',
+    'Solora builds focused apps for Shopify merchants: Tierly for volume pricing, Mixly for product bundles and Combined Listings for swatches that link products. All three are on the Shopify App Store.',
   lastUpdated: {
-    tierlyPrivacy: 'September 8, 2026',
-    tierlyTerms: 'September 8, 2026',
-    mixlyPrivacy: 'August 30, 2026',
+    tierlyPrivacy: 'November 20, 2026',
+    tierlyTerms: 'November 20, 2026',
+    mixlyPrivacy: 'November 20, 2026',
     mixlyTerms: 'September 7, 2026',
-    combinedListingsPrivacy: 'September 28, 2026',
-    combinedListingsTerms: 'September 28, 2026',
+    combinedListingsPrivacy: 'November 20, 2026',
+    combinedListingsTerms: 'November 20, 2026',
   },
   ogImage: { url: '/og-solora.png', width: 1200, height: 630, alt: 'Solora' },
 } as const

@@ -60,9 +60,10 @@ const CombinedListingsTermsPage = () => {
       <p>
         You can cancel at any time. Cancelling moves your store to the Free plan immediately and
         Shopify credits the unused part of the billing period. Moving to a lower paid plan takes
-        effect at your next billing cycle. On any plan, groups you already have are{' '}
-        <strong>never deleted or switched off</strong>; a plan&rsquo;s limit only stops new groups
-        from being created.
+        effect at your next billing cycle. When a lower plan allows fewer groups, your most
+        recently edited groups stay live up to the new limit (10 on Free) and the rest are{' '}
+        <strong>paused, not deleted</strong>: their swatches are hidden and they stay editable.
+        Upgrading does not switch paused groups back on; you resume the ones you want.
       </p>
 
       <h2>5. Roadmap</h2>

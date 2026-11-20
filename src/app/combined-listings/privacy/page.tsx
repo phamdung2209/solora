@@ -121,10 +121,6 @@ const CombinedListingsPrivacyPage = () => {
           <strong>Upstash</strong> — runs background jobs such as CSV imports, when enabled. An
           import&rsquo;s CSV contents pass through it while the job is queued.
         </li>
-        <li>
-          <strong>Sentry</strong> — error monitoring, when configured. Reports carry technical
-          context and, for some errors, your store domain — never customer data.
-        </li>
       </ul>
 
       <h2>5. Protected customer data &amp; GDPR</h2>

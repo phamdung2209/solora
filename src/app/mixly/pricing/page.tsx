@@ -159,10 +159,11 @@ const MixlyPricingPage = () => (
         lead="Moving back to Free pauses bundles — it does not remove them."
       >
         <Callout title="What happens when you downgrade">
-          Free runs one active bundle. Move back to it and Mixly keeps one running, pauses the
-          rest, and names on your home screen exactly which ones it paused. Nothing is removed —
-          the setup and the statistics stay put, and switching a bundle back on is one click once
-          you return to Pro.
+          Free runs one active Frequently Bought Together bundle without a schedule. When you
+          move back to it you choose which bundle stays on, with the most recently edited
+          eligible one preselected. Build Your Own, BOGO and scheduled bundles pause, and your
+          home screen names exactly which ones. Nothing is removed, and upgrading doesn&rsquo;t
+          switch paused bundles back on: you turn on the ones you want.
         </Callout>
       </Section>
 

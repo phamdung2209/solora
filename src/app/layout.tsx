@@ -28,6 +28,8 @@ export const metadata: Metadata = {
         'BOGO',
         'mix and match',
         'Mixly',
+        'combined listings',
+        'color swatches',
     ],
     authors: [{ name: siteConfig.legalEntity, url: siteConfig.url }],
     creator: siteConfig.legalEntity,

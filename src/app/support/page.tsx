@@ -106,7 +106,7 @@ const SupportPage = () => (
             <div className="min-w-0">
               <h3 className="text-base font-semibold leading-7">Live chat inside the app</h3>
               <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                If Tierly or Mixly is already installed on your store, open the app from your
+                If one of our apps is already installed on your store, open it from your
                 Shopify admin and use the chat bubble in the corner. It reaches us directly and
                 is the fastest way to get an answer.
               </p>
@@ -178,10 +178,10 @@ const SupportPage = () => (
         id="feature-requests"
         eyebrow="Feature requests"
         title="Have an idea for a feature?"
-        lead="Both apps have a way to tell us directly, without emailing support."
+        lead="Every app has a way to tell us directly, without emailing support."
       >
         <Callout title="Use the Feature Requests board in the app">
-          Tierly and Mixly each have a Feature Requests board built into the app itself — open
+          Tierly, Mixly and Combined Listings each have a Feature Requests board built into the app — open
           the app from your Shopify admin, post your idea or vote on someone else&rsquo;s, and
           the ones merchants want most are what we build next.
         </Callout>

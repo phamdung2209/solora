@@ -63,8 +63,9 @@ const TierlyTermsPage = () => {
         <strong>paused, not deleted</strong>. Tierly keeps one active offer running where it
         can — but scheduling and variant-level targeting are Pro features, so if every one of
         your active offers uses them, all of them pause until you upgrade or edit one. Your
-        configuration and your statistics are retained, and resubscribing reactivates what was
-        paused.
+        configuration and your statistics are retained. When you drop to Free you choose which
+        active offer stays on, and upgrading does not switch paused offers back on: you turn
+        on the ones you want.
       </p>
 
       <h2>5. Feature requests</h2>
