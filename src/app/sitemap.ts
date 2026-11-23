@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next'
 
+import { posts } from '@/lib/posts'
 import { siteConfig } from '@/lib/site'
 
 export const dynamic = 'force-static'
@@ -24,6 +25,8 @@ const routes = [
   '/combined-listings/pricing',
   '/combined-listings/privacy',
   '/combined-listings/terms',
+  '/blog',
+  ...posts.map(({ slug }) => `/blog/${slug}`),
 ]
 
 const sitemap = (): MetadataRoute.Sitemap =>

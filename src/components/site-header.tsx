@@ -10,6 +10,7 @@ const navLinks = [
   { href: '/#features', label: 'Why Solora' },
   { href: '/tierly/docs', label: 'Tierly docs' },
   { href: '/mixly/docs', label: 'Mixly docs' },
+  { href: '/blog', label: 'Blog' },
   { href: '/support', label: 'Support' },
 ]
 
