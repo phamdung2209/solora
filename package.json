@@ -15,7 +15,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "geist": "^1.7.2",
-    "next": "^16.4.2",
+    "next": "^16.4.6",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "tailwind-merge": "^3.6.0"
@@ -26,7 +26,7 @@
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "eslint": "^9.39.4",
-    "eslint-config-next": "^16.4.2",
+    "eslint-config-next": "^16.4.6",
     "liquidjs": "^10.29.0",
     "playwright": "1.62.0",
     "sharp": "^0.35.5",
