@@ -30,7 +30,7 @@ const plans = [
     cadence: 'forever',
     features: [
       '1 active bundle',
-      'Frequently Bought Together bundles',
+      'Frequently Bought Together or Buy X Get Y bundles',
       'Storefront widgets on product and cart',
       'Automatic checkout discounts',
     ],
@@ -98,7 +98,7 @@ const MixlyPricingPage = () => (
         id="plans"
         eyebrow="Plans"
         title="Free vs Pro"
-        lead="The free plan is a real plan, not a trial — one active Frequently Bought Together bundle runs indefinitely, with the storefront widgets and the automatic checkout discount included."
+        lead="The free plan is a real plan, not a trial — one active Frequently Bought Together or Buy X Get Y bundle runs indefinitely, with the storefront widgets and the automatic checkout discount included."
       >
         <div className="grid gap-4 sm:grid-cols-2">
           {plans.map(({ name, price, cadence, features, featured }) => (
@@ -159,9 +159,9 @@ const MixlyPricingPage = () => (
         lead="Moving back to Free pauses bundles — it does not remove them."
       >
         <Callout title="What happens when you downgrade">
-          Free runs one active Frequently Bought Together bundle without a schedule. When you
+          Free runs one active Frequently Bought Together or Buy X Get Y bundle without a schedule. When you
           move back to it you choose which bundle stays on, with the most recently edited
-          eligible one preselected. Build Your Own, BOGO and scheduled bundles pause, and your
+          eligible one preselected. Build Your Own and scheduled bundles pause, and your
           home screen names exactly which ones. Nothing is removed, and upgrading doesn&rsquo;t
           switch paused bundles back on: you turn on the ones you want.
         </Callout>

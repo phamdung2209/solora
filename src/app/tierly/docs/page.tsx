@@ -92,7 +92,7 @@ const setupPaths = [
     title: 'Turn on the Tierly app embed',
     note: 'One switch, every theme — Dawn, Horizon, older themes and heavily customised builds alike.',
     steps: [
-      'On your Tierly dashboard, click Turn on Tierly. The theme editor opens on App embeds with Tierly already switched on.',
+      'On your Tierly dashboard, click Turn on Tierly. The theme editor opens on a product page, on App embeds, with Tierly already switched on.',
       'Click Save. The price table shows above the Add to cart button on product pages, and the cart upsell below your items on the cart page.',
       'If it lands in the wrong place, open Settings → Placement (advanced) in Tierly and set the Product page and Cart page selectors — .product-form and .cart__footer are typical.',
       'To hide Tierly from your store, switch the embed off and save. Pause an offer in Tierly to stop its discount too.',
@@ -451,7 +451,7 @@ const TierlyDocsPage = () => (
           id="setup"
           eyebrow="Setup"
           title="Turn it on in your theme"
-          lead="The checkout discount is set up the first time you save or activate an offer, so discounts apply at checkout from then on. Turning Tierly on in your theme is what makes the savings visible on the product page — and that is where the extra units come from. The Setup guide on your dashboard has a “Turn on Tierly” button that opens the theme editor on App embeds, and the Store health card afterwards tells you whether Tierly is on in your published theme."
+          lead="The checkout discount is set up the first time you save or activate an offer, so discounts apply at checkout from then on. Turning Tierly on in your theme is what makes the savings visible on the product page — and that is where the extra units come from. The Setup guide on your dashboard has a “Turn on Tierly” button that opens the theme editor on a product page, on App embeds, and the Store health card afterwards tells you whether Tierly is on in your published theme."
         >
           <div className="grid gap-4 md:grid-cols-2">
             {setupPaths.map(({ icon: Icon, badge, title, note, steps }) => (

@@ -54,7 +54,7 @@ const MixlyTermsPage = () => {
         subscriptions are billed through Shopify&rsquo;s billing system and are subject to
         Shopify&rsquo;s terms. Pro is currently $12.99 per month or $129 per year and
         includes a 7-day free trial; the Free plan allows one active bundle, of the
-        Frequently Bought Together type. Prices are shown in the app and may change with
+        Frequently Bought Together or Buy X Get Y type. Prices are shown in the app and may change with
         notice. You can cancel at any time and will retain Pro features until the end of the
         current billing period.
       </p>

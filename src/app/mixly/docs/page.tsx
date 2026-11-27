@@ -185,7 +185,7 @@ const firstBundleCards: { title: string; body: ReactNode; rules?: string[]; foot
       <>
         Frequently Bought Together for a fixed set of products, Build Your Own when shoppers choose
         their own combination from an eligible list, BOGO when buying one thing unlocks another. On
-        the Free plan only Frequently Bought Together is available.
+        the Free plan only Frequently Bought Together and BOGO are available, one active bundle in total.
       </>
     ),
   },
@@ -289,7 +289,7 @@ const plans = [
     cadence: 'forever',
     features: [
       '1 active bundle',
-      'Frequently Bought Together bundles',
+      'Frequently Bought Together or Buy X Get Y bundles',
       'Storefront widgets on product and cart',
       'Automatic checkout discounts',
     ],
@@ -918,7 +918,7 @@ const MixlyDocsPage = () => (
           id="plans"
           eyebrow="Billing"
           title="Free vs Pro"
-          lead="The free plan is a real plan, not a trial — one active Frequently Bought Together bundle runs indefinitely, with the storefront widgets and the automatic checkout discount included."
+          lead="The free plan is a real plan, not a trial — one active Frequently Bought Together or Buy X Get Y bundle runs indefinitely, with the storefront widgets and the automatic checkout discount included."
         >
           <div className="grid gap-4 sm:grid-cols-2">
             {plans.map(({ name, price, cadence, features, featured }) => (
@@ -949,8 +949,8 @@ const MixlyDocsPage = () => (
 
           <div className="mt-4">
             <Callout title="Downgrading never deletes anything">
-              Free runs one active Frequently Bought Together bundle without a schedule. Move back to Free and Mixly pauses every
-              Build Your Own, BOGO and scheduled bundle, lets you pick which other bundle stays on (the most recently edited eligible one is
+              Free runs one active Frequently Bought Together or Buy X Get Y bundle without a schedule. Move back to Free and Mixly pauses every
+              Build Your Own and scheduled bundle, lets you pick which other bundle stays on (the most recently edited eligible one is
               preselected), and names on your home screen which ones it paused. Those bundles stay paused while the store is on Free, even after a reinstall. Nothing is removed.
               Returning to Pro doesn&rsquo;t switch them back on: turn on the ones you want from Product bundles. Shopify handles the billing throughout: you approve the charge
               in your admin and it lands on your regular Shopify bill, so Mixly never sees your card

@@ -112,7 +112,7 @@ const PostPage = () => (
       match&rdquo; in the theme editor) and BOGO (&ldquo;Buy X get Y&rdquo;). It follows the discount-rule approach above: a bundle is a rule
       that Shopify applies as an automatic discount at checkout, so nothing is added to your catalogue, no bundle products or inventory are
       created, and product prices never change on the product page. Offers appear on product pages and the cart page. It has a free plan that
-      covers one active bundle of the Frequently Bought Together type.
+      covers one active bundle of the Frequently Bought Together or Buy X Get Y type.
     </p>
     <p>
       You can find it on the{' '}
